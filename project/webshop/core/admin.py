@@ -1,13 +1,14 @@
 from django.contrib import admin
 
-from webshop.product.models import Action, PackageType, Category, Product
-from webshop.core.models import FAQTopic, FAQ
+from .models import FAQTopic, FAQ, CustomUser
+from .forms import CustomUserChangeForm, CustomUserCreationForm
 
-admin.site.register(Action)
-admin.site.register(PackageType)
-admin.site.register(Category)
-admin.site.register(Product)
+class CustomUserAdmin(admin.ModelAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    list_display = ['username', 'email']
 
 admin.site.register(FAQTopic)
 admin.site.register(FAQ)
+admin.site.register(CustomUser, CustomUserAdmin)
 

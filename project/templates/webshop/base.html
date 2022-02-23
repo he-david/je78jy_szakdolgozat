@@ -1,19 +1,24 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900">
-    {% include 'webshop/navbar.html' %}
-    <div class="container mx-auto">
-        {% block content %}
-        {% endblock content %}
-    </div>
+
+  {% include "webshop/navbar.html" %}
+
+  {% block content %}
+  {% endblock content %}
+
 </body>
 </html>

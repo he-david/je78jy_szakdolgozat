@@ -6,6 +6,8 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('webshop.product.urls', namespace='webshop_product')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('signup/', include('django.contrib.auth.urls')),
     path('', include('webshop.core.urls', namespace='webshop_core')),
 ]
 

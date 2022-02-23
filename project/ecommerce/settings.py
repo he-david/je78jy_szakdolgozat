@@ -20,6 +20,9 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'core.CustomUser'
 
 # Application definition
 
@@ -30,6 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd party apps
+    "crispy_forms",
+    "crispy_tailwind",
 
     # My apps
     'webshop.core',
@@ -66,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

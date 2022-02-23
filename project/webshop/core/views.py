@@ -1,6 +1,7 @@
 from django.views import generic
 
-from webshop.core.models import FAQTopic, FAQ
+from .models import FAQ
+from .forms import CustomUserCreationForm
 
 class HomeView(generic.TemplateView):
     template_name = 'core/index.html'
@@ -12,3 +13,8 @@ class FAQListView(generic.ListView):
     def get_queryset(self):
         qs = FAQ.objects.order_by('topic_id')
         return qs
+
+class SignupView(generic.edit.CreateView):
+    form_class = CustomUserCreationForm
+    success_url = '/accounts/login'
+    template_name = 'registration/signup.html'

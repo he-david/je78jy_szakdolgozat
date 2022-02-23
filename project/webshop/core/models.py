@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class FAQTopic(models.Model):
     name = models.CharField(max_length=50)
@@ -18,3 +19,6 @@ class FAQ(models.Model):
     def is_visible_category(self):
         item = FAQ.objects.filter(topic_id = self.topic_id).values().first()
         return item['id'] == self.id
+
+class CustomUser(AbstractUser):
+    pass
