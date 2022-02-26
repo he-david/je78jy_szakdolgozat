@@ -8,6 +8,7 @@ urlpatterns = [
     path('products/', include('webshop.product.urls', namespace='webshop_product')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', include('django.contrib.auth.urls')),
+    path('cart/', include('webshop.cart.urls', namespace='webshop_cart')),
     path('', include('webshop.core.urls', namespace='webshop_core')),
 ]
 

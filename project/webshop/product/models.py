@@ -17,7 +17,7 @@ class PackageType(models.Model):
     quantity = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.summary_name
+        return self.display_name
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -51,7 +51,7 @@ class Product(models.Model):
         return reverse("webshop_product:product-detail", kwargs={'slug': self.slug})
 
     def get_price(self):
-        return math.floor(self.net_price/100)
+        return math.floor(self.net_price/100 * (1+self.vat/100))
 
     
     

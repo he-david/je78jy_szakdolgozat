@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     # My apps
     'webshop.core',
-    'webshop.product'
+    'webshop.product',
+    'webshop.cart',
 ]
 
 MIDDLEWARE = [
