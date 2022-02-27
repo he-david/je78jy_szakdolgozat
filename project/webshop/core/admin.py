@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import FAQTopic, FAQ, CustomUser
+from .models import Address, FAQTopic, FAQ, CustomUser
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 class CustomUserAdmin(admin.ModelAdmin):
@@ -11,4 +11,5 @@ class CustomUserAdmin(admin.ModelAdmin):
 admin.site.register(FAQTopic)
 admin.site.register(FAQ)
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Address)
 

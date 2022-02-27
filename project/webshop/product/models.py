@@ -24,7 +24,7 @@ class Category(models.Model):
     parent_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = 'Categories'
     
     def __str__(self):
         return self.name
@@ -48,7 +48,7 @@ class Product(models.Model):
 
     # Own methods
     def get_absolute_url(self):
-        return reverse("webshop_product:product-detail", kwargs={'slug': self.slug})
+        return reverse('webshop_product:product-detail', kwargs={'slug': self.slug})
 
     def get_price(self):
         return math.floor(self.net_price/100 * (1+self.vat/100))

@@ -4,11 +4,12 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('django_admin/', admin.site.urls),
     path('products/', include('webshop.product.urls', namespace='webshop_product')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', include('django.contrib.auth.urls')),
     path('cart/', include('webshop.cart.urls', namespace='webshop_cart')),
+    path('admin/', include('administration.sales_order.urls', namespace='administration_sales_order')),
     path('', include('webshop.core.urls', namespace='webshop_core')),
 ]
 
