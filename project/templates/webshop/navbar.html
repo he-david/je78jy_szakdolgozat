@@ -15,6 +15,7 @@
         <nav
             class="md:ml-auto md:mr-4 md:py-1 md:pl-4 flex flex-wrap items-center text-lg font-semibold justify-center">
             {% if request.user.is_authenticated %}
+                <a href="{% url 'webshop_core:user-profile'%}" class="mr-5 hover:text-white">Felhasználói fiók</a>
                 <a href="{% url 'webshop_cart:summary'%}" class="mr-5 hover:text-white">Kosár</a>
                 <a href="{% url 'logout' %}" class="mr-5 hover:text-white">Kijelentkezés</a>
             {% else %}

@@ -19,7 +19,7 @@ class SalesOrder(models.Model):
     document_number = models.CharField(max_length=20, null=True, blank=True) # VME-2022/1, mert véglegesítéskor generálódik
     final = models.BooleanField(default=False)
     net_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
-    gross_price = models.ImageField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
+    gross_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
     deleted = models.BooleanField(default=False)
     shipping_address_id = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)

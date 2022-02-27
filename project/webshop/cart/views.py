@@ -5,11 +5,11 @@ from .models import Cart, CartItem
 from .utils import get_or_set_cart
 
 class CartView(generic.TemplateView):
-    template_name = "cart/cart.html"
+    template_name = 'cart/cart.html'
 
     def get_context_data(self, **kwargs):
         context = super(CartView, self).get_context_data(**kwargs)
-        context["cart"] = get_or_set_cart(self.request)
+        context['cart'] = get_or_set_cart(self.request)
         return context
 
 class RemoveFromCartView(generic.View):
