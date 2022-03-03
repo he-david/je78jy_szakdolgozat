@@ -1,16 +1,18 @@
 from django.db import models
 
+import math
+
 from webshop.core.models import CustomUser, Address
 from webshop.product.models import PackageType, Product
 
 class SalesOrder(models.Model):
-    recording_date = models.DateTimeField(auto_now_add=True)
-    order_date = models.DateField(null=True, blank=True)
-    status = models.CharField(max_length=20, choices=(
+    STATUS_CHOICES = [
         ('ordered', 'Megrendelve'),
         ('billed', 'Számlázva'),
         ('on_delivery_note', 'Szállítólevélen')
-    ))
+    ]
+    order_date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
     payment_type = models.CharField(max_length=20, choices=(
         ('cash', 'Készpénz'),
         ('card', 'Utalás'),
@@ -24,10 +26,16 @@ class SalesOrder(models.Model):
     shipping_address_id = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
+    def get_price(self):
+        return math.floor(self.gross_price/100)
+
     def __str__(self):
         if self.document_number is not None:
             return self.document_number
         return f"#{self.id}"
+
+    def status_display(self):
+        return dict(SalesOrder.STATUS_CHOICES)[self.status]
 
 class SalesOrderItem(models.Model):
     quantity = models.IntegerField()

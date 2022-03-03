@@ -21,14 +21,13 @@ class FAQ(models.Model):
         return item['id'] == self.id
 
 class CustomUser(AbstractUser):
-    pass
+    is_staff = models.BooleanField(default=False)
 
 class Address(models.Model):
     zip_code = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
     street_name = models.CharField(max_length=100)
     house_number = models.CharField(max_length=20)
-    default = models.BooleanField(default=True)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     class Meta:

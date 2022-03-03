@@ -44,7 +44,7 @@ class ProductListView(generic.ListView):
             })
         else:
             context.update({
-                'categories': Category.objects.values()
+                'categories': Category.objects.filter(parent_id=None).values()
             })
         return context
 
