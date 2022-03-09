@@ -49,7 +49,7 @@ class ProductListView(generic.ListView):
         return context
 
 class ProductDetailView(generic.FormView):
-    template_name='product/product_detail.html'
+    template_name = 'product/product_detail.html'
     context_object_name = 'product'
     form_class = AddToCartForm
 

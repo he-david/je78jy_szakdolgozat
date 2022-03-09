@@ -21,7 +21,7 @@ class SignupView(generic.edit.CreateView):
     success_url = '/accounts/login'
     template_name = 'registration/signup.html'
 
-class UserOrdersView(generic.TemplateView):
+class UserOrdersView(generic.ListView):
     template_name = 'core/user_orders.html'
 
     def get_context_data(self, **kwargs):

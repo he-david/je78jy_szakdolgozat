@@ -1,0 +1,59 @@
+{% load static %}
+
+<header class="text-gray-400 bg-gray-900 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a href="{% url 'admin_core:home' %}" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <img class="w-10 h-10" src="{% static 'images/shop_icon.svg'%}" alt="">
+            <span class="ml-3 text-2xl font-semibold">JE78JY</span>
+        </a>
+        <nav
+            class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-lg font-semibold justify-center">
+            <button id="dropdownButton" data-dropdown-toggle="dropdown_product_management"
+                class="mr-5 hover:text-white flex flex-wrap items-center font-semibold" type="button flex">Készletkezelés<svg
+                    class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg></button>
+            <div id="dropdown_product_management"
+                class="hidden z-10 w-44 text-base list-none rounded divide-y divide-gray-100 shadow bg-gray-800">
+                <ul class="py-1" aria-labelledby="dropdownButton">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Kategóriák</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Termékek</a>
+                    </li>
+                </ul>
+            </div>
+            <button id="dropdownButton" data-dropdown-toggle="dropdown_sale"
+                class="mr-5 hover:text-white flex flex-wrap items-center font-semibold" type="button flex">Értékesítés<svg
+                    class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg></button>
+            <div id="dropdown_sale"
+                class="hidden z-10 w-44 text-base list-none rounded divide-y divide-gray-100 shadow bg-gray-800">
+                <ul class="py-1" aria-labelledby="dropdownButton">
+                    <li>
+                        <a href="{% url 'admin_core:admin_sales_order:sales-order-list' %}"
+                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Vevői megrendelés</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Számlázás</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Szállítólevél</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav
+            class="md:ml-auto md:mr-4 md:py-1 md:pl-4 flex flex-wrap items-center text-lg font-semibold justify-center">
+            <a href="{% url 'logout' %}" class="mr-5 hover:text-white">Kijelentkezés</a>
+        </nav>
+    </div>
+</header>

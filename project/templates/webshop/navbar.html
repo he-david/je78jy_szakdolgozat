@@ -2,7 +2,7 @@
 
 <header class="text-gray-400 bg-gray-900 body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <a href="{% url 'webshop_core:home' %}" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
             <img class="w-10 h-10" src="{% static 'images/shop_icon.svg'%}" alt="">
             <span class="ml-3 text-2xl font-semibold">JE78JY</span>
         </a>
@@ -49,6 +49,12 @@
                         <a href="{% url 'webshop_core:user-orders' %}"
                             class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Megrendelések</a>
                     </li>
+                    {% if request.user.is_staff %}
+                        <li>
+                            <a href="{% url 'admin_core:home' %}"
+                                class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Admin</a>
+                        </li>                     
+                    {% endif %}
                 </ul>
             </div>
             <a href="{% url 'webshop_cart:summary'%}" class="mr-5 hover:text-white">Kosár</a>

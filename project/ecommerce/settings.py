@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'webshop.product',
     'webshop.cart',
     'administration.sales_order',
+    'administration.admin_core',
 ]
 
 MIDDLEWARE = [

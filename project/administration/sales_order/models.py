@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 import math
 
@@ -7,37 +8,51 @@ from webshop.product.models import PackageType, Product
 
 class SalesOrder(models.Model):
     STATUS_CHOICES = [
-        ('ordered', 'Megrendelve'),
-        ('billed', 'Számlázva'),
-        ('on_delivery_note', 'Szállítólevélen')
+        ('in_progress', 'Folyamatban'),
+        ('partially_completed', 'Részben teljesített'),
+        ('completed', 'Teljesített'),
+        ('cancelled', 'Lemondva')
+    ]
+    PAYMENT_TYPE_CHOICES = [
+        ('cash', 'Készpénz'),
+        ('card', 'Utalás')
     ]
     order_date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    payment_type = models.CharField(max_length=20, choices=(
-        ('cash', 'Készpénz'),
-        ('card', 'Utalás'),
-    ))
+    payment_type = models.CharField(max_length=20, choices=PAYMENT_TYPE_CHOICES)
     document_number_key = models.PositiveIntegerField(null=True, blank=True)
     document_number = models.CharField(max_length=20, null=True, blank=True) # VME-2022/1, mert véglegesítéskor generálódik
-    final = models.BooleanField(default=False)
     net_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
     gross_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
     deleted = models.BooleanField(default=False)
     shipping_address_id = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
-
-    def get_price(self):
-        return math.floor(self.gross_price/100)
-
+    
     def __str__(self):
         if self.document_number is not None:
             return self.document_number
         return f"#{self.id}"
 
+    def get_absolute_url(self):
+        return reverse("admin_core:admin_sales_order:sales-order-detail", kwargs={"id": self.id})
+
+    def get_price(self):
+        return math.floor(self.gross_price/100)
+
+    def get_net_price(self):
+        return math.floor(self.net_price/100)
+
     def status_display(self):
         return dict(SalesOrder.STATUS_CHOICES)[self.status]
 
+    def payment_type_display(self):
+        return dict(SalesOrder.PAYMENT_TYPE_CHOICES)[self.payment_type]
+
 class SalesOrderItem(models.Model):
+    original_name = models.CharField(max_length=100)
+    original_producer = models.CharField(max_length=100)
+    original_net_price = models.IntegerField(default=0)
+    original_vat = models.IntegerField()
     quantity = models.IntegerField()
     product_id = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     package_type_id = models.ForeignKey(PackageType, on_delete=models.SET_NULL, null=True)
