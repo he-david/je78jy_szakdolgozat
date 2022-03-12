@@ -9,7 +9,7 @@ from webshop.product.models import PackageType, Product
 class SalesOrder(models.Model):
     STATUS_CHOICES = [
         ('in_progress', 'Folyamatban'),
-        ('partially_completed', 'Részben teljesített'),
+        ('partially_completed', 'Részben teljesítve'),
         ('completed', 'Teljesített'),
         ('cancelled', 'Lemondva')
     ]
@@ -18,8 +18,8 @@ class SalesOrder(models.Model):
         ('card', 'Utalás')
     ]
     order_date = models.DateField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    payment_type = models.CharField(max_length=20, choices=PAYMENT_TYPE_CHOICES)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+    payment_type = models.CharField(max_length=50, choices=PAYMENT_TYPE_CHOICES)
     document_number_key = models.PositiveIntegerField(null=True, blank=True)
     document_number = models.CharField(max_length=20, null=True, blank=True) # VME-2022/1, mert véglegesítéskor generálódik
     net_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
@@ -47,6 +47,9 @@ class SalesOrder(models.Model):
 
     def payment_type_display(self):
         return dict(SalesOrder.PAYMENT_TYPE_CHOICES)[self.payment_type]
+
+    def is_in_progress(self):
+        return self.status == 'in_progress'
 
 class SalesOrderItem(models.Model):
     original_name = models.CharField(max_length=100)

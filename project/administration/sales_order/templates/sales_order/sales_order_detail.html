@@ -52,6 +52,13 @@
             </tbody>
         </table>
     </div>
+    {% if order.is_in_progress %}
+    <div class="mt-3 text-center">
+        <form method="POST">
+            <button type="submit" class="btn btn-primary">Számla generálás</button>
+        </form>
+    </div>
+    {% endif %}
 </div>
 
 
