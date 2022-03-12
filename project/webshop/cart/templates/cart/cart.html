@@ -4,54 +4,45 @@
 
 {% block content %}
 
-<section class="text-gray-400 bg-gray-900 body-font">
-    <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-white">Kosár</h1>
-            <a href="{% url 'webshop_product:product-list' %}"
-                class="lg:w-2/3 mx-auto leading-relaxed text-base font-medium text-green-600 hover:text-green-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                Vásárlás folytatása
-            </a>
-        </div>
-        <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-            <table class="table-auto w-full text-left whitespace-no-wrap">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">Név</th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Mennyiség</th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Kiszerelés</th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Ár</th>
-                        <th class="w-10 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tr rounded-br"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in cart.items.all %}
-                        <tr>
-                            <td class="px-4 py-3">{{ item.product_id.name }}</td>
-                            <td class="px-4 py-3">{{ item.quantity }}</td>
-                            {% if item.package_type_id.quantity != 1 %}
-                                <td class="px-4 py-3">{{ item.package_type_id.display_name }} ({{ item.package_type_id.quantity }} db)</td>
-                            {% else %}
-                                <td class="px-4 py-3">{{ item.package_type_id.display_name }}</td>
-                            {% endif %}
-                            <td class="px-4 py-3 text-lg text-white">{{ item.get_price }} Ft</td>
-                            <td>
-                                <a href="{% url 'webshop_cart:remove-from-cart' item.id %}" class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-red-500 text-white relative z-10 title-font font-medium text-sm mr-2">X</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto py-8 justify-end space-x-3 text-lg">
-            <span>Összesen:</span>
-            <strong class="text-green-500">{{ cart.get_gross_price }} Ft</strong>
-        </div>
-        <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto border-t-2 border-gray-800 py-8">
-            <button
-                class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">Fizetés</button>
-        </div>
+<div class="container py-5">
+    <div class="text-white text-center">
+        <h1>Kosár</h1>
+        <a class="text-decoration-none" href="{% url 'webshop_product:product-list' %}">Vásárlás folytatása</a>
     </div>
-</section>
+    <table class="table table-dark table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Név</th>
+                <th scope="col">Mennyiség</th>
+                <th scope="col">Kiszerelés</th>
+                <th scope="col">Ár</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.items.all %}
+            <tr>
+                <td>{{ item.product_id.name }}</td>
+                <td>{{ item.quantity }}</td>
+                {% if item.package_type_id.quantity != 1 %}
+                <td>{{ item.package_type_id.display_name }} ({{ item.package_type_id.quantity }} db)</td>
+                {% else %}
+                <td>{{ item.package_type_id.display_name }}</td>
+                {% endif %}
+                <td>{{ item.get_price }} Ft</td>
+                <td>
+                    <a href="{% url 'webshop_cart:remove-from-cart' item.id %}">
+                        <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock content %}

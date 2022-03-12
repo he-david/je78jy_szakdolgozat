@@ -1,39 +1,24 @@
 {% extends 'webshop/base.html' %}
 {% load crispy_forms_tags %}
-{% load tailwind_filters %}
 
 {% block content %}
 
 {% block head_title %}Bejelentkezés{% endblock %}
 
-<div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-white">
-        Bejelentkezés
-    </h2>
-    <p class="mt-2 text-center text-sm leading-5 text-gray-400 max-w">
-        Vagy
-        <a href="{% url 'webshop_core:signup' %}"
-            class="font-medium text-green-600 hover:text-green-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-            hozzon létre egy fiókot
-        </a>
-    </p>
-</div>
-
-<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="py-8 px-4 sm:rounded-lg sm:px-10">
-        <div class="mt-4">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit"
-                            class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition duration-150 ease-in-out">
-                            Bejelentkezés
-                        </button>
-                    </span>
+<div class="py-5">
+    <div class="container text-white">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <h1 class="mb-5">Bejelentkezés</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Bejelentkezés">
+                </form>
+                <div class="mt-2">
+                    <a class="text-decoration-none" href="{% url 'webshop_core:signup' %}"><small>Új fiók létrehozása</small></a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

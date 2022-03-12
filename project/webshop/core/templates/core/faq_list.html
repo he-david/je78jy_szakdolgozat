@@ -2,29 +2,26 @@
 
 {% block content %}
 
-{% block head_title %}GY.I.K. lista{% endblock %}
-
-<section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="-my-8 divide-y-2 divide-gray-800">
-      {% for faq in faqs %}
-        <div class="py-8 flex flex-wrap md:flex-nowrap">
-          <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-            
-            {% if faq.is_visible_category %}
-              <span class="font-semibold title-font text-green-400 uppercase">{{ faq.topic_id }}</span>
-            {% else %}
-              <span class="font-semibold title-font text-green-400 uppercase"></span>
-            {% endif %}
-          </div>
-          <div class="md:flex-grow">
-            <h2 class="text-2xl font-medium text-white title-font mb-2">{{ faq.question }}</h2>
-            <p class="leading-relaxed">{{ faq.answer }}</p>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
+<section class="container py-5">
+	<div class="row text-white">
+		{% for faq in faqs %}
+		<div class="mb-3 d-md-flex">
+			<div class="col-md-3">
+				{% if faq.is_visible_category %}
+				<div class="mb-4 mb-md-0">
+					<span class="hd-shadow p-2 text-primary">{{ faq.topic_id }}</span>
+				</div>
+				{% else %}
+				<span></span>
+				{% endif %}
+			</div>
+			<div class="col-md-9 border-bottom border-secondary">
+				<h2>{{ faq.question }}</h2>
+				<p>{{ faq.answer }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </section>
 
 {% endblock content %}

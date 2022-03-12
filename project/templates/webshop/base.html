@@ -1,29 +1,41 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
+
 <head>
-    <title>{% block head_title %}{% endblock %}</title>
-    {% block extra_head %}
-    {% endblock %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
-    <script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
-    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	
+	<title>{% block head_title %}{% endblock %}</title>
 </head>
-<body class="bg-gray-900 flex flex-col min-h-screen">
 
-  {% include "webshop/navbar.html" %}
+<body class="bg-dark d-flex flex-column min-vh-100">
+	{% include "webshop/navbar.html" %}
 
-  {% block content %}
-  {% endblock content %}
+	<div class="hd-footer-mb">
+		{% block content %}
 
-  {% include "webshop/footer.html" %}
+		{% endblock content %}
+	</div>
+	
+	{% include "webshop/footer.html" %}
 
+	{% include 'scripts.html' %}
+
+	{% block scripts %}
+	{% endblock scripts %}
 </body>
+
 </html>

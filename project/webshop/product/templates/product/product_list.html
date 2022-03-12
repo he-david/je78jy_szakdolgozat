@@ -5,38 +5,56 @@
 
 {% block head_title %}Termék lista{% endblock %}
 
-<section class="text-gray-400 bg-gray-900 body-font">
-    <div class="container px-5 py-16 mx-auto">
-        <div class="flex flex-wrap mx-auto sm:mb-2">
-            {% for category in categories %}
-                <a href="?category={{ category.id }}" class="p-2 sm:w-1/2 lg:w-1/4 w-full">
-                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
-                        <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm mr-2">{{ forloop.counter }}</div>
-                        <span class="title-font font-medium text-white">{{ category.name }}</span>
+<section>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            {% if categories %}
+                <div class="col-lg-2">
+                    <div class="p-4 mb-4 hd-shadow" style="min-width:150px;">
+                        <h6 class="text-uppercase text-white">Kategóriák:</h6>
+                        <ul style="margin-left: -1rem;">
+                            {% for category in categories %}
+                                <li class="mb-1">
+                                    <a href="?category={{ category.id }}" class="d-flex text-decoration-none text-white">
+                                        <span class="border-bottom border-secondary">{{ category.name }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="text-gray-400 bg-gray-900 body-font">
-    <div class="container px-5 pb-24 mx-auto">
-        <div class="flex flex-wrap -m-4">
-            {% for product in products %}
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a href="{{ product.get_absolute_url }}" class="block relative h-48 rounded overflow-hidden">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                        src="https://dummyimage.com/420x260">
-                </a>
-                <div class="mt-4">
-                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase">{{ product.category_id }}</h3>
-                    <h2 class="text-white title-font text-lg font-medium">{{ product.name }}</h2>
-                    <p class="mt-1">{{ product.get_price }}Ft</p>
+                </div>
+            {% endif %}
+            <div class="col-lg-10">
+                <div class="row">
+                    {% for product in products %}
+                        <div class=" col-lg-4 col-md-6 mb-4 text-white">
+                            <div class="card bg-dark">
+                                <div class="card-img overflow-hidden">
+                                    <a href="{{ product.get_absolute_url }}">
+                                        <img class="card-img-top hd-image-trans" alt="{{ product.name }}" src="https://www.wallpaperbetter.com/wallpaper/90/40/918/logos-nike-famous-sports-brand-dark-background-shoe-colorful-rays--wallpaper.jpg">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="small text-uppercase text-muted">{{ product.category_id }}</p>
+                                        <p class="small hd-red-a400"><s>1099 Ft</s></p>
+                                    </div>
+        
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="">{{ product.name }}</h5>
+                                        <h5>{{ product.get_price }} Ft</h5>
+                                    </div>
+        
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <p class="text-muted mb-0">Készlet: <span class="fw-bold">{{ product.free_stock }} db</span></p>
+                                        <a class="btn btn-primary" href="{{ product.get_absolute_url }}">Részletek</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
-
         </div>
     </div>
 </section>

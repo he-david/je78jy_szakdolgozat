@@ -1,43 +1,38 @@
 {% extends 'webshop/base.html' %}
 {% load crispy_forms_tags %}
-{% load tailwind_filters %}
 
 {% block content %}
 
 {% block head_title %}Termék részletek{% endblock %}
 
-<section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
-    <div class="container px-5 py-24 mx-auto">
-        <form class="lg:w-4/5 mx-auto flex flex-wrap" method="POST">
-            {% csrf_token %}
-            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                src="https://dummyimage.com/400x400">
-            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                <h2 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{ product.producer }}</h2>
-                <h1 class="text-white text-3xl title-font font-medium mb-1">{{ product.name }}</h1>
-                <p class="leading-relaxed">{{ product.description }}</p>
-                <div class="flex mt-6 pb-5 border-b-2 border-gray-800 mb-5">
-                    <div class="flex space-x-3">
+<div class="site-section text-white">
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-md-6 overflow-hidden">
+                <img class="card-img-top hd-image-trans" alt="{{ product.name }}" src="https://www.wallpaperbetter.com/wallpaper/90/40/918/logos-nike-famous-sports-brand-dark-background-shoe-colorful-rays--wallpaper.jpg">
+            </div>
+            <div class="col-md-6 mt-2 mt-md-0">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.details }}</p>
+                <p>{{ product.description }}</p>
+                {% if product.free_stock > 0 %}
+                <p>Készlet: {{ product.free_stock }} db</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="col-lg-6">
                         {{ form|crispy }}
                     </div>
-                </div>
-                <div class="flex">
-                    <span class="title-font font-medium text-2xl text-white">{{ product.get_price }} Ft</span>
-                    {% if product.free_stock > 0 %}
-                        <button
-                            class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"
-                            type="submit">Kosárba</button>
-                    {% else %}
-                        <span
-                            class="flex ml-auto text-white py-2 px-6"
-                            type="submit">Jelenleg nincs készleten</span>
-                    {% endif %}
-                        
-                </div>
+                    <div class="d-flex justify-content-between mt-2 col-lg-6">
+                        <h5>{{ product.get_price }} Ft</h5>
+                        <button type='submit' class="btn btn-primary buy-now">Kosárba</button>
+                    </div>
+                </form>
+                {% else %}
+                <p>This item is out of stock</p>
+                {% endif %}
             </div>
+        </div>
     </div>
-    </form>
-    </div>
-</section>
+</div>
 
 {% endblock content %}

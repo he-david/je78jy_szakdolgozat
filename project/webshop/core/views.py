@@ -23,11 +23,11 @@ class SignupView(generic.edit.CreateView):
 
 class UserOrdersView(generic.ListView):
     template_name = 'core/user_orders.html'
+    context_object_name = 'orders'
 
-    def get_context_data(self, **kwargs):
-        context = super(UserOrdersView, self).get_context_data(**kwargs)
-        context['orders'] = SalesOrder.objects.filter(customer_id=self.request.user, deleted=False) # TODO lehet, hogy kezelni kell, ha nincs belépve
-        return context
+    def get_queryset(self):
+        qs = SalesOrder.objects.filter(customer_id=self.request.user, deleted=False)
+        return qs
 
 class UserDataView(generic.FormView):
     template_name = 'core/user_data.html'

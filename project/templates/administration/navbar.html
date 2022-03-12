@@ -1,59 +1,67 @@
 {% load static %}
 
-<header class="text-gray-400 bg-gray-900 body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a href="{% url 'admin_core:home' %}" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <img class="w-10 h-10" src="{% static 'images/shop_icon.svg'%}" alt="">
-            <span class="ml-3 text-2xl font-semibold">JE78JY</span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-4">
+    <div class="container fs-5 hd-shadow p-3">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/shop_icon.svg'%}" alt="" width="40" height="40">
         </a>
-        <nav
-            class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-lg font-semibold justify-center">
-            <button id="dropdownButton" data-dropdown-toggle="dropdown_product_management"
-                class="mr-5 hover:text-white flex flex-wrap items-center font-semibold" type="button flex">Készletkezelés<svg
-                    class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg></button>
-            <div id="dropdown_product_management"
-                class="hidden z-10 w-44 text-base list-none rounded divide-y divide-gray-100 shadow bg-gray-800">
-                <ul class="py-1" aria-labelledby="dropdownButton">
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Kategóriák</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Termékek</a>
-                    </li>
-                </ul>
-            </div>
-            <button id="dropdownButton" data-dropdown-toggle="dropdown_sale"
-                class="mr-5 hover:text-white flex flex-wrap items-center font-semibold" type="button flex">Értékesítés<svg
-                    class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg></button>
-            <div id="dropdown_sale"
-                class="hidden z-10 w-44 text-base list-none rounded divide-y divide-gray-100 shadow bg-gray-800">
-                <ul class="py-1" aria-labelledby="dropdownButton">
-                    <li>
-                        <a href="{% url 'admin_core:admin_sales_order:sales-order-list' %}"
-                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Vevői megrendelés</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Számlázás</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 text-sm text-gray-400 hover:bg-gray-700 hover:text-white ">Szállítólevél</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <nav
-            class="md:ml-auto md:mr-4 md:py-1 md:pl-4 flex flex-wrap items-center text-lg font-semibold justify-center">
-            <a href="{% url 'logout' %}" class="mr-5 hover:text-white">Kijelentkezés</a>
-        </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="productManagementNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Készletkezelés
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productManagementNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">Kategóriák</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Termékek</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown ms-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="saleNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Értékesítés
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="saleNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_sales_order:sales-order-list' %}">Vevői megrendelés</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Számlázás</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Szállítólevél</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown ms-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="userNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Kijelentkezés</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</header>
+</nav>

@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd party apps
-    "crispy_forms",
-    "crispy_tailwind",
+    'crispy_forms',
+    "crispy_bootstrap5",
 
     # My apps
     'webshop.core',
@@ -75,11 +75,10 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
-
-CRISPY_TEMPLATE_PACK = "tailwind"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

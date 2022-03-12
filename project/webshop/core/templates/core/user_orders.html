@@ -4,39 +4,31 @@
 
 {% block content %}
 
-<section class="text-gray-400 bg-gray-900 body-font">
-    <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-white">Rendelések</h1>
-        </div>
-        <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-            <table class="table-auto w-full text-left whitespace-no-wrap">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">Bizonylatszám</th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Rendelés napja</th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Ár</th>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Státusz</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for order in orders %}
-                        <tr>
-                            
-                            {% if order.document_number is not None %}
-                                <td class="px-4 py-3">{{ order.document_number }}</td>
-                            {% else %}
-                                <td class="px-4 py-3">#{{ order.id }}</td>
-                            {% endif %}
-                            <td class="px-4 py-3">{{ order.order_date|date:"Y. m. d." }}</td>
-                            <td class="px-4 py-3">{{ order.get_price }} Ft</td>
-                            <td class="px-4 py-3">{{ order.status_display }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+<div class="container py-5">
+    <div class="text-white text-center">
+        <h1>Rendelések</h1>
     </div>
-</section>
+    <table class="table table-dark table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Bizonylatszám</th>
+                <th scope="col">Rendelés napja</th>
+                <th scope="col">Ár</th>
+                <th scope="col">Státusz</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.document_number }}</td>
+                <td>{{ order.order_date|date:"Y. m. d." }}</td>
+                <td>{{ order.get_price }} Ft</td>
+                <td>{{ order.status_display }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock content %}

@@ -1,39 +1,24 @@
 {% extends 'webshop/base.html' %}
 {% load crispy_forms_tags %}
-{% load tailwind_filters %}
 
 {% block head_title %}Regisztráció{% endblock %}
 
 {% block content %}
 
-<div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-white">
-            Regisztráció
-        </h2>
-        <p class="mt-2 text-center text-sm leading-5 text-gray-400 max-w">
-            Rendelkezik már felhasználói fiókkal?
-            <a href="{% url 'login' %}"
-                class="font-medium text-green-600 hover:text-green-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                Bejelentkezés
-            </a>
-        </p>
-    </div>
-
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="py-8 px-4 sm:px-10">
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit"
-                            class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition duration-150 ease-in-out">
-                            Regisztráció
-                        </button>
-                    </span>
+<div class="py-5">
+    <div class="container text-white">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <h1 class="mb-5">Regisztráció</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Regisztráció">
+                </form>
+                <div class="mt-2">
+                    <a class="text-decoration-none" href="{% url 'webshop_core:signup' %}"><small>Bejelentkezés</small></a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
