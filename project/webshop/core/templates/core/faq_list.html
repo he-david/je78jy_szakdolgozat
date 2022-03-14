@@ -1,0 +1,27 @@
+{% extends 'webshop/base.html' %}
+
+{% block content %}
+
+<section class="container py-5">
+	<div class="row text-white">
+		{% for faq in faqs %}
+		<div class="mb-3 d-md-flex">
+			<div class="col-md-3">
+				{% if faq.is_visible_category %}
+				<div class="mb-4 mb-md-0">
+					<span class="hd-shadow p-2 text-primary">{{ faq.topic_id }}</span>
+				</div>
+				{% else %}
+				<span></span>
+				{% endif %}
+			</div>
+			<div class="col-md-9 border-bottom border-secondary">
+				<h2>{{ faq.question }}</h2>
+				<p>{{ faq.answer }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'administration/base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="text-white text-center">
+        <h1>Számlák</h1>
+    </div>
+    <table class="table table-dark table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Számlaszám</th>
+                <th scope="col">Előzmény</th>
+                <th scope="col">Keltezés dátuma</th>
+                <th scope="col">Kiegyenlítés dátuma</th>
+                <th scope="col">Nettó össszeg</th>
+                <th scope="col">Bruttó összeg</th>
+                <th scope="col">Vevő</th>
+                <th scope="col">Fizetési mód</th>
+                <th scope="col">Státusz</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.account_number }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.conn_sales_order_id.document_number }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.creation_date|date:"Y. m. d." }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.settlement_date|date:"Y. m. d." }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.get_net_price }} Ft</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.get_price }} Ft</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.customer_id }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.payment_type_display }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.status_display }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

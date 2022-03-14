@@ -20,6 +20,9 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'core.CustomUser'
 
 # Application definition
 
@@ -31,9 +34,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party apps
+    'crispy_forms',
+    "crispy_bootstrap5",
+
     # My apps
     'webshop.core',
-    'webshop.product'
+    'webshop.product',
+    'webshop.cart',
+    'administration.sales_order',
+    'administration.admin_core',
+    'administration.invoice'
 ]
 
 MIDDLEWARE = [
@@ -59,13 +70,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'webshop.core.context_processors.base_categories',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'ecommerce.wsgi.application'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

@@ -1,0 +1,63 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Megrendelés{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="p-3 text-white hd-shadow">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-4">
+                    {{ form.document_number|as_crispy_field }}
+                    {{ form.customer_id|as_crispy_field }}
+                    {{ form.shipping_address_id|as_crispy_field }}
+                </div>
+                <div class="col-5">
+                    {{ form.status|as_crispy_field }}
+                    {{ form.payment_type|as_crispy_field }}
+                </div>
+                <div class="col-3">
+                    {{ form.net_price|as_crispy_field }}
+                    {{ form.gross_price|as_crispy_field }}
+                </div>
+            </div>
+            {% if order.is_in_progress %}
+            <div class="">
+                <button class="btn btn-primary">Számla generálás</button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+    <div class="p-3 text-white hd-shadow">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Név</th>
+                    <th scope="col">Mennyiség</th>
+                    <th scope="col">Kiszerelés</th>
+                    <th scope="col">Ár</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.original_name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    {% if item.package_type_id.quantity != 1 %}
+                    <td>{{ item.package_type_id.display_name }} ({{ item.package_type_id.quantity }} db)</td>
+                    {% else %}
+                    <td>{{ item.package_type_id.display_name }}</td>
+                    {% endif %}
+                    <td>0 Ft</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
