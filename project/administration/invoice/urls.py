@@ -6,5 +6,6 @@ from . import views
 app_name = 'admin_invoice'
 
 urlpatterns = [
-    #path('', views.InvoiceListView.as_view(), name='invoice-list'),
+    path('', views.InvoiceListView.as_view(), name='invoice-list'),
+    path('<id>/', views.InvoiceDetailView.as_view(), name='invoice-detail'),
 ]

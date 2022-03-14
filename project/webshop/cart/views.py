@@ -1,10 +1,11 @@
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 
 from .models import Cart, CartItem
 from .utils import get_or_set_cart
 
-class CartView(generic.TemplateView):
+class CartView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'cart/cart.html'
 
     def get_context_data(self, **kwargs):
@@ -12,7 +13,7 @@ class CartView(generic.TemplateView):
         context['cart'] = get_or_set_cart(self.request)
         return context
 
-class RemoveFromCartView(generic.View):
+class RemoveFromCartView(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         cart_item = get_object_or_404(CartItem, id=kwargs['pk'])
         # Cart price

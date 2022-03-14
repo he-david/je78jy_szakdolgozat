@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+
+import math
 
 from administration.sales_order.models import SalesOrder
 from webshop.core.models import Address, CustomUser
@@ -6,7 +9,7 @@ from webshop.product.models import PackageType, Product
 
 class Invoice(models.Model):
     STATUS_CHOICES = [
-        ('in_progress', 'Folyamatban'),
+        ('in_progress', 'Folyamatban'), # 0-ás indexen kell lennie.
         ('completed', 'Teljesítve'),
         ('cancelled', 'Sztornózva')
     ]
@@ -22,6 +25,7 @@ class Invoice(models.Model):
     gross_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     payment_type = models.CharField(max_length=50, choices=PAYMENT_TYPE_CHOICES)
+    deleted = models.BooleanField(default=False)
     conn_sales_order_id = models.ForeignKey(SalesOrder, on_delete=models.CASCADE)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
     billing_address_id = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
@@ -31,11 +35,27 @@ class Invoice(models.Model):
             return self.account_number
         return f"#{self.id}"
 
+    def get_absolute_url(self):
+        return reverse("admin_core:admin_invoice:invoice-detail", kwargs={"id": self.id})
+
+    def get_price(self):
+        return math.floor(self.gross_price/100)
+
+    def get_net_price(self):
+        return math.floor(self.net_price/100)
+
+    def status_display(self):
+        return dict(Invoice.STATUS_CHOICES)[self.status]
+
+    def payment_type_display(self):
+        return dict(Invoice.PAYMENT_TYPE_CHOICES)[self.payment_type]
+
 class InvoiceItem(models.Model):
     original_name = models.CharField(max_length=100)
     original_producer = models.CharField(max_length=100)
     original_net_price = models.IntegerField(default=0)
     original_vat = models.IntegerField()
+    quantity = models.IntegerField()
     product_id = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     package_type_id = models.ForeignKey(PackageType, on_delete=models.SET_NULL, null=True)
     invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)

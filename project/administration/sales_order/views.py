@@ -4,6 +4,8 @@ from django.views import generic
 from administration.admin_core.mixins import StaffUserMixin
 from .models import SalesOrder, SalesOrderItem
 from .forms import SalesOrderForm
+from administration.invoice.models import Invoice
+from administration.invoice import utils
 
 class SalesOrderListView(StaffUserMixin, generic.ListView):
     template_name = 'sales_order/sales_order_list.html'
@@ -26,4 +28,10 @@ class SalesOrderDetailView(StaffUserMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
+        if self.request.method == 'POST':
+            sales_order = self.get_object()
+
+            if not Invoice.objects.filter(conn_sales_order_id=sales_order).exists():
+                utils.create_invoice(sales_order)
+                return reverse('admin_core:admin_invoice:invoice-list')
         return reverse('admin_core:admin_sales_order:sales-order-list')

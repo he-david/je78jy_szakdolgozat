@@ -11,9 +11,9 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-4">
-                    {{ form.document_number|as_crispy_field }}
+                    {{ form.account_number|as_crispy_field }}
                     {{ form.customer_id|as_crispy_field }}
-                    {{ form.shipping_address_id|as_crispy_field }}
+                    {{ form.billing_address_id|as_crispy_field }}
                 </div>
                 <div class="col-5">
                     {{ form.status|as_crispy_field }}
@@ -24,11 +24,6 @@
                     {{ form.gross_price|as_crispy_field }}
                 </div>
             </div>
-            {% if order.is_in_progress %}
-            <div class="">
-                <button class="btn btn-primary">Számla generálás</button>
-            </div>
-            {% endif %}
         </form>
     </div>
     <div class="p-3 text-white hd-shadow">

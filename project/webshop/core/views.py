@@ -1,5 +1,6 @@
 from django.views import generic
 from django.shortcuts import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import FAQ, Address
 from .forms import AddressChangeForm, CustomUserCreationForm
@@ -21,7 +22,7 @@ class SignupView(generic.edit.CreateView):
     success_url = '/accounts/login'
     template_name = 'registration/signup.html'
 
-class UserOrdersView(generic.ListView):
+class UserOrdersView(LoginRequiredMixin, generic.ListView):
     template_name = 'core/user_orders.html'
     context_object_name = 'orders'
 
@@ -29,7 +30,7 @@ class UserOrdersView(generic.ListView):
         qs = SalesOrder.objects.filter(customer_id=self.request.user, deleted=False)
         return qs
 
-class UserDataView(generic.FormView):
+class UserDataView(LoginRequiredMixin, generic.FormView):
     template_name = 'core/user_data.html'
     form_class = AddressChangeForm
 
