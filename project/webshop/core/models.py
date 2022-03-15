@@ -22,6 +22,8 @@ class FAQ(models.Model):
 
 class CustomUser(AbstractUser):
     is_staff = models.BooleanField(default=False)
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
 
 class Address(models.Model):
     zip_code = models.CharField(max_length=10)

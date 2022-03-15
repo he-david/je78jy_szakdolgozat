@@ -1,0 +1,41 @@
+{% extends 'administration/base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="text-white text-center">
+        <h1>Szállítólevelek</h1>
+    </div>
+    <table class="table table-dark table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Bizonylatszám</th>
+                <th scope="col">Előzmény</th>
+                <th scope="col">Teljesítés dátuma</th>
+                <th scope="col">Nettó össszeg</th>
+                <th scope="col">Bruttó összeg</th>
+                <th scope="col">Vevő</th>
+                <th scope="col">Fizetési mód</th>
+                <th scope="col">Szállítási mód</th>
+                <th scope="col">Státusz</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for delivery_note in delivery_notes %}
+            <tr>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.document_number }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.conn_sales_order_id.document_number }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.completion_date|date:"Y. m. d." }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_net_price }} Ft</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_price }} Ft</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.customer_id }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.payment_type_display }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.delivery_mode_display }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.status_display }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

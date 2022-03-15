@@ -4,6 +4,7 @@ from django.views import generic
 from administration.admin_core.mixins import StaffUserMixin
 from .forms import InvoiceForm
 from .models import Invoice, InvoiceItem
+from . import utils
 
 class InvoiceListView(StaffUserMixin, generic.ListView):
     template_name = 'invoice/invoice_list.html'
@@ -26,4 +27,8 @@ class InvoiceDetailView(StaffUserMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
+        if self.request.method == 'POST':
+            invoice = self.get_object()
+            utils.invoice_settlement(invoice)
+
         return reverse('admin_core:admin_invoice:invoice-list')

@@ -1,10 +1,10 @@
 from django import forms
 
-from .models import SalesOrder
+from .models import DeliveryNote
 
-class SalesOrderForm(forms.ModelForm):
+class DeliveryNoteForm(forms.ModelForm):
     class Meta:
-        model = SalesOrder
+        model = DeliveryNote
         fields = ('status', 'payment_type', 'document_number', 'net_price',
                 'gross_price', 'customer_id'
         )

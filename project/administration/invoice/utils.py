@@ -1,6 +1,7 @@
 from administration.sales_order.models import SalesOrderItem
 from .models import Invoice, InvoiceItem
 
+from datetime import datetime
 
 def create_invoice(sales_order):
     invoice = Invoice()
@@ -13,6 +14,7 @@ def create_invoice(sales_order):
     invoice.account_number = f"SZA-{invoice.account_number_key}"
     invoice.net_price = sales_order.net_price
     invoice.gross_price = sales_order.gross_price
+    invoice.gross_price = sales_order.gross_price
     invoice.status = 'in_progress'
     invoice.payment_type = sales_order.payment_type
     invoice.conn_sales_order_id = sales_order
@@ -20,10 +22,10 @@ def create_invoice(sales_order):
     invoice.billing_address_id = sales_order.shipping_address_id
     invoice.save()
 
-    set_sales_order_status(sales_order)
+    set_sales_order_status_to_partially_completed(sales_order)
     create_invoice_items(invoice, get_sales_order_items(sales_order))
 
-def set_sales_order_status(sales_order):
+def set_sales_order_status_to_partially_completed(sales_order):
     sales_order.status = 'partially_completed'
     sales_order.save()
 
@@ -42,3 +44,11 @@ def create_invoice_items(invoice, sales_order_items):
         invoice_item.package_type_id = item.package_type_id
         invoice_item.invoice_id = invoice
         invoice_item.save()
+
+def invoice_settlement(invoice):
+    invoice.status = 'completed'
+    invoice.debt = 0
+    invoice.settlement_date = datetime.now()
+    invoice.save()
+
+    # VME státusz állítás, kell még szállítólevél is.
