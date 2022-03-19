@@ -3,14 +3,13 @@ from django.urls import reverse
 
 import math
 
-from administration.sales_order.models import SalesOrder
 from webshop.core.models import CustomUser
 from webshop.product.models import PackageType, Product
 
 class Invoice(models.Model):
     STATUS_CHOICES = [
         ('in_progress', 'Folyamatban'), # 0-ás indexen kell lennie.
-        ('completed', 'Teljesítve'),
+        ('completed', 'Kiegyenlítve'),
         ('cancelled', 'Sztornózva')
     ]
     PAYMENT_TYPE_CHOICES = [
@@ -36,7 +35,7 @@ class Invoice(models.Model):
     billing_street_name = models.CharField(max_length=100)
     billing_house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
-    conn_sales_order_id = models.ForeignKey(SalesOrder, on_delete=models.CASCADE)
+    conn_sales_order_id = models.ForeignKey('sales_order.SalesOrder', on_delete=models.CASCADE)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

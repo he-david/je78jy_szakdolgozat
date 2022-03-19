@@ -3,7 +3,9 @@ from django.urls import reverse
 
 import math
 
-from webshop.core.models import CustomUser, Address
+from administration.delivery_note.models import DeliveryNote # TODO HEDA oda vissza van import :c
+from administration.invoice.models import Invoice
+from webshop.core.models import CustomUser
 from webshop.product.models import PackageType, Product
 
 class SalesOrder(models.Model):
@@ -35,11 +37,14 @@ class SalesOrder(models.Model):
     house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
-    
+
     def __str__(self):
         if self.document_number is not None:
             return self.document_number
         return f"#{self.id}"
+
+    class Meta:
+        app_label = 'sales_order'
 
     def get_absolute_url(self):
         return reverse("admin_core:admin_sales_order:sales-order-detail", kwargs={"id": self.id})
@@ -56,8 +61,12 @@ class SalesOrder(models.Model):
     def payment_type_display(self):
         return dict(SalesOrder.PAYMENT_TYPE_CHOICES)[self.payment_type]
 
-    def is_in_progress(self):
-        return self.status == 'in_progress'
+    def has_invoice(self):
+        return Invoice.objects.filter(conn_sales_order_id=self.id).exists()
+
+    def has_delivery_note(self):
+        return (DeliveryNote.objects.filter(conn_sales_order_id=self.id).exists() or
+                self.delivery_mode == 'personal')
 
 class SalesOrderItem(models.Model):
     original_name = models.CharField(max_length=100)

@@ -3,7 +3,6 @@ from django.urls import reverse
 
 import math
 
-from administration.sales_order.models import SalesOrder
 from webshop.core.models import CustomUser
 from webshop.product.models import PackageType, Product
 
@@ -34,7 +33,7 @@ class DeliveryNote(models.Model):
     shipping_street_name = models.CharField(max_length=100)
     shipping_house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
-    conn_sales_order_id = models.ForeignKey(SalesOrder, on_delete=models.CASCADE)
+    conn_sales_order_id = models.ForeignKey('sales_order.SalesOrder', on_delete=models.CASCADE)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -59,6 +58,9 @@ class DeliveryNote(models.Model):
 
     def payment_type_display(self):
         return dict(DeliveryNote.PAYMENT_TYPE_CHOICES)[self.payment_type]
+    
+    def is_in_progress(self):
+        return self.status == 'in_progress'
 
 class DeliveryNoteItem(models.Model):
     original_name = models.CharField(max_length=100)

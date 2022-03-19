@@ -4,6 +4,7 @@ from django.views import generic
 from administration.admin_core.mixins import StaffUserMixin
 from .models import DeliveryNote, DeliveryNoteItem
 from .forms import DeliveryNoteForm
+from . import utils
 
 class DeliveryNoteListView(StaffUserMixin, generic.ListView):
     template_name = 'delivery_note/delivery_note_list.html'
@@ -26,4 +27,8 @@ class DeliveryNoteDetailView(StaffUserMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
+        if self.request.method == 'POST':
+            delivery_note = self.get_object()
+            utils.delivery_note_completion(delivery_note, delivery_note.conn_sales_order_id)
+
         return reverse('admin_core:admin_delivery_note:delivery-note-list')

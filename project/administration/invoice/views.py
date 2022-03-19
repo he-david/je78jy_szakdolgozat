@@ -29,6 +29,6 @@ class InvoiceDetailView(StaffUserMixin, generic.UpdateView):
     def get_success_url(self):
         if self.request.method == 'POST':
             invoice = self.get_object()
-            utils.invoice_settlement(invoice)
-
+            utils.invoice_settlement(invoice, invoice.conn_sales_order_id)
+            
         return reverse('admin_core:admin_invoice:invoice-list')

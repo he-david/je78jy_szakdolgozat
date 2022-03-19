@@ -23,6 +23,11 @@
                     {{ form.gross_price|as_crispy_field }}
                 </div>
             </div>
+            {% if delivery_note.is_in_progress %}
+            <div class="">
+                <button class="btn btn-primary">Teljesítés</button>
+            </div>
+            {% endif %}
         </form>
     </div>
     <div class="p-3 text-white hd-shadow">
