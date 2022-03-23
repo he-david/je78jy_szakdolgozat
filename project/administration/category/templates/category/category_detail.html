@@ -30,7 +30,7 @@
                     <tr>
                         <th scope="col">Név</th>
                         <th scope="col">Nettó ár</th>
-                        <th scope="col">Bruttó ár</th>
+                        <th scope="col">Áfa</th>
                         <th scope="col">Szabad készlet</th>
                         <th scope="col">Foglalt készlet</th>
                     </tr>
@@ -40,7 +40,7 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.net_price }}</td>
-                        <td>{{ item.get_price }}</td>
+                        <td>{{ item.vat }}</td>
                         <td>{{ item.free_stock }}</td>
                         <td>{{ item.reserved_stock }}</td>
                     </tr>

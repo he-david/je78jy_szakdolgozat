@@ -56,6 +56,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('webshop_product:product-detail', kwargs={'slug': self.slug})
 
+    def get_absolute_admin_url(self):
+        return reverse("admin_core:admin_product:product-detail", kwargs={"id": self.id})
+
     def get_price(self):
         return math.floor(self.net_price/100 * (1+self.vat/100))
 

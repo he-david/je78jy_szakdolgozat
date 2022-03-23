@@ -31,7 +31,6 @@ body {
 .hd-shadow:hover {
     box-shadow: 0 4px 8px 0 #0288D1;
     transition: 0.3s;
-    color: #0288D1;
 }
 
 .hd-letter-space-1 {
