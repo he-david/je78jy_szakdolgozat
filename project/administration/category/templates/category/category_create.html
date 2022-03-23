@@ -1,0 +1,27 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}Kategória létrehozás{% endblock head_title %}
+
+{% block content %}
+
+<div class="container mt-5 text-white">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row hd-shadow p-3">
+            <div class="col-6">
+                {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.parent_id|as_crispy_field }}
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Mentés</button>
+                <a href="{% url 'admin_core:admin_category:category-list' %}" class="btn btn-primary ms-2">Mégsem</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

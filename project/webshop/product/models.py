@@ -21,13 +21,19 @@ class PackageType(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    parent_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    parent_id = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Categories'
     
     def __str__(self):
-        return self.name
+        return f"{self.id} - {self.name}"
+
+    def get_absolute_admin_url(self):
+        return reverse("admin_core:admin_category:category-detail", kwargs={"id": self.id})
+
+    def get_product_count(self):
+        return Product.objects.filter(category_id=self.id).count()
 
 class Product(models.Model):
     name = models.CharField(max_length=100)

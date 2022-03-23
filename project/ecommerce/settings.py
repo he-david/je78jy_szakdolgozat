@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'administration.admin_core',
     'administration.invoice',
     'administration.delivery_note',
+    'administration.category',
 ]
 
 MIDDLEWARE = [

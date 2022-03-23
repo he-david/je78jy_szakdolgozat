@@ -1,0 +1,84 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Kategória{% endblock head_title %}
+
+{% block content %}
+
+<div class="container mt-5 text-white">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row hd-shadow p-3">
+            <div class="col-6">
+                {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.parent_id|as_crispy_field }}
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Mentés</button>
+                <a href="{% url 'admin_core:admin_category:category-list' %}" class="btn btn-primary ms-2">Mégsem</a>
+            </div>
+        </div>
+    </form>
+    <div class="row justify-content-between">
+        <div class="col-lg-7 hd-shadow p-3">
+            <h2 class="text-center">Termékek</h2>
+            {% if prod_items %}
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Név</th>
+                        <th scope="col">Nettó ár</th>
+                        <th scope="col">Bruttó ár</th>
+                        <th scope="col">Szabad készlet</th>
+                        <th scope="col">Foglalt készlet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in prod_items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.net_price }}</td>
+                        <td>{{ item.get_price }}</td>
+                        <td>{{ item.free_stock }}</td>
+                        <td>{{ item.reserved_stock }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="mt-5 text-center">Az adott kategóriához nem tartozik egyetlen termék sem.</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-5 hd-shadow p-3">
+            <h2 class="text-center">Kategóriák</h2>
+            {% if cat_items %}
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Név</th>
+                        <th scope="col">Termékek száma</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cat_items %}
+                    <tr>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                                class="d-block text-white text-decoration-none">{{ item.name }}</a></td>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                                class="d-block text-white text-decoration-none">{{ item.get_product_count }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="mt-5 text-center">Az adott kategóriához nem tartozik egyetlen alkategória sem.</p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

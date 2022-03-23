@@ -15,7 +15,7 @@ class CartView(LoginRequiredMixin, generic.TemplateView):
 
 class RemoveFromCartView(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
-        cart_item = get_object_or_404(CartItem, id=kwargs['pk'])
+        cart_item = get_object_or_404(CartItem, id=kwargs['id'])
         # Cart price
         cart = Cart.objects.get(id=cart_item.cart_id.id)
         cart.net_price -= (cart_item.product_id.net_price * cart_item.quantity * 
