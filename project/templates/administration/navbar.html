@@ -18,13 +18,28 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productManagementNavbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="{% url 'admin_core:admin_category:category-list' %}">Kategóriák</a>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_category:category-list' %}">Kategóriák</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{% url 'admin_core:admin_product:product-list' %}">Termékek</a>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_product:product-list' %}">Termékek</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{% url 'admin_core:admin_product:package-list' %}">Kiszerelések</a>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_product:package-list' %}">Kiszerelések</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown ms-lg-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="supplierNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Szállítói folyamatok
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="supplierNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_product_receipt:product-receipt-list' %}">Bevételezés</a>
                         </li>
                     </ul>
                 </li>

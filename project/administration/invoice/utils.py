@@ -8,7 +8,7 @@ from datetime import datetime
 
 def create_invoice(sales_order):
     invoice = Invoice()
-    account_number_key = Invoice.objects.all().order_by('-account_number_key')
+    account_number_key = Invoice.objects.all().order_by('-account_number_key') # Ez azért jó, mert egyből van account number és nem fordulhat elő olyan, hogy létezik számla úgy, hogy még nincs account number key.
     
     if account_number_key:
         invoice.account_number_key = account_number_key[0].account_number_key + 1

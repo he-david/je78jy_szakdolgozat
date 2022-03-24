@@ -38,11 +38,21 @@
                 <tbody>
                     {% for item in prod_items %}
                     <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.net_price }}</td>
-                        <td>{{ item.vat }}</td>
-                        <td>{{ item.free_stock }}</td>
-                        <td>{{ item.reserved_stock }}</td>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                            class="d-block text-white text-decoration-none">{{ item.name }}</a>
+                        </td>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                            class="d-block text-white text-decoration-none">{{ item.net_price }}</a>
+                        </td>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                            class="d-block text-white text-decoration-none">{{ item.vat }}</a>
+                        </td>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                            class="d-block text-white text-decoration-none">{{ item.free_stock }}</a>
+                        </td>
+                        <td><a href="{{ item.get_absolute_admin_url }}"
+                            class="d-block text-white text-decoration-none">{{ item.reserved_stock }}</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -65,9 +75,11 @@
                     {% for item in cat_items %}
                     <tr>
                         <td><a href="{{ item.get_absolute_admin_url }}"
-                                class="d-block text-white text-decoration-none">{{ item.name }}</a></td>
+                                class="d-block text-white text-decoration-none">{{ item.name }}</a>
+                        </td>
                         <td><a href="{{ item.get_absolute_admin_url }}"
-                                class="d-block text-white text-decoration-none">{{ item.get_product_count }}</a></td>
+                                class="d-block text-white text-decoration-none">{{ item.get_product_count }}</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

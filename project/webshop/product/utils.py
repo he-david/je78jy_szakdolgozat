@@ -18,3 +18,7 @@ def get_all_children(category_id, include_self):
         for item in curr_children:
             children_queue.append(item['id'])
     return res_arr
+
+def modify_product_quantity(product, quantity):
+    product.free_stock += quantity
+    product.save()

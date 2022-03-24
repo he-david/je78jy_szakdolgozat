@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.db.models.signals import post_save
+from django.utils.text import slugify
 
 import math
 
@@ -53,15 +55,14 @@ class Product(models.Model):
     free_stock = models.IntegerField(default=0)
     reserved_stock = models.IntegerField(default=0)
     image = models.ImageField(blank=True, null=True, upload_to='product_images')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     category_id = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     package_type_id = models.ManyToManyField(PackageType)
     action_id = models.ManyToManyField(Action, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name    
 
-    # Own methods
     def get_absolute_url(self):
         return reverse('webshop_product:product-detail', kwargs={'slug': self.slug})
 
@@ -72,4 +73,14 @@ class Product(models.Model):
         return math.floor(self.net_price/100 * (1+self.vat/100))
 
     
-    
+def slug_generator(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        new_slug = slugify(instance.name)
+
+        if Product.objects.filter(slug=new_slug).exists():
+            instance.slug = f"{new_slug}_{instance.id}"
+        else:
+            instance.slug = new_slug
+        instance.save()
+
+post_save.connect(slug_generator, sender=Product)
