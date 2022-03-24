@@ -1,0 +1,24 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}Termék létrehozás{% endblock head_title %}
+
+{% block content %}
+
+<div class="container my-5 text-white">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5 hd-shadow p-3">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Mentés</button>
+                    <a href="{% url 'admin_core:admin_product:product-list' %}" class="btn btn-primary ms-2">Mégsem</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

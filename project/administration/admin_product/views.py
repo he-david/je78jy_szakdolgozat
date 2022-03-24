@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
-from webshop.product.models import Product
+from webshop.product.models import PackageType, Product
 from administration.admin_core.mixins import StaffUserMixin
-from .forms import ProductForm, ProductCreateForm
+from .forms import ProductForm, ProductCreateForm, PackageForm
+
+# Product
 
 class ProductListView(StaffUserMixin, generic.ListView):
     template_name = 'admin_product/product_list.html'
@@ -43,3 +45,44 @@ class ProductDeleteView(StaffUserMixin, generic.DeleteView):
     
     def get_success_url(self):
         return reverse('admin_core:admin_product:product-list')
+
+# Package
+
+class PackageListView(StaffUserMixin, generic.ListView):
+    template_name = 'admin_product/package_list.html'
+    context_object_name = 'packages'
+
+    def get_queryset(self):
+        return PackageType.objects.all()
+
+class PackageDetailView(StaffUserMixin, generic.UpdateView):
+    template_name = 'admin_product/package_detail.html'
+    context_object_name = 'package'
+    form_class = PackageForm
+
+    def get_object(self):
+        return get_object_or_404(PackageType, id=self.kwargs['id'])
+
+    def get_success_url(self):
+        return reverse('admin_core:admin_product:package-list')
+
+class PackageCreateView(StaffUserMixin, generic.CreateView):
+    template_name = 'admin_product/package_create.html'
+    form_class = PackageForm
+
+    def form_valid(self, form):
+        form.save()
+        return super(PackageCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('admin_core:admin_product:package-list')
+
+class PackageDeleteView(StaffUserMixin, generic.DeleteView):
+    template_name = 'admin_product/package_delete.html'
+    context_object_name = 'package'
+
+    def get_object(self):
+        return get_object_or_404(PackageType, id=self.kwargs['id'])
+
+    def get_success_url(self):
+        return reverse('admin_core:admin_product:package-list')

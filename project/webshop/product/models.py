@@ -19,6 +19,15 @@ class PackageType(models.Model):
     def __str__(self):
         return self.display_name
 
+    def get_absolute_admin_url(self):
+        return reverse('admin_core:admin_product:package-detail', kwargs={'id': self.id})
+    
+    def is_deletable(self):
+        if Product.objects.filter(package_type_id=self.id).count() == 0:
+            return True
+        else:
+            return False
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     parent_id = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
@@ -30,7 +39,7 @@ class Category(models.Model):
         return f"{self.id} - {self.name}"
 
     def get_absolute_admin_url(self):
-        return reverse("admin_core:admin_category:category-detail", kwargs={"id": self.id})
+        return reverse('admin_core:admin_category:category-detail', kwargs={'id': self.id})
 
     def get_product_count(self):
         return Product.objects.filter(category_id=self.id).count()
@@ -57,7 +66,7 @@ class Product(models.Model):
         return reverse('webshop_product:product-detail', kwargs={'slug': self.slug})
 
     def get_absolute_admin_url(self):
-        return reverse("admin_core:admin_product:product-detail", kwargs={"id": self.id})
+        return reverse('admin_core:admin_product:product-detail', kwargs={'id': self.id})
 
     def get_price(self):
         return math.floor(self.net_price/100 * (1+self.vat/100))

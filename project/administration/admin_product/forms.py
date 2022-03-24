@@ -1,6 +1,9 @@
+from dataclasses import field
 from django import forms
 
-from webshop.product.models import Product
+from webshop.product.models import PackageType, Product
+
+# Product
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -13,3 +16,10 @@ class ProductCreateForm(forms.ModelForm):
         model = Product
         fields = ('name', 'producer', 'net_price', 'vat', 'description',
                 'image', 'category_id', 'package_type_id', 'action_id')
+
+# Package
+
+class PackageForm(forms.ModelForm):
+    class Meta:
+        model = PackageType
+        fields = ('summary_name', 'display_name', 'quantity')
