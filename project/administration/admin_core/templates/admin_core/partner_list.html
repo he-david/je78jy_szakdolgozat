@@ -1,0 +1,33 @@
+{% extends 'administration/base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="text-white text-center">
+        <h1>Partnerek</h1>
+    </div>
+    <table class="table table-dark table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col">Név</th>
+                <th scope="col">E-mail cím</th>
+                <th scope="col">Összes nettó költés</th>
+                <th scope="col">Összes bruttó költés</th>
+                <th scope="col">Tartozás</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for partner in partners %}
+            <tr>
+                <td>{{ partner.last_name }} {{ partner.first_name }}</td>
+                <td>{{ partner.email }}</td>
+                <td>{{ partner.get_spent_net_money }} Ft</td>
+                <td>{{ partner.get_spent_gross_money }} Ft</td>
+                <td>{{ partner.get_debt }} Ft</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

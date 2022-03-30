@@ -5,6 +5,8 @@ from webshop.product.models import PackageType, Product
 from administration.admin_core.mixins import StaffUserMixin
 from .forms import ProductForm, ProductCreateForm, PackageForm
 
+import math
+
 # Product
 
 class ProductListView(StaffUserMixin, generic.ListView):
@@ -20,7 +22,14 @@ class ProductDetailView(StaffUserMixin, generic.UpdateView):
     form_class = ProductForm
 
     def get_object(self):
-        return get_object_or_404(Product, id=self.kwargs['id'])
+        product = get_object_or_404(Product, id=self.kwargs['id'])
+        product.net_price = math.floor(product.net_price/100)
+        return product
+
+    def form_valid(self, form):
+        product = form.save(commit=False)
+        product.net_price *= 100
+        return super(ProductDetailView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('admin_core:admin_product:product-list')
@@ -30,7 +39,9 @@ class ProductCreateView(StaffUserMixin, generic.CreateView):
     form_class = ProductCreateForm
 
     def form_valid(self, form):
-        form.save()
+        product = form.save(commit=False)
+        product.net_price *= 100 # Az eltárolás miatt.
+        product.save()
         return super(ProductCreateView, self).form_valid(form)
 
     def get_success_url(self):

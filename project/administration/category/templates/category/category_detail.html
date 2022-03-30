@@ -42,16 +42,16 @@
                             class="d-block text-white text-decoration-none">{{ item.name }}</a>
                         </td>
                         <td><a href="{{ item.get_absolute_admin_url }}"
-                            class="d-block text-white text-decoration-none">{{ item.net_price }}</a>
+                            class="d-block text-white text-decoration-none">{{ item.get_net_price }} Ft</a>
                         </td>
                         <td><a href="{{ item.get_absolute_admin_url }}"
-                            class="d-block text-white text-decoration-none">{{ item.vat }}</a>
+                            class="d-block text-white text-decoration-none">{{ item.vat }}%</a>
                         </td>
                         <td><a href="{{ item.get_absolute_admin_url }}"
-                            class="d-block text-white text-decoration-none">{{ item.free_stock }}</a>
+                            class="d-block text-white text-decoration-none">{{ item.free_stock }} db</a>
                         </td>
                         <td><a href="{{ item.get_absolute_admin_url }}"
-                            class="d-block text-white text-decoration-none">{{ item.reserved_stock }}</a>
+                            class="d-block text-white text-decoration-none">{{ item.reserved_stock }} db</a>
                         </td>
                     </tr>
                     {% endfor %}

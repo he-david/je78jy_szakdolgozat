@@ -36,10 +36,10 @@
                 </td>
                 <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.name }}</a></td>
                 <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.producer }}</a></td>
-                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.net_price }}</a></td>
-                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.vat }}</a></td>
-                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.free_stock }}</a></td>
-                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.reserved_stock }}</a></td>
+                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.get_net_price }} Ft</a></td>
+                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.vat }}%</a></td>
+                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.free_stock }} db</a></td>
+                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.reserved_stock }} db</a></td>
                 {% if product.category_id is None %}
                 <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">-</a></td>
                 {% else %}

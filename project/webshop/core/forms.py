@@ -6,7 +6,7 @@ from .models import CustomUser, Address
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'is_staff')
+        fields = ('username', 'email')
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
@@ -17,3 +17,9 @@ class AddressChangeForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = ('zip_code', 'city', 'street_name', 'house_number')
+        labels = {
+            'zip_code': 'Irányítószám',
+            'city': 'Város',
+            'street_name': 'Utca',
+            'house_number': 'Házszám'
+        }

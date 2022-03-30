@@ -27,6 +27,7 @@
             <div class="col-lg-10">
                 <div class="row">
                     {% for product in products %}
+                        {% if product.is_displayable %}
                         <div class=" col-lg-4 col-md-6 mb-4 text-white">
                             <div class="card bg-dark">
                                 <div class="card-img overflow-hidden">
@@ -42,7 +43,7 @@
         
                                     <div class="d-flex justify-content-between mb-3">
                                         <h5 class="">{{ product.name }}</h5>
-                                        <h5>{{ product.get_price }} Ft</h5>
+                                        <h5>{{ product.get_gross_price }} Ft</h5>
                                     </div>
         
                                     <div class="d-flex justify-content-between mb-2">
@@ -52,6 +53,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

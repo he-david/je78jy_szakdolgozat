@@ -69,8 +69,15 @@ class Product(models.Model):
     def get_absolute_admin_url(self):
         return reverse('admin_core:admin_product:product-detail', kwargs={'id': self.id})
 
-    def get_price(self):
+    def get_net_price(self):
+        return math.floor(self.net_price/100)
+
+    def get_gross_price(self):
         return math.floor(self.net_price/100 * (1+self.vat/100))
+    
+    def is_displayable(self):
+        return (self.free_stock > 0 and
+                self.category_id is not None)
 
     
 def slug_generator(sender, instance, *args, **kwargs):

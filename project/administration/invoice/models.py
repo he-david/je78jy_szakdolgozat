@@ -3,7 +3,6 @@ from django.urls import reverse
 
 import math
 
-from webshop.core.models import CustomUser
 from webshop.product.models import PackageType, Product
 
 class Invoice(models.Model):
@@ -36,7 +35,7 @@ class Invoice(models.Model):
     billing_house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
     conn_sales_order_id = models.ForeignKey('sales_order.SalesOrder', on_delete=models.CASCADE)
-    customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    customer_id = models.ForeignKey('core.CustomUser', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         if self.account_number is not None:
@@ -46,7 +45,7 @@ class Invoice(models.Model):
     def get_absolute_url(self):
         return reverse("admin_core:admin_invoice:invoice-detail", kwargs={"id": self.id})
 
-    def get_price(self):
+    def get_gross_price(self):
         return math.floor(self.gross_price/100)
 
     def get_net_price(self):

@@ -24,6 +24,6 @@ class CartItem(models.Model):
     def __str__(self):
         return f"{self.cart_id} - {self.product_id.name}"
 
-    def get_price(self):
+    def get_gross_price(self):
         return math.floor(self.product_id.net_price/100 * (1+self.product_id.vat/100) * 
                             self.package_type_id.quantity * self.quantity)

@@ -44,7 +44,7 @@ class DeliveryNote(models.Model):
     def get_absolute_url(self):
         return reverse("admin_core:admin_delivery_note:delivery-note-detail", kwargs={"id": self.id})
 
-    def get_price(self):
+    def get_gross_price(self):
         return math.floor(self.gross_price/100)
 
     def get_net_price(self):

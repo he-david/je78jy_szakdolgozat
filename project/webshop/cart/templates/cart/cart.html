@@ -29,7 +29,7 @@
                 {% else %}
                 <td>{{ item.package_type_id.display_name }}</td>
                 {% endif %}
-                <td>{{ item.get_price }} Ft</td>
+                <td>{{ item.get_gross_price }} Ft</td>
                 <td>
                     <a href="{% url 'webshop_cart:remove-from-cart' item.id %}">
                         <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

@@ -17,7 +17,7 @@ def create_invoice(sales_order):
     invoice.account_number = f"SZA-{invoice.account_number_key}"
     invoice.net_price = sales_order.net_price
     invoice.gross_price = sales_order.gross_price
-    invoice.gross_price = sales_order.gross_price
+    invoice.debt = sales_order.gross_price
     invoice.status = 'in_progress'
     invoice.payment_type = sales_order.payment_type
     invoice.delivery_mode = sales_order.delivery_mode
@@ -31,6 +31,10 @@ def create_invoice(sales_order):
 
     sales_order_utils.set_sales_order_status_to_partially_completed(sales_order)
     create_invoice_items(invoice, sales_order_utils.get_sales_order_items(sales_order))
+
+    # Amikor a megrendelés pillanatában ki lett fizetve az összeg:
+    if invoice.payment_type == 'card':
+        invoice_settlement(invoice, sales_order)
 
 def create_invoice_items(invoice, sales_order_items):
     for item in sales_order_items:

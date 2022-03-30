@@ -27,7 +27,7 @@
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.conn_sales_order_id.document_number }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.completion_date|date:"Y. m. d." }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_net_price }} Ft</a></td>
-                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_price }} Ft</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_gross_price }} Ft</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.customer_id }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.payment_type_display }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.delivery_mode_display }}</a></td>

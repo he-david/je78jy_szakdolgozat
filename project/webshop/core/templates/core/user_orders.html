@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ order.document_number }}</td>
                 <td>{{ order.order_date|date:"Y. m. d." }}</td>
-                <td>{{ order.get_price }} Ft</td>
+                <td>{{ order.get_gross_price }} Ft</td>
                 <td>{{ order.status_display }}</td>
             </tr>
             {% endfor %}
