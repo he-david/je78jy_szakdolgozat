@@ -1,19 +1,21 @@
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
-from administration.admin_core.mixins import StaffUserMixin
+from administration.admin_core.mixins import UserAccessMixin
 from .models import DeliveryNote, DeliveryNoteItem
 from .forms import DeliveryNoteForm
 from . import utils
 
-class DeliveryNoteListView(StaffUserMixin, generic.ListView):
+class DeliveryNoteListView(UserAccessMixin, generic.ListView):
+    permission_required = 'delivery_note.view_deliverynote'
     template_name = 'delivery_note/delivery_note_list.html'
     context_object_name = 'delivery_notes'
 
     def get_queryset(self):
         return DeliveryNote.objects.filter(deleted=False).order_by('document_number')
     
-class DeliveryNoteDetailView(StaffUserMixin, generic.UpdateView):
+class DeliveryNoteDetailView(UserAccessMixin, generic.UpdateView):
+    permission_required = ('delivery_note.view_deliverynoteitem', 'delivery_note.change_deliverynote')
     template_name = 'delivery_note/delivery_note_detail.html'
     context_object_name = 'delivery_note'
     form_class = DeliveryNoteForm

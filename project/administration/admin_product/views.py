@@ -2,21 +2,23 @@ from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
 from webshop.product.models import PackageType, Product
-from administration.admin_core.mixins import StaffUserMixin
+from administration.admin_core.mixins import StaffUserMixin, UserAccessMixin
 from .forms import ProductForm, ProductCreateForm, PackageForm
 
 import math
 
 # Product
 
-class ProductListView(StaffUserMixin, generic.ListView):
+class ProductListView(UserAccessMixin, generic.ListView):
+    permission_required = 'product.view_product'
     template_name = 'admin_product/product_list.html'
     context_object_name = 'products'
 
     def get_queryset(self):
         return Product.objects.all() # TODO HEDA valami alapján jó lenne rendezni.
 
-class ProductDetailView(StaffUserMixin, generic.UpdateView):
+class ProductDetailView(UserAccessMixin, generic.UpdateView):
+    permission_required = 'product.change_product'
     template_name = 'admin_product/product_detail.html'
     context_object_name = 'product'
     form_class = ProductForm
@@ -34,7 +36,8 @@ class ProductDetailView(StaffUserMixin, generic.UpdateView):
     def get_success_url(self):
         return reverse('admin_core:admin_product:product-list')
 
-class ProductCreateView(StaffUserMixin, generic.CreateView):
+class ProductCreateView(UserAccessMixin, generic.CreateView):
+    permission_required = 'product.add_product'
     template_name = 'admin_product/product_create.html'
     form_class = ProductCreateForm
 
@@ -47,7 +50,8 @@ class ProductCreateView(StaffUserMixin, generic.CreateView):
     def get_success_url(self):
         return reverse('admin_core:admin_product:product-list')
 
-class ProductDeleteView(StaffUserMixin, generic.DeleteView):
+class ProductDeleteView(UserAccessMixin, generic.DeleteView):
+    permission_required = 'product.delete_product'
     template_name = 'admin_product/product_delete.html'
     context_object_name = 'product'
 
@@ -59,14 +63,16 @@ class ProductDeleteView(StaffUserMixin, generic.DeleteView):
 
 # Package
 
-class PackageListView(StaffUserMixin, generic.ListView):
+class PackageListView(UserAccessMixin, generic.ListView):
+    permission_required = 'product.view_packagetype'
     template_name = 'admin_product/package_list.html'
     context_object_name = 'packages'
 
     def get_queryset(self):
         return PackageType.objects.all()
 
-class PackageDetailView(StaffUserMixin, generic.UpdateView):
+class PackageDetailView(UserAccessMixin, generic.UpdateView):
+    permission_required = 'product.change_packagetype'
     template_name = 'admin_product/package_detail.html'
     context_object_name = 'package'
     form_class = PackageForm
@@ -77,7 +83,8 @@ class PackageDetailView(StaffUserMixin, generic.UpdateView):
     def get_success_url(self):
         return reverse('admin_core:admin_product:package-list')
 
-class PackageCreateView(StaffUserMixin, generic.CreateView):
+class PackageCreateView(UserAccessMixin, generic.CreateView):
+    permission_required = 'product.add_packagetype'
     template_name = 'admin_product/package_create.html'
     form_class = PackageForm
 
@@ -88,7 +95,8 @@ class PackageCreateView(StaffUserMixin, generic.CreateView):
     def get_success_url(self):
         return reverse('admin_core:admin_product:package-list')
 
-class PackageDeleteView(StaffUserMixin, generic.DeleteView):
+class PackageDeleteView(UserAccessMixin, generic.DeleteView):
+    permission_required = 'product.delete_packagetype'
     template_name = 'admin_product/package_delete.html'
     context_object_name = 'package'
 

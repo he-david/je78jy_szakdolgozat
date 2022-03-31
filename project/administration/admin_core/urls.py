@@ -13,4 +13,5 @@ urlpatterns = [
     path('category/', include('administration.category.urls', namespace='admin_category')),
     path('product/', include('administration.admin_product.urls', namespace='admin_product')),
     path('partner-list/', views.PartnerListView.as_view(), name='admin-partner'),
+    path('permission-denied/', views.PermissionDeniedView.as_view(), name='permission-denied'),
 ]

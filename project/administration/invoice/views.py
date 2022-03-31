@@ -1,19 +1,25 @@
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
-from administration.admin_core.mixins import StaffUserMixin
+from administration.admin_core.mixins import UserAccessMixin
 from .forms import InvoiceForm
 from .models import Invoice, InvoiceItem
 from . import utils
 
-class InvoiceListView(StaffUserMixin, generic.ListView):
+from django.contrib.auth.models import Permission
+
+class InvoiceListView(UserAccessMixin, generic.ListView):
+    permission_required = 'invoice.view_invoice'
     template_name = 'invoice/invoice_list.html'
     context_object_name = 'invoices'
 
     def get_queryset(self):
+        print(Permission.objects.filter(group__user=self.request.user).values())
+
         return Invoice.objects.filter(deleted=False).order_by('account_number')
 
-class InvoiceDetailView(StaffUserMixin, generic.UpdateView):
+class InvoiceDetailView(UserAccessMixin, generic.UpdateView):
+    permission_required = ('invoice.view_invoiceitem', 'invoice.change_invoice')
     template_name = 'invoice/invoice_detail.html'
     context_object_name = 'invoice'
     form_class = InvoiceForm

@@ -1,5 +1,6 @@
-from .models import Category
 from collections import deque
+
+from .models import Category
 
 def get_all_children(category_id, include_self):
     children_queue = deque()
@@ -22,3 +23,12 @@ def get_all_children(category_id, include_self):
 def modify_product_quantity(product, quantity):
     product.free_stock += quantity
     product.save()
+
+def get_product_with_less_stock(cart):
+    wrong_items = []
+    cart_items = cart.items.all()
+    
+    for item in cart_items:
+        if item.product_id.free_stock < item.get_full_quantity():
+            wrong_items.append(item)
+    return wrong_items

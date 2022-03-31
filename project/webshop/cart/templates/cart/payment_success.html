@@ -1,0 +1,12 @@
+{% extends 'webshop/base.html' %}
+
+{% block head_title %}Sikeres rendelés{% endblock %}
+
+{% block content %}
+
+<div class="container text-white py-5 text-center">
+    <h1>Köszönjük a rendelését!</h1>
+    <a class="text-decoration-none" href="{% url 'webshop_product:product-list' %}">Vásárlás folytatása</a>
+</div>
+
+{% endblock %}

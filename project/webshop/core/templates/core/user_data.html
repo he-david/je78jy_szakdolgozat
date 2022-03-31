@@ -5,17 +5,15 @@
 
 {% block content %}
 
-<div class="py-5">
-    <div class="container text-white">
-        <div class="row justify-content-center">
-            <div class="col-md-7 col-lg-5">
-                <h1 class="mb-5 text-center">Szállítási adatok</h1>
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <input type="submit" class="btn btn-primary btn-lg" value="Mentés">
-                </form>
-            </div>
+<div class="container text-white py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+            <h1 class="mb-5 text-center">Szállítási/Számlázási adatok</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" class="btn btn-primary btn-lg" value="Mentés">
+            </form>
         </div>
     </div>
 </div>

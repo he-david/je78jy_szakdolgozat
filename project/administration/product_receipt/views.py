@@ -1,21 +1,23 @@
 from django.shortcuts import get_object_or_404, reverse, redirect
 from django.views import generic
 
-from administration.admin_core.mixins import StaffUserMixin
+from administration.admin_core.mixins import StaffUserMixin, UserAccessMixin
 from .models import ProductReceipt, ProductReceiptItem
 from .forms import ProductReceiptForm, ProductReceiptItemForm
 from . import utils as receipt_utils
 
 # ProductReceipt
 
-class ProductReceiptListView(StaffUserMixin, generic.ListView):
+class ProductReceiptListView(UserAccessMixin, generic.ListView):
+    permission_required = ('product_receipt.view_productreceipt', 'product_receipt.add_productreceipt')
     template_name = 'product_receipt/product_receipt_list.html'
     context_object_name = 'receipts'
 
     def get_queryset(self):
         return ProductReceipt.objects.all()
 
-class ProductReceiptDetailView(StaffUserMixin, generic.UpdateView):
+class ProductReceiptDetailView(UserAccessMixin, generic.UpdateView):
+    permission_required = ('product_receipt.view_productreceiptitem', 'product_receipt.change_productreceipt')
     template_name = 'product_receipt/product_receipt_detail.html'
     context_object_name = 'receipt'
     form_class = ProductReceiptForm
@@ -36,12 +38,18 @@ class ProductReceiptDetailView(StaffUserMixin, generic.UpdateView):
                 receipt_utils.finalize_product_receipt(receipt)
         return reverse('admin_core:admin_product_receipt:product-receipt-list')
 
-class ProductReceiptCreateView(StaffUserMixin, generic.View):
+class ProductReceiptCreateView(UserAccessMixin, generic.View):
+    permission_required = (
+        'product_receipt.add_productreceipt', 'product_receipt.change_productreceipt',
+        'product_receipt.view_productreceiptitem'
+    )
+
     def get(self, *args, **kwargs):
         receipt = receipt_utils.create_product_receipt()
         return redirect(reverse("admin_core:admin_product_receipt:product-receipt-detail", kwargs={"id": receipt.id}))
 
-class ProductReceiptDeleteView(StaffUserMixin, generic.DeleteView):
+class ProductReceiptDeleteView(UserAccessMixin, generic.DeleteView):
+    permission_required = 'product_receipt.delete_productreceipt'
     template_name = 'product_receipt/product_receipt_delete.html'
     context_object_name = 'receipt'
 
@@ -53,7 +61,8 @@ class ProductReceiptDeleteView(StaffUserMixin, generic.DeleteView):
 
 # ProductReceiptItem
 
-class ProductReceiptItemCreateView(StaffUserMixin, generic.CreateView):
+class ProductReceiptItemCreateView(UserAccessMixin, generic.CreateView):
+    permission_required = 'product_receipt.add_productreceiptitem'
     template_name = 'product_receipt/product_receipt_item_create.html'
     form_class = ProductReceiptItemForm
 
@@ -70,7 +79,9 @@ class ProductReceiptItemCreateView(StaffUserMixin, generic.CreateView):
     def get_success_url(self):
         return reverse("admin_core:admin_product_receipt:product-receipt-detail", kwargs={"id": self.kwargs['id']})
 
-class ProductReceiptItemDeleteView(StaffUserMixin, generic.View):
+class ProductReceiptItemDeleteView(UserAccessMixin, generic.View):
+    permission_required = 'product_receipt.delete_productreceiptitem'
+    
     def get(self, *args, **kwargs):
         receipt_item = get_object_or_404(ProductReceiptItem, id=kwargs['id'])
         receipt = receipt_item.product_receipt_id

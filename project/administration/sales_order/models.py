@@ -37,14 +37,15 @@ class SalesOrder(models.Model):
     house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
     customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    
+    class Meta:
+        app_label = 'sales_order'
 
     def __str__(self):
         if self.document_number is not None:
             return self.document_number
         return f"#{self.id}"
 
-    class Meta:
-        app_label = 'sales_order'
 
     def get_absolute_url(self):
         return reverse("admin_core:admin_sales_order:sales-order-detail", kwargs={"id": self.id})

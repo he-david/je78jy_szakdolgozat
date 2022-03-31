@@ -2,17 +2,22 @@ from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
 from webshop.product.models import Category, Product
-from administration.admin_core.mixins import StaffUserMixin
+from administration.admin_core.mixins import UserAccessMixin
 from .forms import CategoryForm, CategoryCreateForm
 
-class CategoryListView(StaffUserMixin, generic.ListView):
+class CategoryListView(UserAccessMixin, generic.ListView):
+    permission_required = 'product.view_category'
     template_name = 'category/category_list.html'
     context_object_name = 'categories'
 
     def get_queryset(self):
         return Category.objects.all() # TODO HEDA Valami alapján majd jó lenne rendezni..
 
-class CategoryDetailView(StaffUserMixin, generic.UpdateView):
+class CategoryDetailView(UserAccessMixin, generic.UpdateView):
+    permission_required = (
+        'product.change_category', 'product.view_product',
+        'product.change_product'
+    )
     template_name = 'category/category_detail.html'
     context_object_name = 'category'
     form_class = CategoryForm
@@ -29,7 +34,8 @@ class CategoryDetailView(StaffUserMixin, generic.UpdateView):
     def get_success_url(self):
         return reverse('admin_core:admin_category:category-list')
 
-class CategoryCreateView(StaffUserMixin, generic.CreateView):
+class CategoryCreateView(UserAccessMixin, generic.CreateView):
+    permission_required = 'product.add_category'
     template_name = 'category/category_create.html'
     form_class = CategoryCreateForm
 
@@ -40,7 +46,8 @@ class CategoryCreateView(StaffUserMixin, generic.CreateView):
     def get_success_url(self):
         return reverse('admin_core:admin_category:category-list')
 
-class CategoryDeleteView(StaffUserMixin, generic.DeleteView):
+class CategoryDeleteView(UserAccessMixin, generic.DeleteView):
+    permission_required = 'product.delete_category'
     template_name = 'category/category_delete.html'
     context_object_name = 'category'
 
