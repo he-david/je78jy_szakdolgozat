@@ -1,0 +1,70 @@
+{% extends 'administration/base.html' %}
+
+{% block head_title %}Bevételezések{% endblock head_title %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="text-white text-center">
+        <h1>Bevételezések</h1>
+    </div>
+    <a href="{% url 'admin_core:admin_product_receipt:product-receipt-create' %}" class="btn btn-primary btn-sm mt-5">Új
+        bevételezés</a>
+    <table class="table table-dark table-hover mt-2">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Bizonylatszám</th>
+                <th scope="col">Összes mennyiség</th>
+                <th scope="col">Véglegesítés dátuma</th>
+                <th scope="col">Státusz</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receipt in receipts %}
+            <tr>
+                {% if receipt.is_in_progress %}
+                <td>
+                    <a href="{% url 'admin_core:admin_product_receipt:product-receipt-delete' receipt.id %}">
+                        <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                    </a>
+                </td>
+                {% else %}
+                <td><a href="{{ receipt.get_absolute_url }}" class="d-block text-white text-decoration-none"></a>
+                </td>
+                {% endif %}
+                {% if receipt.document_number %}
+                <td><a href="{{ receipt.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ receipt.document_number }}</a>
+                </td>
+                {% else %}
+                <td><a href="{{ receipt.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">#{{ receipt.id }}</a>
+                </td>
+                {% endif %}
+                <td><a href="{{ receipt.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ receipt.sum_quantity }} db</a>
+                </td>
+                {% if receipt.finalization_date %}
+                <td><a href="{{ receipt.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ receipt.finalization_date|date:"Y. m. d." }}</a>
+                </td>
+                {% else %}
+                <td><a href="{{ receipt.get_absolute_url }}" class="d-block text-white text-decoration-none">-</a>
+                </td>
+                {% endif %}
+
+                <td><a href="{{ receipt.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ receipt.status_display }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

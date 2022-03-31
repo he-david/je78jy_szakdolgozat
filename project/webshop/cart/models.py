@@ -15,6 +15,9 @@ class Cart(models.Model):
     def get_gross_price(self):
         return math.floor(self.gross_price/100)
 
+    def is_empty(self):
+        return CartItem.objects.filter(cart_id=self.id).count() == 0
+
 class CartItem(models.Model):
     quantity = models.IntegerField()
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -24,6 +27,9 @@ class CartItem(models.Model):
     def __str__(self):
         return f"{self.cart_id} - {self.product_id.name}"
 
-    def get_price(self):
+    def get_gross_price(self):
         return math.floor(self.product_id.net_price/100 * (1+self.product_id.vat/100) * 
                             self.package_type_id.quantity * self.quantity)
+
+    def get_full_quantity(self):
+        return self.quantity * self.package_type_id.quantity

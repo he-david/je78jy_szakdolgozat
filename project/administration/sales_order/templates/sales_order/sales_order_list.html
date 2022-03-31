@@ -21,11 +21,15 @@
         <tbody>
             {% for order in orders %}
             <tr>
+                {% if order.document_number %}
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.document_number }}</a></td>
+                {% else %}
+                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">#{{ order.id }}</a></td>
+                {% endif %}
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.customer_id.username }}</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.order_date|date:"Y. m. d." }}</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_net_price }} Ft</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_price }} Ft</a></td>
+                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_gross_price }} Ft</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.payment_type_display }}</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.status_display }}</a></td>
             </tr>

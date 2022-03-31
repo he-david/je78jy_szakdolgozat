@@ -23,15 +23,27 @@
         <tbody>
             {% for invoice in invoices %}
             <tr>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.account_number }}</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.conn_sales_order_id.document_number }}</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.creation_date|date:"Y. m. d." }}</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.settlement_date|date:"Y. m. d." }}</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.get_net_price }} Ft</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.get_price }} Ft</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.customer_id }}</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.payment_type_display }}</a></td>
-                <td><a href="{{ invoice.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ invoice.status_display }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.account_number }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.conn_sales_order_id.document_number }}</a>
+                </td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.creation_date|date:"Y. m. d." }}</a>
+                </td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.settlement_date|date:"Y. m. d." }}</a>
+                </td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.get_net_price }} Ft</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.get_gross_price }} Ft</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.customer_id }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.payment_type_display }}</a></td>
+                <td><a href="{{ invoice.get_absolute_url }}"
+                        class="d-block text-white text-decoration-none">{{ invoice.status_display }}</a></td>
             </tr>
             {% endfor %}
         </tbody>

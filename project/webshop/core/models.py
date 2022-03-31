@@ -1,5 +1,10 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
+
+import math
+
+from administration.invoice.models import Invoice
 
 class FAQTopic(models.Model):
     name = models.CharField(max_length=50)
@@ -22,6 +27,17 @@ class FAQ(models.Model):
 
 class CustomUser(AbstractUser):
     is_staff = models.BooleanField(default=False)
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+
+    def get_spent_net_money(self):
+        return math.floor((sum(Invoice.objects.filter(customer_id=self.id, debt=0).values_list('net_price', flat=True)))/100)
+
+    def get_spent_gross_money(self):
+        return math.floor((sum(Invoice.objects.filter(customer_id=self.id, debt=0).values_list('gross_price', flat=True)))/100)
+
+    def get_debt(self):
+        return math.floor((sum(Invoice.objects.filter(~Q(debt=0), customer_id=self.id).values_list('debt', flat=True)))/100)
 
 class Address(models.Model):
     zip_code = models.CharField(max_length=10)

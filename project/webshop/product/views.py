@@ -7,6 +7,8 @@ from .forms import AddToCartForm
 from .models import Category, Product
 from .utils import get_all_children
 
+import math
+
 class ProductListView(generic.ListView):
     template_name = 'product/product_list.html'
     context_object_name = 'products'
@@ -83,9 +85,9 @@ class ProductDetailView(generic.FormView):
             item.quantity += int(form.cleaned_data['quantity'])
             item.save()
             # Cart price
-            cart.net_price += (product.net_price * item.quantity * 
+            cart.net_price += math.floor(product.net_price * item.quantity * 
                                 item.package_type_id.quantity)
-            cart.gross_price += (product.net_price * (1 + product.vat/100) * item.quantity * 
+            cart.gross_price += math.floor(product.net_price * (1 + product.vat/100) * item.quantity * 
                                 item.package_type_id.quantity)
             cart.save()
         else:
@@ -96,9 +98,9 @@ class ProductDetailView(generic.FormView):
             new_item.quantity = form.cleaned_data['quantity']
             new_item.save()
             # Cart price
-            cart.net_price += (product.net_price * new_item.quantity * 
+            cart.net_price += math.floor(product.net_price * new_item.quantity * 
                                 new_item.package_type_id.quantity)
-            cart.gross_price += (product.net_price * (1 + product.vat/100) * new_item.quantity * 
+            cart.gross_price += math.floor(product.net_price * (1 + product.vat/100) * new_item.quantity * 
                                 new_item.package_type_id.quantity)
             cart.save()
         return super(ProductDetailView, self).form_valid(form)

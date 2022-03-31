@@ -12,20 +12,50 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="crmNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        CRM
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="crmNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin-partner' %}">Partnerek</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="productManagementNavbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Készletkezelés
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productManagementNavbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="#">Kategóriák</a>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_category:category-list' %}">Kategóriák</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Termékek</a>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_product:product-list' %}">Termékek</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_product:package-list' %}">Kiszerelések</a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown ms-2">
+                <li class="nav-item dropdown ms-lg-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="supplierNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Szállítói folyamatok
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="supplierNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_product_receipt:product-receipt-list' %}">Bevételezés</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown ms-lg-2">
                     <a class="nav-link dropdown-toggle" href="#" id="saleNavbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Értékesítés
@@ -40,13 +70,14 @@
                                 href="{% url 'admin_core:admin_invoice:invoice-list' %}">Számlázás</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Szállítólevél</a>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:admin_delivery_note:delivery-note-list' %}">Szállítólevél</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item dropdown ms-2">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userNavbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"

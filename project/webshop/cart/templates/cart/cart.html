@@ -4,8 +4,8 @@
 
 {% block content %}
 
-<div class="container py-5">
-    <div class="text-white text-center">
+<div class="container py-5 text-white">
+    <div class="text-center">
         <h1>Kosár</h1>
         <a class="text-decoration-none" href="{% url 'webshop_product:product-list' %}">Vásárlás folytatása</a>
     </div>
@@ -29,7 +29,7 @@
                 {% else %}
                 <td>{{ item.package_type_id.display_name }}</td>
                 {% endif %}
-                <td>{{ item.get_price }} Ft</td>
+                <td>{{ item.get_gross_price }} Ft</td>
                 <td>
                     <a href="{% url 'webshop_cart:remove-from-cart' item.id %}">
                         <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -43,6 +43,12 @@
             {% endfor %}
         </tbody>
     </table>
+    {% if not cart.is_empty %}
+    <div class="text-center mt-5">
+        <h3>Összesen: {{ cart.get_gross_price }} Ft</h3>
+        <a class="btn btn-primary mt-2" href="{% url 'webshop_cart:payment-personal' %}">Rendelés véglegesítése</a>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

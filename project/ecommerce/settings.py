@@ -44,7 +44,11 @@ INSTALLED_APPS = [
     'webshop.cart',
     'administration.sales_order',
     'administration.admin_core',
-    'administration.invoice'
+    'administration.invoice',
+    'administration.delivery_note',
+    'administration.category',
+    'administration.admin_product',
+    'administration.product_receipt',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 
 USE_I18N = True
 
