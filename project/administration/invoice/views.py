@@ -6,7 +6,7 @@ from .forms import InvoiceForm
 from .models import Invoice, InvoiceItem
 from . import utils
 
-from django.contrib.auth.models import Permission
+import math
 
 class InvoiceListView(UserAccessMixin, generic.ListView):
     permission_required = 'invoice.view_invoice'
@@ -14,8 +14,6 @@ class InvoiceListView(UserAccessMixin, generic.ListView):
     context_object_name = 'invoices'
 
     def get_queryset(self):
-        print(Permission.objects.filter(group__user=self.request.user).values())
-
         return Invoice.objects.filter(deleted=False).order_by('account_number')
 
 class InvoiceDetailView(UserAccessMixin, generic.UpdateView):
@@ -25,12 +23,10 @@ class InvoiceDetailView(UserAccessMixin, generic.UpdateView):
     form_class = InvoiceForm
 
     def get_object(self):
-        return get_object_or_404(Invoice, id=self.kwargs['id'])
-
-    def get_context_data(self, **kwargs):
-        context = super(InvoiceDetailView, self).get_context_data(**kwargs)
-        context['items'] = InvoiceItem.objects.filter(invoice_id=self.kwargs['id'])
-        return context
+        invoice = get_object_or_404(Invoice, id=self.kwargs['id'])
+        invoice.net_price = math.floor(invoice.net_price/100)
+        invoice.gross_price = math.floor(invoice.gross_price/100)
+        return invoice
 
     def get_success_url(self):
         if self.request.method == 'POST':

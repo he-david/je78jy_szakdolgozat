@@ -3,9 +3,6 @@ from django.urls import reverse
 
 import math
 
-from webshop.core.models import CustomUser
-from webshop.product.models import PackageType, Product
-
 class DeliveryNote(models.Model):
     STATUS_CHOICES = [
         ('in_progress', 'Folyamatban'),
@@ -34,7 +31,7 @@ class DeliveryNote(models.Model):
     shipping_house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
     conn_sales_order_id = models.ForeignKey('sales_order.SalesOrder', on_delete=models.CASCADE)
-    customer_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    customer_id = models.ForeignKey('core.CustomUser', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         if self.document_number is not None:
@@ -49,15 +46,6 @@ class DeliveryNote(models.Model):
 
     def get_net_price(self):
         return math.floor(self.net_price/100)
-
-    def status_display(self):
-        return dict(DeliveryNote.STATUS_CHOICES)[self.status]
-
-    def delivery_mode_display(self):
-        return dict(DeliveryNote.DELIVERY_MODE_CHOICES)[self.delivery_mode]
-
-    def payment_type_display(self):
-        return dict(DeliveryNote.PAYMENT_TYPE_CHOICES)[self.payment_type]
     
     def is_in_progress(self):
         return self.status == 'in_progress'
@@ -67,12 +55,20 @@ class DeliveryNoteItem(models.Model):
     original_producer = models.CharField(max_length=100)
     original_net_price = models.IntegerField(default=0)
     original_vat = models.IntegerField()
+    original_package_quantity = models.PositiveIntegerField() # Mert törölhetik a package_typeot
+    original_package_display = models.CharField(max_length=50)
     quantity = models.IntegerField()
-    product_id = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    package_type_id = models.ForeignKey(PackageType, on_delete=models.SET_NULL, null=True)
-    delivery_note_id = models.ForeignKey(DeliveryNote, on_delete=models.CASCADE)
+    product_id = models.ForeignKey('product.Product', on_delete=models.SET_NULL, null=True)
+    package_type_id = models.ForeignKey('product.PackageType', on_delete=models.SET_NULL, null=True)
+    delivery_note_id = models.ForeignKey(DeliveryNote, related_name='items', on_delete=models.CASCADE)
 
     def __str__(self):
         if self.delivery_note_id.document_number is not None:
             return f"{self.delivery_note_id.document_number} - {self.original_name}"
         return f"#{self.delivery_note_id.id} - {self.product_id.name}"
+
+    def get_original_net_price(self):
+        return math.floor(self.original_net_price/100 * self.original_package_quantity * self.quantity)
+
+    def get_original_gross_price(self):
+        return math.floor(self.original_net_price/100 * (1 + self.original_vat/100) * self.original_package_quantity * self.quantity)

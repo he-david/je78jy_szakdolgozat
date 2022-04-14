@@ -1,5 +1,5 @@
 from .models import ProductReceipt, ProductReceiptItem
-from webshop.product import utils as product_utils
+from administration.admin_product import utils as product_utils
 
 from datetime import datetime
 

@@ -6,5 +6,5 @@ app_name = 'admin_delivery_note'
 
 urlpatterns = [
     path('', views.DeliveryNoteListView.as_view(), name='delivery-note-list'),
-    path('<id>/', views.DeliveryNoteDetailView.as_view(), name='delivery-note-detail'),
+    path('<int:id>/', views.DeliveryNoteDetailView.as_view(), name='delivery-note-detail'),
 ]

@@ -23,11 +23,12 @@
                     {{ form.gross_price|as_crispy_field }}
                 </div>
             </div>
-            {% if invoice.is_in_progress %}
-            <div class="">
+            <div>
+                {% if invoice.is_in_progress %}
                 <button class="btn btn-primary">Kiegyenlítés</button>
+                {% endif %}
+                <a class="btn btn-primary" href="{% url 'admin_core:admin_invoice:invoice-list' %}">Vissza</a>
             </div>
-            {% endif %}
         </form>
     </div>
     <div class="p-3 text-white hd-shadow">
@@ -37,20 +38,22 @@
                     <th scope="col">Név</th>
                     <th scope="col">Mennyiség</th>
                     <th scope="col">Kiszerelés</th>
-                    <th scope="col">Ár</th>
+                    <th scope="col">Nettó ár</th>
+                    <th scope="col">Bruttó ár</th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in items %}
+                {% for item in invoice.items.all %}
                 <tr>
                     <td>{{ item.original_name }}</td>
                     <td>{{ item.quantity }}</td>
                     {% if item.package_type_id.quantity != 1 %}
-                    <td>{{ item.package_type_id.display_name }} ({{ item.package_type_id.quantity }} db)</td>
+                    <td>{{ item.original_package_display }} ({{ item.original_package_quantity }} db)</td>
                     {% else %}
-                    <td>{{ item.package_type_id.display_name }}</td>
+                    <td>{{ item.original_package_display }}</td>
                     {% endif %}
-                    <td>0 Ft</td>
+                    <td>{{ item.get_original_net_price }} Ft</td>
+                    <td>{{ item.get_original_gross_price }} Ft</td>
                 </tr>
                 {% endfor %}
             </tbody>

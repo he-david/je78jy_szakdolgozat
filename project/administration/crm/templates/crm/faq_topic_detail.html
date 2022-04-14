@@ -1,0 +1,48 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}GY.I.K. Témakör{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="p-3 text-white hd-shadow">
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                {{ form|crispy }}
+            </div>
+            <button class="btn btn-primary me-2">Mentés</button>
+            <a href="{% url 'admin_core:crm:faq-topic-list' %}" class="btn btn-primary">Vissza</a>
+        </form>
+    </div>
+    <div class="p-3 text-white hd-shadow">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Kérdés</th>
+                    <th scope="col">Válasz</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in topic.items.all %}
+                <tr>
+                    {% if item.question|length > 30 %}
+                    <td>{{ item.question|slice:30 }}...</td>
+                    {% else %}
+                    <td>{{ item.question }}</td>
+                    {% endif %}
+                    {% if item.answer|length > 30 %}
+                    <td>{{ item.answer|slice:30 }}...</td>
+                    {% else %}
+                    <td>{{ item.answer }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

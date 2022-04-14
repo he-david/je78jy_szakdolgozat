@@ -1,11 +1,12 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
-from webshop.product.models import PackageType, Product
-from administration.admin_core.mixins import StaffUserMixin, UserAccessMixin
-from .forms import ProductForm, ProductCreateForm, PackageForm
-
 import math
+
+from webshop.product.models import PackageType, Product
+from administration.admin_core.mixins import UserAccessMixin
+from .forms import ProductForm, ProductCreateForm, PackageForm
 
 # Product
 
@@ -56,7 +57,11 @@ class ProductDeleteView(UserAccessMixin, generic.DeleteView):
     context_object_name = 'product'
 
     def get_object(self):
-        return get_object_or_404(Product, id=self.kwargs['id'])
+        product = get_object_or_404(Product, id=self.kwargs['id'])
+        # Linkről törlés elleni védelem
+        if not product.has_no_open_document():
+            raise Http404(f"A {product.name} nevű termékhez tartozik folyamatban levő bizonylat, ezért nem törölhető.")
+        return product
     
     def get_success_url(self):
         return reverse('admin_core:admin_product:product-list')
@@ -101,7 +106,11 @@ class PackageDeleteView(UserAccessMixin, generic.DeleteView):
     context_object_name = 'package'
 
     def get_object(self):
-        return get_object_or_404(PackageType, id=self.kwargs['id'])
+        package_type = get_object_or_404(PackageType, id=self.kwargs['id'])
+        # Linkről törlés elleni védelem
+        if not package_type.is_deletable():
+            raise Http404(f"Létezik olyan termék amely rendelkezik a {package_type.display_name} nevű kiszereléssel, ezért nem törölhető.")
+        return package_type
 
     def get_success_url(self):
         return reverse('admin_core:admin_product:package-list')

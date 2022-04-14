@@ -1,0 +1,28 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Üzenet{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="p-3 text-white hd-shadow">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-4">
+                    {{ form.last_name|as_crispy_field }}
+                    {{ form.first_name|as_crispy_field }}
+                    {{ form.email|as_crispy_field }}
+                </div>
+                <div class="col-8">
+                    {{ form.message|as_crispy_field }}
+                </div>
+            </div>
+            <a class="btn btn-primary" href="{% url 'admin_core:crm:message-list' %}">Vissza</a>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 import math
 
@@ -12,21 +13,27 @@ class FAQTopic(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("admin_core:crm:faq-topic-detail", kwargs={"id": self.id})
+
 class FAQ(models.Model):
     question = models.CharField(max_length=200)
     answer = models.TextField()
-    topic_id = models.ForeignKey(FAQTopic, on_delete=models.CASCADE)
+    topic_id = models.ForeignKey(FAQTopic, related_name='items', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.question
 
-    # Own methods
+    def get_absolute_url(self):
+        return reverse("admin_core:crm:faq-detail", kwargs={"id": self.id})
+
     def is_visible_category(self):
         item = FAQ.objects.filter(topic_id = self.topic_id).values().first()
         return item['id'] == self.id
 
 class CustomUser(AbstractUser):
     is_staff = models.BooleanField(default=False)
+    email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
 
@@ -51,3 +58,15 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.customer_id.username} - address"
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return f"{self.email}"
+
+    def get_absolute_url(self):
+        return reverse("admin_core:crm:message-detail", kwargs={"id": self.id})

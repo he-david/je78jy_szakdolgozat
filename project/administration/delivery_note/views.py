@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
+import math
+
 from administration.admin_core.mixins import UserAccessMixin
 from .models import DeliveryNote, DeliveryNoteItem
 from .forms import DeliveryNoteForm
@@ -21,12 +23,10 @@ class DeliveryNoteDetailView(UserAccessMixin, generic.UpdateView):
     form_class = DeliveryNoteForm
 
     def get_object(self):
-        return get_object_or_404(DeliveryNote, id=self.kwargs['id'])
-
-    def get_context_data(self, **kwargs):
-        context = super(DeliveryNoteDetailView, self).get_context_data(**kwargs)
-        context['items'] = DeliveryNoteItem.objects.filter(delivery_note_id=self.kwargs['id'])
-        return context
+        delivery_note = get_object_or_404(DeliveryNote, id=self.kwargs['id'])
+        delivery_note.net_price = math.floor(delivery_note.net_price/100)
+        delivery_note.gross_price = math.floor(delivery_note.gross_price/100)
+        return delivery_note
 
     def get_success_url(self):
         if self.request.method == 'POST':

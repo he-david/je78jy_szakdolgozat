@@ -7,7 +7,7 @@
 <div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
     <form method="POST">
         {% csrf_token %}
-        <h2>Biztosan törölni szeretné a {{ product.name }} nevű terméket?</h2>
+        <h2>Biztosan törölni szeretné a/az {{ product.name }} nevű terméket?</h2>
         <input type="submit" value="Igen" class="btn btn-primary">
         <a href="{% url 'admin_core:admin_product:package-list' %}" class="btn btn-primary ms-2">Nem</a>
     </form>

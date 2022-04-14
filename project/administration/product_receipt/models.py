@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-from webshop.product.models import PackageType, Product
-
 class ProductReceipt(models.Model):
     STATUS_CHOICES = [
         ('in_progress', 'Folyamatban'),
@@ -26,5 +24,5 @@ class ProductReceipt(models.Model):
 class ProductReceiptItem(models.Model):
     original_name = models.CharField(max_length=100)
     quantity = models.IntegerField()
-    product_id = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product_id = models.ForeignKey('product.Product', on_delete=models.SET_NULL, null=True)
     product_receipt_id = models.ForeignKey(ProductReceipt, on_delete=models.CASCADE, null=True)

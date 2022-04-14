@@ -7,7 +7,7 @@
 <div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
     <form method="POST">
         {% csrf_token %}
-        <h2>Biztosan törölni szeretné a {{ category.name }} nevű kategóriát?</h2>
+        <h2>Biztosan törölni szeretné a/az {{ category.name }} nevű kategóriát?</h2>
         {% if sub_cat_count > 0 %}
         <p>Alkategóriák száma: {{ sub_cat_count }}</p>
         {% endif %}

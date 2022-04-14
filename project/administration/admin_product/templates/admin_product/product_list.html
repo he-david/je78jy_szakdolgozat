@@ -25,6 +25,7 @@
         <tbody>
             {% for product in products %}
             <tr>
+                {% if product.has_no_open_document %}
                 <td>
                     <a href="{% url 'admin_core:admin_product:product-delete' product.id %}">
                         <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -34,6 +35,9 @@
                         </svg>
                     </a>
                 </td>
+                {% else %}
+                <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none"></a></td>
+                {% endif %}
                 <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.name }}</a></td>
                 <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.producer }}</a></td>
                 <td><a href="{{ product.get_absolute_admin_url }}" class="d-block text-white text-decoration-none">{{ product.get_net_price }} Ft</a></td>

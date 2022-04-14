@@ -4,6 +4,7 @@
 
 <section class="container py-5">
 	<div class="row text-white">
+		{% if faqs %}
 		{% for faq in faqs %}
 		<div class="mb-3 d-md-flex">
 			<div class="col-md-3">
@@ -21,6 +22,14 @@
 			</div>
 		</div>
 		{% endfor %}
+		{% else %}
+		<h3 class="text-center">Jelenleg egyetlen kérdés sem áll rendelkezésre.</h3>
+		<div class="text-center mt-2">
+			<div class="spinner-grow text-primary" role="status"></div>
+			<div class="spinner-grow text-primary" role="status"></div>
+			<div class="spinner-grow text-primary" role="status"></div>
+		</div>
+		{% endif %}
 	</div>
 </section>
 

@@ -4,7 +4,7 @@ from django.views import generic
 
 from webshop.core.forms import AddressChangeForm
 from webshop.core.views import UserDataView
-from webshop.product import utils as product_utils
+from administration.admin_product import utils as product_utils
 from administration.sales_order import utils as sales_order_utils
 from .forms import PaymentPersonalForm, PaymentOrderDataForm
 from .models import Cart, CartItem

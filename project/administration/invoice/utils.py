@@ -1,10 +1,10 @@
-from administration.sales_order.models import SalesOrderItem
+from datetime import datetime
+
 from administration.sales_order import utils as sales_order_utils
 from administration.delivery_note.models import DeliveryNote
 from .models import Invoice, InvoiceItem
+from administration.admin_product import utils as product_utils
 
-
-from datetime import datetime
 
 def create_invoice(sales_order):
     invoice = Invoice()
@@ -43,6 +43,8 @@ def create_invoice_items(invoice, sales_order_items):
         invoice_item.original_producer = item.original_producer
         invoice_item.original_net_price = item.original_net_price
         invoice_item.original_vat = item.original_vat
+        invoice_item.original_package_quantity = item.original_package_quantity
+        invoice_item.original_package_display = item.original_package_display
         invoice_item.quantity = item.quantity
         invoice_item.product_id = item.product_id
         invoice_item.package_type_id = item.package_type_id
@@ -54,6 +56,10 @@ def invoice_settlement(invoice, sales_order):
     invoice.debt = 0
     invoice.settlement_date = datetime.now()
     invoice.save()
+
+    # Termékek felszabadítása foglalt készletről.
+    for item in invoice.items.all():
+        product_utils.remove_stock(item.product_id, item.original_package_quantity*item.quantity)
 
     # VME státusz állítás.
     if sales_order.delivery_mode != 'personal':

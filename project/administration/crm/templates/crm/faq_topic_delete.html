@@ -1,0 +1,19 @@
+{% extends 'administration/base.html' %}
+
+{% block head_title %}GY.I.K. Témakör törlés{% endblock head_title %}
+
+{% block content %}
+
+<div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Biztosan törölni szeretné a/az {{ topic.name }} nevű témakört?</h2>
+        {% if topic.items.count > 0 %}
+        <p>Amennyiben törli a témakört, a témakörben szereplő {{ topic.items.count }} db GY.I.K. is törlésre fog kerülni.</p>            
+        {% endif %}
+        <input type="submit" value="Igen" class="btn btn-primary">
+        <a href="{% url 'admin_core:crm:faq-topic-list' %}" class="btn btn-primary ms-2">Nem</a>
+    </form>
+</div>
+
+{% endblock content %}

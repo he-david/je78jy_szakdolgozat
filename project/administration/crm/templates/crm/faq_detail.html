@@ -1,0 +1,28 @@
+{% extends 'administration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}GY.I.K.{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="p-3 text-white hd-shadow">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-4">
+                    {{ form.topic_id|as_crispy_field }}
+                </div>
+                <div class="col-8">
+                    {{ form.question|as_crispy_field }}
+                    {{ form.answer|as_crispy_field }}
+                </div>
+            </div>
+            <button class="btn btn-primary me-2">Mentés</button>
+            <a class="btn btn-primary" href="{% url 'admin_core:crm:faq-list' %}">Vissza</a>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

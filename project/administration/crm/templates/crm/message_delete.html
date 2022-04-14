@@ -1,0 +1,16 @@
+{% extends 'administration/base.html' %}
+
+{% block head_title %}Üzenet törlés{% endblock head_title %}
+
+{% block content %}
+
+<div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Biztosan törölni szeretné a/az {{ message.email }} e-maillel rendelkező vásárló üzenetét?</h2>
+        <input type="submit" value="Igen" class="btn btn-primary">
+        <a href="{% url 'admin_core:crm:message-list' %}" class="btn btn-primary ms-2">Nem</a>
+    </form>
+</div>
+
+{% endblock content %}

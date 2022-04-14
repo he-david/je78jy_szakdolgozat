@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
+import math
+
 from administration.admin_core.mixins import UserAccessMixin
 from administration.delivery_note.models import DeliveryNote
 from .models import SalesOrder, SalesOrderItem
@@ -8,6 +10,7 @@ from .forms import SalesOrderForm
 from administration.invoice.models import Invoice
 from administration.invoice import utils as invoice_utils
 from administration.delivery_note import utils as delivery_note_utils
+
 
 class SalesOrderListView(UserAccessMixin, generic.ListView):
     permission_required = 'sales_order.view_salesorder'
@@ -27,12 +30,10 @@ class SalesOrderDetailView(UserAccessMixin, generic.UpdateView):
     form_class = SalesOrderForm
 
     def get_object(self):
-        return get_object_or_404(SalesOrder, id=self.kwargs['id'])
-
-    def get_context_data(self, **kwargs):
-        context = super(SalesOrderDetailView, self).get_context_data(**kwargs)
-        context['items'] = SalesOrderItem.objects.filter(sales_order_id=self.kwargs['id'])
-        return context
+        sales_order = get_object_or_404(SalesOrder, id=self.kwargs['id'])
+        sales_order.net_price = math.floor(sales_order.net_price/100)
+        sales_order.gross_price = math.floor(sales_order.gross_price/100)
+        return sales_order
 
     def get_success_url(self):
         if self.request.method == 'POST':

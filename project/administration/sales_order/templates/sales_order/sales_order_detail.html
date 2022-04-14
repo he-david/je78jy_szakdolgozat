@@ -23,13 +23,14 @@
                     {{ form.gross_price|as_crispy_field }}
                 </div>
             </div>
-            <div class="">
+            <div>
                 {% if not order.has_invoice %}
                 <button class="btn btn-primary" name="invoice_gen">Számla generálás</button>
                 {% endif %}
                 {% if not order.has_delivery_note %}
                 <button class="btn btn-primary" name="delivery_note_gen">Szállítólevél generálás</button>
                 {% endif %}
+                <a class="btn btn-primary" href="{% url 'admin_core:admin_sales_order:sales-order-list' %}">Vissza</a>
             </div>
         </form>
     </div>
@@ -40,20 +41,22 @@
                     <th scope="col">Név</th>
                     <th scope="col">Mennyiség</th>
                     <th scope="col">Kiszerelés</th>
-                    <th scope="col">Ár</th>
+                    <th scope="col">Nettó ár</th>
+                    <th scope="col">Bruttó ár</th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in items %}
+                {% for item in order.items.all %}
                 <tr>
                     <td>{{ item.original_name }}</td>
                     <td>{{ item.quantity }}</td>
-                    {% if item.package_type_id.quantity != 1 %}
-                    <td>{{ item.package_type_id.display_name }} ({{ item.package_type_id.quantity }} db)</td>
+                    {% if item.original_package_quantity != 1 %}
+                    <td>{{ item.original_package_display }} ({{ item.original_package_quantity }} db)</td>
                     {% else %}
-                    <td>{{ item.package_type_id.display_name }}</td>
+                    <td>{{ item.original_package_display }}</td>
                     {% endif %}
-                    <td>0 Ft</td>
+                    <td>{{ item.get_original_net_price }} Ft</td>
+                    <td>{{ item.get_original_gross_price }} Ft</td>
                 </tr>
                 {% endfor %}
             </tbody>

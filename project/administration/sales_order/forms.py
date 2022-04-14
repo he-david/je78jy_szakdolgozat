@@ -3,7 +3,6 @@ from django import forms
 from .models import SalesOrder
 
 class SalesOrderForm(forms.ModelForm):
-
     def __init__(self, *args, **kwargs):
         super(SalesOrderForm, self).__init__(*args, **kwargs)
         self.fields['status'].widget.attrs['readonly'] = True
@@ -47,13 +46,13 @@ class SalesOrderForm(forms.ModelForm):
 
     def clean_net_price(self):
         if self.instance: 
-            return self.instance.net_price
+            return self.instance.net_price*10000
         else: 
             return self.fields['net_price']
 
     def clean_gross_price(self):
         if self.instance: 
-            return self.instance.gross_price
+            return self.instance.gross_price*10000
         else: 
             return self.fields['gross_price']
     

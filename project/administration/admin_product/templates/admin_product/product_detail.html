@@ -27,8 +27,10 @@
             </div>
                 {{ form.description|as_crispy_field }}
             <div class="text-center mt-3">
-                <button type="submit" class="btn btn-primary">Mentés</button>
-                <a href="{% url 'admin_core:admin_product:product-list' %}" class="btn btn-primary ms-2">Mégsem</a>
+                {% if product.has_no_open_document %}
+                <button type="submit" class="btn btn-primary me-2">Mentés</button>
+                {% endif %}
+                <a href="{% url 'admin_core:admin_product:product-list' %}" class="btn btn-primary">Mégsem</a>
             </div>
         </div>
     </form>

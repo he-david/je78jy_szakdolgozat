@@ -9,7 +9,7 @@
     {% if wrong_items %}
         <div class="alert alert-danger" role="alert">
         {% for item in wrong_items %}
-            <p>Termék: {{ item.product_id.name }}, Rendelt mennyiség: {{ item.get_full_quantity }} db, Készlet: {{ item.product_id.free_stock }} db</p>
+            <p>A {{ item.product_id.name }} nevű termékből nincs megfelelő mennyiség készleten.</p>
         {% endfor %}
       </div>
     {% endif %}

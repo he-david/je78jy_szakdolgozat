@@ -31,7 +31,10 @@
                     <a class="nav-link" href="{% url 'webshop_core:faq-list' %}">GY.I.K.</a>
                 </li>
             </ul>
-            <ul class="navbar-nav mb-2 mb-lg-0">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'webshop_core:contact' %}">Kapcsolat</a>
+                </li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'webshop_cart:summary'%}">
@@ -85,7 +88,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userNavbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="{% url 'login' %}">Bejelentkezés</a>
+                            <a class="dropdown-item" href="{% url 'webshop_core:login' %}">Bejelentkezés</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="{% url 'webshop_core:signup' %}">Regisztráció</a>

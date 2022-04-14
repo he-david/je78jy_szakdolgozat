@@ -1,7 +1,8 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404, reverse, redirect
 from django.views import generic
 
-from administration.admin_core.mixins import StaffUserMixin, UserAccessMixin
+from administration.admin_core.mixins import UserAccessMixin
 from .models import ProductReceipt, ProductReceiptItem
 from .forms import ProductReceiptForm, ProductReceiptItemForm
 from . import utils as receipt_utils
@@ -68,7 +69,12 @@ class ProductReceiptItemCreateView(UserAccessMixin, generic.CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductReceiptItemCreateView, self).get_context_data(**kwargs)
-        context['receipt'] = ProductReceipt.objects.get(id=self.kwargs['id'])
+        receipt = ProductReceipt.objects.get(id=self.kwargs['id'])
+        context['receipt'] = receipt
+
+        # Ha a bizonylat már végleges
+        if receipt.status == 'final':
+            raise Http404('A bizonylat már végleges.')
         return context
 
     def form_valid(self, form):
@@ -85,6 +91,10 @@ class ProductReceiptItemDeleteView(UserAccessMixin, generic.View):
     def get(self, *args, **kwargs):
         receipt_item = get_object_or_404(ProductReceiptItem, id=kwargs['id'])
         receipt = receipt_item.product_receipt_id
+
+        # Ha a bizonylat már végleges
+        if receipt.status == 'final':
+            raise Http404('A bizonylat már végleges.')
         receipt_utils.change_product_receipt_sum_quantity(receipt, -receipt_item.quantity)
         receipt_item.delete()
         return redirect(reverse("admin_core:admin_product_receipt:product-receipt-detail", kwargs={"id": receipt.id}))

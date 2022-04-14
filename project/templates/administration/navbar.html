@@ -19,7 +19,19 @@
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="crmNavbarDropdown">
                         <li>
                             <a class="dropdown-item"
-                                href="{% url 'admin_core:admin-partner' %}">Partnerek</a>
+                                href="{% url 'admin_core:crm:admin-partner-list' %}">Partnerek</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:crm:message-list' %}">Üzenetek</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:crm:faq-topic-list' %}">GY.I.K. témakörök</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:crm:faq-list' %}">GY.I.K.</a>
                         </li>
                     </ul>
                 </li>

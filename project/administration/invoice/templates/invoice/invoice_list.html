@@ -41,9 +41,9 @@
                 <td><a href="{{ invoice.get_absolute_url }}"
                         class="d-block text-white text-decoration-none">{{ invoice.customer_id }}</a></td>
                 <td><a href="{{ invoice.get_absolute_url }}"
-                        class="d-block text-white text-decoration-none">{{ invoice.payment_type_display }}</a></td>
+                        class="d-block text-white text-decoration-none">{{ invoice.get_payment_type_display }}</a></td>
                 <td><a href="{{ invoice.get_absolute_url }}"
-                        class="d-block text-white text-decoration-none">{{ invoice.status_display }}</a></td>
+                        class="d-block text-white text-decoration-none">{{ invoice.get_status_display }}</a></td>
             </tr>
             {% endfor %}
         </tbody>

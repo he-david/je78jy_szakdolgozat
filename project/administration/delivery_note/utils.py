@@ -36,6 +36,8 @@ def create_delivery_note_items(delivery_note, sales_order_items):
         delivery_note_item.original_producer = item.original_producer
         delivery_note_item.original_net_price = item.original_net_price
         delivery_note_item.original_vat = item.original_vat
+        delivery_note_item.original_package_quantity = item.original_package_quantity
+        delivery_note_item.original_package_display = item.original_package_display
         delivery_note_item.quantity = item.quantity
         delivery_note_item.product_id = item.product_id
         delivery_note_item.package_type_id = item.package_type_id

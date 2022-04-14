@@ -12,8 +12,10 @@
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-primary">Mentés</button>
-                    <a href="{% url 'admin_core:admin_product:package-list' %}" class="btn btn-primary ms-2">Mégsem</a>
+                    {% if package.is_deletable %}
+                    <button type="submit" class="btn btn-primary me-2">Mentés</button>
+                    {% endif %}
+                    <a href="{% url 'admin_core:admin_product:package-list' %}" class="btn btn-primary">Mégsem</a>
                 </div>
             </form>
         </div>

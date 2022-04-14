@@ -1,6 +1,6 @@
 from webshop.core.models import Address
-from webshop.cart import utils as cart_utils
 from .models import SalesOrder, SalesOrderItem
+from administration.admin_product import utils as product_utils
 
 
 def set_sales_order_status_to_partially_completed(sales_order):
@@ -17,6 +17,13 @@ def get_sales_order_items(sales_order):
 def create_sales_order(form, cart):
     # Létrehozni a megrendelést és felvenni mindent
     sales_order = SalesOrder()
+    document_number_key = SalesOrder.objects.all().order_by('-document_number_key') # Ez azért jó, mert egyből van account number és nem fordulhat elő olyan, hogy létezik számla úgy, hogy még nincs account number key.
+    
+    if document_number_key:
+        sales_order.document_number_key = document_number_key[0].document_number_key + 1
+    else:
+        sales_order.document_number_key = 1
+    sales_order.document_number = f"VME-{sales_order.document_number_key}"
     sales_order.status = 'in_progress'
     sales_order.payment_type = form.cleaned_data['payment_type']
     sales_order.delivery_mode = form.cleaned_data['delivery_mode']
@@ -42,7 +49,11 @@ def create_sales_order_items(sales_order, cart_items):
         sales_order_item.original_producer = item.product_id.producer
         sales_order_item.original_net_price = item.product_id.net_price
         sales_order_item.original_vat = item.product_id.vat
+        sales_order_item.original_package_quantity = item.package_type_id.quantity
+        sales_order_item.original_package_display = item.package_type_id.display_name
         sales_order_item.quantity = item.quantity
+        sales_order_item.product_id = item.product_id
         sales_order_item.package_type_id = item.package_type_id
         sales_order_item.sales_order_id = sales_order
+        product_utils.reserve_stock(item.product_id, item.package_type_id.quantity*item.quantity)
         sales_order_item.save()

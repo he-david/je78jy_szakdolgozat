@@ -1,9 +1,10 @@
 from django.views import generic
 from django.shortcuts import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 
 from .models import FAQ, Address
-from .forms import AddressChangeForm, CustomUserCreationForm
+from .forms import AddressChangeForm, ContactForm, CustomLoginForm, CustomUserCreationForm
 from administration.sales_order.models import SalesOrder
 
 class HomeView(generic.TemplateView):
@@ -17,10 +18,16 @@ class FAQListView(generic.ListView):
         qs = FAQ.objects.order_by('topic_id')
         return qs
 
-class SignupView(generic.edit.CreateView):
+class CustomSignupView(generic.edit.CreateView):
     form_class = CustomUserCreationForm
-    success_url = '/accounts/login'
     template_name = 'registration/signup.html'
+
+    def get_success_url(self):
+        return reverse("webshop_core:login")
+
+class CustomLoginView(LoginView):
+    authentication_form = CustomLoginForm
+    template_name = 'registration/login.html'
 
 class UserOrdersView(LoginRequiredMixin, generic.ListView):
     template_name = 'core/user_orders.html'
@@ -43,7 +50,6 @@ class UserDataView(LoginRequiredMixin, generic.FormView):
             initial['city'] = address.city
             initial['street_name'] = address.street_name
             initial['house_number'] = address.house_number
-
         return initial
     
     def form_valid(self, form):
@@ -63,3 +69,24 @@ class UserDataView(LoginRequiredMixin, generic.FormView):
 
     def get_success_url(self):
         return reverse("webshop_core:user-data")
+
+class ContactView(generic.FormView):
+    template_name = 'core/contact.html'
+    form_class = ContactForm
+
+    def get_initial(self):
+        initial = super(ContactView, self).get_initial()
+        user = self.request.user
+
+        if user:
+            initial['first_name'] = user.first_name
+            initial['last_name'] = user.last_name
+            initial['email'] = user.email
+        return initial
+
+    def form_valid(self, form):
+        form.save()
+        return super(ContactView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('webshop_core:contact')

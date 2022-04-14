@@ -15,8 +15,8 @@
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.details }}</p>
                 <p>{{ product.description }}</p>
-                {% if product.free_stock > 0 %}
                 <p>Készlet: {{ product.free_stock }} db</p>
+                {% if request.user.is_authenticated %}
                 <form method="POST">
                     {% csrf_token %}
                     <div class="col-lg-6">
@@ -28,7 +28,7 @@
                     </div>
                 </form>
                 {% else %}
-                <p>This item is out of stock</p>
+                <p>Termék kosárba helyezéséhez <a class="text-decoration-none" href="{% url 'webshop_core:login' %}">jelentkezzen be</a>.</p>
                 {% endif %}
             </div>
         </div>

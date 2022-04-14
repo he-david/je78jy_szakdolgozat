@@ -5,6 +5,8 @@ from django.utils.text import slugify
 
 import math
 
+from administration.admin_product import utils as product_utils
+
 class Action(models.Model):
     name = models.CharField(max_length=100)
     from_date = models.DateField()
@@ -25,10 +27,7 @@ class PackageType(models.Model):
         return reverse('admin_core:admin_product:package-detail', kwargs={'id': self.id})
     
     def is_deletable(self):
-        if Product.objects.filter(package_type_id=self.id).count() == 0:
-            return True
-        else:
-            return False
+        return Product.objects.filter(package_type_id=self.id).count() == 0
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -60,6 +59,9 @@ class Product(models.Model):
     package_type_id = models.ManyToManyField(PackageType)
     action_id = models.ManyToManyField(Action, blank=True)
 
+    class Meta:
+        app_label='product'
+
     def __str__(self):
         return self.name    
 
@@ -78,6 +80,9 @@ class Product(models.Model):
     def is_displayable(self):
         return (self.free_stock > 0 and
                 self.category_id is not None)
+    
+    def has_no_open_document(self):
+        return product_utils.has_no_open_document(self)
 
     
 def slug_generator(sender, instance, *args, **kwargs):

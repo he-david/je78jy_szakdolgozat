@@ -7,7 +7,7 @@
 <div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
     <form method="POST">
         {% csrf_token %}
-        <h2>Biztosan törölni szeretné a {{ product.name }} nevű terméket?</h2>
+        <h2>Biztosan törölni szeretné a/az {{ product.name }} nevű terméket?</h2>
         {% if product.free_stock > 0 %}
         <p>A termék szabad készlete: {{ product.free_stock }} db</p>
         {% endif %}

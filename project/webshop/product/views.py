@@ -15,7 +15,7 @@ class ProductListView(generic.ListView):
 
     # Overrided methods
     def get_queryset(self):
-        qs = Product.objects.all()
+        qs = Product.objects.filter()
 
         try:
             category_id = self.request.GET.get('category', None)
@@ -64,6 +64,7 @@ class ProductDetailView(generic.FormView):
     def get_form_kwargs(self):
         kwargs = super(ProductDetailView, self).get_form_kwargs()
         kwargs['product_id'] = self.get_object().id
+        kwargs['user'] = self.request.user
         return kwargs
 
     def get_context_data(self, **kwargs):
