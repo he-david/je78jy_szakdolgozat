@@ -12,22 +12,32 @@
             <div class="row">
                 <div class="col-4">
                     {{ form.document_number|as_crispy_field }}
-                    {{ form.customer_id|as_crispy_field }}
+                    {{ form.original_customer_name|as_crispy_field }}
+                    {{ form.net_price|as_crispy_field }}
+                    {{ form.gross_price|as_crispy_field }}
                 </div>
                 <div class="col-5">
                     {{ form.status|as_crispy_field }}
                     {{ form.payment_type|as_crispy_field }}
+                    {{ form.delivery_mode|as_crispy_field }}
+                    {{ form.completion_date|as_crispy_field }}
                 </div>
                 <div class="col-3">
-                    {{ form.net_price|as_crispy_field }}
-                    {{ form.gross_price|as_crispy_field }}
+                    {{ form.shipping_zip_code|as_crispy_field }}
+                    {{ form.shipping_city|as_crispy_field }}
+                    {{ form.shipping_street_name|as_crispy_field }}
+                    {{ form.shipping_house_number|as_crispy_field }}
                 </div>
             </div>
             <div>
                 {% if delivery_note.is_in_progress %}
-                <button class="btn btn-primary">Teljesítés</button>
+                    <button class="btn btn-primary me-2" name="completion">Teljesítés</button>
+                    <button class="btn btn-danger me-2" name="delete" onclick="return confirm('Biztosan törli a szállítólevelet?')">Törlés</button>
+                {% elif delivery_note.conn_sales_order_id.is_partially_completed %}
+                    <button class="btn btn-danger me-2" name="cancel" onclick="return confirm('Biztosan lemondja a szállítólevelet?')">Lemondás</button>
                 {% endif %}
-                <a class="btn btn-primary" href="{% url 'admin_core:admin_delivery_note:delivery-note-list' %}">Vissza</a>
+                <a class="btn btn-primary"
+                    href="{% url 'admin_core:admin_delivery_note:delivery-note-list' %}">Vissza</a>
             </div>
         </form>
     </div>
@@ -38,6 +48,7 @@
                     <th scope="col">Név</th>
                     <th scope="col">Mennyiség</th>
                     <th scope="col">Kiszerelés</th>
+                    <th scope="col">Áfa</th>
                     <th scope="col">Nettó ár</th>
                     <th scope="col">Bruttó ár</th>
                 </tr>
@@ -52,6 +63,7 @@
                     {% else %}
                     <td>{{ item.original_package_display }}</td>
                     {% endif %}
+                    <td>{{ item.original_vat }}%</td>
                     <td>{{ item.get_original_net_price }} Ft</td>
                     <td>{{ item.get_original_gross_price }} Ft</td>
                 </tr>

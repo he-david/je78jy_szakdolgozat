@@ -12,6 +12,7 @@ urlpatterns = [
     path('product-receipt/', include('administration.product_receipt.urls', namespace='admin_product_receipt')),
     path('category/', include('administration.category.urls', namespace='admin_category')),
     path('product/', include('administration.admin_product.urls', namespace='admin_product')),
+    path('action/', include('administration.action.urls', namespace='admin_action')),
     path('crm/', include('administration.crm.urls', namespace='crm')),
     path('permission-denied/', views.PermissionDeniedView.as_view(), name='permission-denied'),
 ]

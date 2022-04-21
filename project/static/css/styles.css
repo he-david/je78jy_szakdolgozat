@@ -41,6 +41,11 @@ body {
     margin-bottom: 200px;
 }
 
+.hd-sm-img {
+    max-width: 20px;
+    height: auto;
+}
+
 .btn-primary {
     background: #424242;
     border: none;
@@ -48,6 +53,17 @@ body {
 }
 
 .btn-primary:hover {
+    box-shadow: 0 4px 8px 0 #424242;
+    transition: 0.3s;
+}
+
+.btn-danger {
+    background: #424242;
+    border: none;
+    box-shadow: 0 4px 8px 0 #FF3D00;
+}
+
+.btn-danger:hover {
     box-shadow: 0 4px 8px 0 #424242;
     transition: 0.3s;
 }

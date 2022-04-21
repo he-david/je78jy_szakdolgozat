@@ -12,20 +12,30 @@
             <div class="row">
                 <div class="col-4">
                     {{ form.account_number|as_crispy_field }}
-                    {{ form.customer_id|as_crispy_field }}
+                    {{ form.original_customer_name|as_crispy_field }}
+                    {{ form.net_price|as_crispy_field }}
+                    {{ form.gross_price|as_crispy_field }}
                 </div>
                 <div class="col-5">
                     {{ form.status|as_crispy_field }}
                     {{ form.payment_type|as_crispy_field }}
+                    {{ form.delivery_mode|as_crispy_field }}
+                    {{ form.creation_date|as_crispy_field }}
+                    {{ form.settlement_date|as_crispy_field }}
                 </div>
                 <div class="col-3">
-                    {{ form.net_price|as_crispy_field }}
-                    {{ form.gross_price|as_crispy_field }}
+                    {{ form.billing_zip_code|as_crispy_field }}
+                    {{ form.billing_city|as_crispy_field }}
+                    {{ form.billing_street_name|as_crispy_field }}
+                    {{ form.billing_house_number|as_crispy_field }}
                 </div>
             </div>
             <div>
                 {% if invoice.is_in_progress %}
-                <button class="btn btn-primary">Kiegyenlítés</button>
+                    <button class="btn btn-primary me-2" name="settlement">Kiegyenlítés</button>
+                    <button class="btn btn-danger me-2" name="delete" onclick="return confirm('Biztosan törli a számlát?')">Törlés</button>
+                {% elif invoice.conn_sales_order_id.is_partially_completed %}
+                    <button class="btn btn-danger me-2" name="cancel" onclick="return confirm('Biztosan lemondja a számlát?')">Lemondás</button>
                 {% endif %}
                 <a class="btn btn-primary" href="{% url 'admin_core:admin_invoice:invoice-list' %}">Vissza</a>
             </div>
@@ -38,6 +48,7 @@
                     <th scope="col">Név</th>
                     <th scope="col">Mennyiség</th>
                     <th scope="col">Kiszerelés</th>
+                    <th scope="col">Áfa</th>
                     <th scope="col">Nettó ár</th>
                     <th scope="col">Bruttó ár</th>
                 </tr>
@@ -47,11 +58,12 @@
                 <tr>
                     <td>{{ item.original_name }}</td>
                     <td>{{ item.quantity }}</td>
-                    {% if item.package_type_id.quantity != 1 %}
+                    {% if item.original_package_quantity != 1 %}
                     <td>{{ item.original_package_display }} ({{ item.original_package_quantity }} db)</td>
                     {% else %}
                     <td>{{ item.original_package_display }}</td>
                     {% endif %}
+                    <td>{{ item.original_vat }}%</td>
                     <td>{{ item.get_original_net_price }} Ft</td>
                     <td>{{ item.get_original_gross_price }} Ft</td>
                 </tr>

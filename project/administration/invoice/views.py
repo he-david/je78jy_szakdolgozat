@@ -3,8 +3,8 @@ from django.views import generic
 
 from administration.admin_core.mixins import UserAccessMixin
 from .forms import InvoiceForm
-from .models import Invoice, InvoiceItem
-from . import utils
+from .models import Invoice
+from . import utils as invoice_utils
 
 import math
 
@@ -14,7 +14,7 @@ class InvoiceListView(UserAccessMixin, generic.ListView):
     context_object_name = 'invoices'
 
     def get_queryset(self):
-        return Invoice.objects.filter(deleted=False).order_by('account_number')
+        return Invoice.objects.filter().order_by('account_number')
 
 class InvoiceDetailView(UserAccessMixin, generic.UpdateView):
     permission_required = ('invoice.view_invoiceitem', 'invoice.change_invoice')
@@ -31,6 +31,12 @@ class InvoiceDetailView(UserAccessMixin, generic.UpdateView):
     def get_success_url(self):
         if self.request.method == 'POST':
             invoice = self.get_object()
-            utils.invoice_settlement(invoice, invoice.conn_sales_order_id)
+
+            if 'settlement' in self.request.POST:
+                invoice_utils.invoice_settlement(invoice, invoice.conn_sales_order_id)
+            elif 'delete' in self.request.POST:
+                invoice_utils.delete_invoice(invoice)
+            elif 'cancel' in self.request.POST:
+                invoice_utils.cancel_invoice(invoice, False)
             
         return reverse('admin_core:admin_invoice:invoice-list')

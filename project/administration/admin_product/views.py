@@ -32,6 +32,8 @@ class ProductDetailView(UserAccessMixin, generic.UpdateView):
     def form_valid(self, form):
         product = form.save(commit=False)
         product.net_price *= 100
+        print(form.cleaned_data)
+        product.save()
         return super(ProductDetailView, self).form_valid(form)
 
     def get_success_url(self):
@@ -60,7 +62,7 @@ class ProductDeleteView(UserAccessMixin, generic.DeleteView):
         product = get_object_or_404(Product, id=self.kwargs['id'])
         # Linkről törlés elleni védelem
         if not product.has_no_open_document():
-            raise Http404(f"A {product.name} nevű termékhez tartozik folyamatban levő bizonylat, ezért nem törölhető.")
+            raise Http404(f"A/az {product.name} nevű termékhez tartozik folyamatban levő bizonylat, ezért nem törölhető.")
         return product
     
     def get_success_url(self):
@@ -109,7 +111,7 @@ class PackageDeleteView(UserAccessMixin, generic.DeleteView):
         package_type = get_object_or_404(PackageType, id=self.kwargs['id'])
         # Linkről törlés elleni védelem
         if not package_type.is_deletable():
-            raise Http404(f"Létezik olyan termék amely rendelkezik a {package_type.display_name} nevű kiszereléssel, ezért nem törölhető.")
+            raise Http404(f"Létezik olyan termék amely rendelkezik a/az {package_type.display_name} nevű kiszereléssel, ezért nem törölhető.")
         return package_type
 
     def get_success_url(self):

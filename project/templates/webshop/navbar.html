@@ -2,8 +2,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-4">
     <div class="container fs-5 hd-shadow p-3">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'images/shop_icon.svg'%}" alt="" width="40" height="40">
+        <a class="navbar-brand" href="{% url 'webshop_core:home' %}">
+            <img src="{% static 'images/favicons/shop_icon.svg'%}" alt="" width="40" height="40">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="categoryNavbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" id="categoryNavbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Kategóriák
                     </a>
@@ -25,7 +25,7 @@
                     </ul>
                 </li>
                 <li class="nav-item ms-lg-2">
-                    <a class="nav-link" href="#">Akciós</a>
+                    <a class="nav-link" href="{% url 'webshop_product:action-product-list' %}">Akciós</a>
                 </li>
                 <li class="nav-item ms-lg-2">
                     <a class="nav-link" href="{% url 'webshop_core:faq-list' %}">GY.I.K.</a>

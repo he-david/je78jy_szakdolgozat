@@ -13,7 +13,7 @@ from .utils import get_or_set_cart
 import math
 
 class CartView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'cart/cart.html'
+    template_name = 'cart/cart.html'    
 
     def get_context_data(self, **kwargs):
         context = super(CartView, self).get_context_data(**kwargs)
@@ -25,9 +25,9 @@ class RemoveFromCartView(LoginRequiredMixin, generic.View):
         cart_item = get_object_or_404(CartItem, id=kwargs['id'])
         # Cart price
         cart = Cart.objects.get(id=cart_item.cart_id.id)
-        cart.net_price -= math.floor(cart_item.product_id.net_price * cart_item.quantity * 
+        cart.net_price -= math.floor(cart_item.product_id.get_net_price() * cart_item.quantity * 
                                 cart_item.package_type_id.quantity)
-        cart.gross_price -= math.floor(cart_item.product_id.net_price * (1 + cart_item.product_id.vat/100) * cart_item.quantity * 
+        cart.gross_price -= math.floor(cart_item.product_id.get_net_price() * (1 + cart_item.product_id.vat/100) * cart_item.quantity * 
                             cart_item.package_type_id.quantity)
         cart_item.delete()
         cart.save()
@@ -71,8 +71,10 @@ class PaymentOrderDataView(LoginRequiredMixin, generic.FormView):
 
     def get_context_data(self, **kwargs):
         context = super(PaymentOrderDataView, self).get_context_data(**kwargs)
-        context['cart'] = get_or_set_cart(self.request)
-        context['wrong_items'] = product_utils.get_product_with_less_stock(get_or_set_cart(self.request))
+        context.update({
+            'cart': get_or_set_cart(self.request),
+            'wrong_items': product_utils.get_product_with_less_stock(get_or_set_cart(self.request))
+        })
         return context
 
     def form_valid(self, form):

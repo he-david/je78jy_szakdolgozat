@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 import math
 
@@ -21,7 +22,7 @@ class SalesOrder(models.Model):
         ('personal', 'Személyes átvétel'),
         ('delivery', 'Szállítás'),
     ]
-    order_date = models.DateField(auto_now_add=True)
+    order_date = models.DateField(default=timezone.now)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     payment_type = models.CharField(max_length=50, choices=PAYMENT_TYPE_CHOICES)
     delivery_mode = models.CharField(max_length=50, choices=DELIVERY_MODE_CHOICES)
@@ -34,7 +35,8 @@ class SalesOrder(models.Model):
     street_name = models.CharField(max_length=100)
     house_number = models.CharField(max_length=20)
     deleted = models.BooleanField(default=False)
-    customer_id = models.ForeignKey('core.CustomUser', on_delete=models.SET_NULL, null=True) # Nincs vel gond, mert customert nem lehet törölni.
+    original_customer_name = models.CharField(max_length=100) # Azért kell, mert ha egy későbbi rendeléskor más név kerül megadásra, elromlik.
+    customer_id = models.ForeignKey('core.CustomUser', on_delete=models.SET_NULL, null=True) # Nincs vele gond, mert customert nem lehet törölni.
     
     class Meta:
         app_label = 'sales_order'
@@ -43,7 +45,6 @@ class SalesOrder(models.Model):
         if self.document_number is not None:
             return self.document_number
         return f"#{self.id}"
-
 
     def get_absolute_url(self):
         return reverse("admin_core:admin_sales_order:sales-order-detail", kwargs={"id": self.id})
@@ -54,12 +55,35 @@ class SalesOrder(models.Model):
     def get_net_price(self):
         return math.floor(self.net_price/100)
 
+    def get_status_percent(self):
+        if self.status == 'in_progress':
+            return 0
+        elif self.status == 'partially_completed':
+            return 50
+        elif self.status == 'completed':
+            return 100
+        else:
+            return -1
+
+    def is_in_progress(self):
+        return self.status == 'in_progress'
+
+    def is_partially_completed(self):
+        return self.status == 'partially_completed'
+
     def has_invoice(self):
-        return Invoice.objects.filter(conn_sales_order_id=self.id).exists()
+        return Invoice.objects.filter(conn_sales_order_id=self.id, deleted=False).exists()
+    
+    def has_view_invoice(self):
+        return (Invoice.objects.filter(conn_sales_order_id=self.id, deleted=False).exists() or
+                self.status == 'cancelled')
 
     def has_delivery_note(self):
-        return (DeliveryNote.objects.filter(conn_sales_order_id=self.id).exists() or
-                self.delivery_mode == 'personal')
+        return DeliveryNote.objects.filter(conn_sales_order_id=self.id, deleted=False).exists()
+
+    def has_view_delivery_note(self):
+        return (DeliveryNote.objects.filter(conn_sales_order_id=self.id, deleted=False).exists() or
+                self.delivery_mode == 'personal' or self.status == 'cancelled')
 
 class SalesOrderItem(models.Model):
     original_name = models.CharField(max_length=100)

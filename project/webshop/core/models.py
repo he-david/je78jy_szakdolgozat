@@ -38,13 +38,13 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=50, null=True, blank=True)
 
     def get_spent_net_money(self):
-        return math.floor((sum(Invoice.objects.filter(customer_id=self.id, debt=0).values_list('net_price', flat=True)))/100)
+        return math.floor((sum(Invoice.objects.filter(customer_id=self.id, debt=0, deleted=False).values_list('net_price', flat=True)))/100)
 
     def get_spent_gross_money(self):
-        return math.floor((sum(Invoice.objects.filter(customer_id=self.id, debt=0).values_list('gross_price', flat=True)))/100)
+        return math.floor((sum(Invoice.objects.filter(customer_id=self.id, debt=0, deleted=False).values_list('gross_price', flat=True)))/100)
 
     def get_debt(self):
-        return math.floor((sum(Invoice.objects.filter(~Q(debt=0), customer_id=self.id).values_list('debt', flat=True)))/100)
+        return math.floor((sum(Invoice.objects.filter(~Q(debt=0), customer_id=self.id, deleted=False).values_list('debt', flat=True)))/100)
 
 class Address(models.Model):
     zip_code = models.CharField(max_length=10)

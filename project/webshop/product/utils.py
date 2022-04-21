@@ -19,4 +19,3 @@ def get_all_children(category_id, include_self):
         for item in curr_children:
             children_queue.append(item['id'])
     return res_arr
-

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 import math
 
@@ -19,7 +20,7 @@ class Invoice(models.Model):
     ]
     account_number_key = models.PositiveIntegerField(null=True, blank=True)
     account_number = models.CharField(max_length=20, null=True, blank=True)
-    creation_date = models.DateField(auto_now_add=True)
+    creation_date = models.DateField(default=timezone.now)
     settlement_date = models.DateField(null=True, blank=True)
     net_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
     gross_price = models.IntegerField(default=0) # 1000 -> 10Ft, 1000 -> 10.00$
@@ -31,6 +32,7 @@ class Invoice(models.Model):
     billing_city = models.CharField(max_length=100)
     billing_street_name = models.CharField(max_length=100)
     billing_house_number = models.CharField(max_length=20)
+    original_customer_name = models.CharField(max_length=100) # Azért kell, mert ha egy későbbi rendeléskor más név kerül megadásra, elromlik.
     deleted = models.BooleanField(default=False)
     conn_sales_order_id = models.ForeignKey('sales_order.SalesOrder', on_delete=models.CASCADE)
     customer_id = models.ForeignKey('core.CustomUser', on_delete=models.SET_NULL, null=True) # Nincs vele gond, mert customert nem lehet törölni.

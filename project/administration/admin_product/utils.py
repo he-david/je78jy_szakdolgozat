@@ -26,9 +26,9 @@ def get_product_with_less_stock(cart):
     return wrong_items
 
 def has_no_open_document(product):
-    sales_order_count = SalesOrderItem.objects.filter(~Q(sales_order_id__status='completed'), product_id=product).count()
-    invoice_count = InvoiceItem.objects.filter(~Q(invoice_id__status='completed'), product_id=product).count()
-    delivery_note_count = DeliveryNoteItem.objects.filter(~Q(delivery_note_id__status='completed'), product_id=product).count()
+    sales_order_count = SalesOrderItem.objects.filter(~Q(sales_order_id__status='completed'), product_id=product, sales_order_id__deleted=False).count()
+    invoice_count = InvoiceItem.objects.filter(~Q(invoice_id__status='completed'), product_id=product, invoice_id__deleted=False).count()
+    delivery_note_count = DeliveryNoteItem.objects.filter(~Q(delivery_note_id__status='completed'), product_id=product, delivery_note_id__deleted=False).count()
     return sales_order_count == 0 and invoice_count == 0 and delivery_note_count == 0
 
 def reserve_stock(product, quantity):
@@ -36,6 +36,19 @@ def reserve_stock(product, quantity):
     product.reserved_stock += quantity
     product.save()
 
+def free_stock(product, quantity):
+    product.reserved_stock -= quantity
+    product.free_stock += quantity
+    product.save()
+
 def remove_stock(product, quantity):
     product.reserved_stock -= quantity
+    product.save()
+
+def recover_stock_to_free(product, quantity):
+    product.free_stock += quantity
+    product.save()
+
+def recover_stock_to_reserved(product, quantity):
+    product.reserved_stock += quantity
     product.save()

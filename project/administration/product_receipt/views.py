@@ -55,7 +55,11 @@ class ProductReceiptDeleteView(UserAccessMixin, generic.DeleteView):
     context_object_name = 'receipt'
 
     def get_object(self):
-        return get_object_or_404(ProductReceipt, id=self.kwargs['id'])
+        receipt = get_object_or_404(ProductReceipt, id=self.kwargs['id'])
+        # Linkről törlés elleni védelem
+        if not receipt.is_in_progress():
+            raise Http404(f"A {receipt.document_number} bizonylatszámú bevételezés már le van zárva, ezért nem törölhető.")
+        return receipt
 
     def get_success_url(self):
         return reverse('admin_core:admin_product_receipt:product-receipt-list')

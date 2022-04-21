@@ -25,13 +25,21 @@
             <tr>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.document_number }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.conn_sales_order_id.document_number }}</a></td>
-                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.completion_date|date:"Y. m. d." }}</a></td>
+                {% if delivery_note.completion_date %}
+                    <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.completion_date|date:"Y. m. d." }}</a></td>
+                {% else %}
+                    <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">-</a></td>
+                {% endif %}
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_net_price }} Ft</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_gross_price }} Ft</a></td>
-                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.customer_id }}</a></td>
+                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.original_customer_name }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_payment_type_display }}</a></td>
                 <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_delivery_mode_display }}</a></td>
-                <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_status_display }}</a></td>
+                {% if delivery_note.deleted %}
+                    <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-danger text-decoration-none">{{ delivery_note.get_status_display }}</a></td>
+                {% else %}
+                    <td><a href="{{ delivery_note.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ delivery_note.get_status_display }}</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

@@ -29,6 +29,7 @@ class DeliveryNote(models.Model):
     shipping_city = models.CharField(max_length=100)
     shipping_street_name = models.CharField(max_length=100)
     shipping_house_number = models.CharField(max_length=20)
+    original_customer_name = models.CharField(max_length=100) # Azért kell, mert ha egy későbbi rendeléskor más név kerül megadásra, elromlik.
     deleted = models.BooleanField(default=False)
     conn_sales_order_id = models.ForeignKey('sales_order.SalesOrder', on_delete=models.CASCADE)
     customer_id = models.ForeignKey('core.CustomUser', on_delete=models.SET_NULL, null=True)

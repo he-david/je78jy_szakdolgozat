@@ -4,16 +4,21 @@ from django.db.models.signals import post_save
 from django.utils.text import slugify
 
 import math
+from datetime import date
 
-from administration.admin_product import utils as product_utils
+from administration.admin_product import utils as admin_product_utils
 
 class Action(models.Model):
     name = models.CharField(max_length=100)
+    percent = models.PositiveIntegerField()
     from_date = models.DateField()
     to_date = models.DateField()
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('admin_core:admin_action:action-detail', kwargs={'id': self.id})
 
 class PackageType(models.Model):
     summary_name = models.CharField(max_length=50)
@@ -53,9 +58,9 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     free_stock = models.IntegerField(default=0)
     reserved_stock = models.IntegerField(default=0)
-    image = models.ImageField(blank=True, null=True, upload_to='product_images')
+    image = models.ImageField(blank=True, null=True, upload_to='product_images/')
     slug = models.SlugField(unique=True, null=True, blank=True)
-    category_id = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
+    category_id = models.ForeignKey(Category, related_name='items', on_delete=models.SET_NULL, blank=True, null=True)
     package_type_id = models.ManyToManyField(PackageType)
     action_id = models.ManyToManyField(Action, blank=True)
 
@@ -71,20 +76,37 @@ class Product(models.Model):
     def get_absolute_admin_url(self):
         return reverse('admin_core:admin_product:product-detail', kwargs={'id': self.id})
 
-    def get_net_price(self):
-        return math.floor(self.net_price/100)
+    def get_action_percent(self):
+        today = date.today()
+        percent = 0
 
-    def get_gross_price(self):
-        return math.floor(self.net_price/100 * (1+self.vat/100))
+        for action in self.action_id.all():
+            if (action.from_date <= today and today <= action.to_date) and percent < action.percent:
+                percent = action.percent
+        return percent
+
+    def get_net_price(self):
+        return math.floor(self.net_price * (1 - self.get_action_percent() / 100))
+
+    def get_admin_view_net_price(self):
+        return math.floor(self.net_price/100)
+    
+    def get_admin_view_gross_price(self):
+        return math.floor(self.net_price/100 * (1 + self.vat / 100))
+
+    def get_view_net_price(self):
+        return math.floor(self.net_price/100 * (1 - self.get_action_percent() / 100))
+
+    def get_view_gross_price(self):
+        return math.floor(self.net_price/100 * (1 - self.get_action_percent() / 100) * (1 + self.vat / 100))
     
     def is_displayable(self):
         return (self.free_stock > 0 and
                 self.category_id is not None)
     
     def has_no_open_document(self):
-        return product_utils.has_no_open_document(self)
+        return admin_product_utils.has_no_open_document(self)
 
-    
 def slug_generator(sender, instance, *args, **kwargs):
     if not instance.slug:
         new_slug = slugify(instance.name)

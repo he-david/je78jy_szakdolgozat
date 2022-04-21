@@ -3,8 +3,6 @@
 
 {% block content %}
 
-{% block head_title %}Termék lista{% endblock %}
-
 <section>
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -33,19 +31,21 @@
                                 <div class="card bg-dark">
                                     <div class="card-img overflow-hidden">
                                         <a href="{{ product.get_absolute_url }}">
-                                            <img class="card-img-top hd-image-trans" alt="{{ product.name }}"
-                                                src="https://www.wallpaperbetter.com/wallpaper/90/40/918/logos-nike-famous-sports-brand-dark-background-shoe-colorful-rays--wallpaper.jpg">
+                                            <img class="card-img-top hd-image-trans img-fluid" alt="{{ product.name }}"
+                                                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/product_placeholder.png' %}{% endif %}">
                                         </a>
                                     </div>
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             <p class="small text-uppercase text-muted">{{ product.category_id }}</p>
-                                            <p class="small hd-red-a400"><s>1099 Ft</s></p>
+                                            {% if product.get_action_percent > 0 %}
+                                            <p class="small hd-red-a400"><s>{{ product.get_admin_view_gross_price }} Ft</s></p>
+                                            {% endif %}
                                         </div>
 
                                         <div class="d-flex justify-content-between mb-3">
                                             <h5 class="">{{ product.name }}</h5>
-                                            <h5>{{ product.get_gross_price }} Ft</h5>
+                                            <h5>{{ product.get_view_gross_price }} Ft</h5>
                                         </div>
 
                                         <div class="d-flex justify-content-between mb-2">

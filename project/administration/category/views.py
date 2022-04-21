@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
 
@@ -27,8 +28,10 @@ class CategoryDetailView(UserAccessMixin, generic.UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetailView, self).get_context_data(**kwargs)
-        context['prod_items'] = Product.objects.filter(category_id=self.kwargs['id'])
-        context['cat_items'] = Category.objects.filter(parent_id=self.kwargs['id'])
+        context.update({
+            'prod_items': Product.objects.filter(category_id=self.kwargs['id']),
+            'cat_items': Category.objects.filter(parent_id=self.kwargs['id'])
+        })
         return context
 
     def get_success_url(self):
@@ -56,8 +59,10 @@ class CategoryDeleteView(UserAccessMixin, generic.DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDeleteView, self).get_context_data(**kwargs)
-        context['sub_cat_count'] = Category.objects.filter(parent_id=self.kwargs['id']).count()
-        context['cat_prod_count'] = Product.objects.filter(category_id=self.kwargs['id']).count()
+        context.update({
+            'sub_cat_count': Category.objects.filter(parent_id=self.kwargs['id']).count(),
+            'cat_prod_count': Product.objects.filter(category_id=self.kwargs['id']).count()
+        })
         return context
     
     def get_success_url(self):

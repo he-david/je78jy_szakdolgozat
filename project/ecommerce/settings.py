@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'administration.admin_product',
     'administration.product_receipt',
     'administration.crm',
+    'administration.action',
 ]
 
 MIDDLEWARE = [

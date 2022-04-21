@@ -34,7 +34,7 @@ class UserOrdersView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'orders'
 
     def get_queryset(self):
-        qs = SalesOrder.objects.filter(customer_id=self.request.user, deleted=False)
+        qs = SalesOrder.objects.filter(customer_id=self.request.user)
         return qs
 
 class UserDataView(LoginRequiredMixin, generic.FormView):

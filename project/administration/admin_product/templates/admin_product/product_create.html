@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="container mt-5 text-white">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row hd-shadow p-3">
             <div class="col-4">

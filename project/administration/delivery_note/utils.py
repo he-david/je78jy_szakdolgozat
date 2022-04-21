@@ -19,6 +19,7 @@ def create_delivery_note(sales_order):
     delivery_note.payment_type = sales_order.payment_type
     delivery_note.delivery_mode = sales_order.delivery_mode
     delivery_note.conn_sales_order_id = sales_order
+    delivery_note.original_customer_name = sales_order.original_customer_name
     delivery_note.customer_id = sales_order.customer_id
     delivery_note.shipping_zip_code = sales_order.zip_code
     delivery_note.shipping_city = sales_order.city
@@ -26,8 +27,8 @@ def create_delivery_note(sales_order):
     delivery_note.shipping_house_number = sales_order.house_number
     delivery_note.save()
 
-    sales_order_utils.set_sales_order_status_to_partially_completed(sales_order)
-    create_delivery_note_items(delivery_note, sales_order_utils.get_sales_order_items(sales_order))
+    sales_order_utils.set_sales_order_status(sales_order)
+    create_delivery_note_items(delivery_note, sales_order.items.all())
 
 def create_delivery_note_items(delivery_note, sales_order_items):
     for item in sales_order_items:
@@ -48,9 +49,15 @@ def delivery_note_completion(delivery_note, sales_order):
     delivery_note.status = 'completed'
     delivery_note.completion_date = datetime.now()
     delivery_note.save()
+    sales_order_utils.set_sales_order_status(sales_order)
 
-    # VME státusz állítás
-    invoice = Invoice.objects.filter(conn_sales_order_id=sales_order)
+def delete_delivery_note(delivery_note):
+    sales_order = delivery_note.conn_sales_order_id
+    delivery_note.delete()
+    sales_order_utils.set_sales_order_status(sales_order)
 
-    if invoice.exists() and invoice[0].status == 'completed':
-        sales_order_utils.set_sales_order_status_to_completed(sales_order)
+def cancel_delivery_note(delivery_note):
+    delivery_note.status = 'cancelled'
+    delivery_note.deleted = True
+    delivery_note.save()
+    sales_order_utils.set_sales_order_status(delivery_note.conn_sales_order_id)

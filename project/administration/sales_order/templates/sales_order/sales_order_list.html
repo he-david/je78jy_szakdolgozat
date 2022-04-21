@@ -10,11 +10,12 @@
         <thead>
             <tr>
                 <th scope="col">Bizonylatszám</th>
-                <th scope="col">Vevő</th>
                 <th scope="col">Rendelés napja</th>
                 <th scope="col">Nettó ár</th>
                 <th scope="col">Bruttó ár</th>
+                <th scope="col">Vevő</th>
                 <th scope="col">Fizetési mód</th>
+                <th scope="col">Szállítási mód</th>
                 <th scope="col">Státusz</th>
             </tr>
         </thead>
@@ -26,12 +27,17 @@
                 {% else %}
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">#{{ order.id }}</a></td>
                 {% endif %}
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.customer_id.username }}</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.order_date|date:"Y. m. d." }}</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_net_price }} Ft</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_gross_price }} Ft</a></td>
+                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.original_customer_name }}</a></td>
                 <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_payment_type_display }}</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_status_display }}</a></td>
+                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_delivery_mode_display }}</a></td>
+                {% if order.deleted %}
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-danger text-decoration-none">{{ order.get_status_display }}</a></td>
+                {% else %}
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_status_display }}</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
