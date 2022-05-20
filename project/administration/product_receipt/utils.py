@@ -42,4 +42,4 @@ def finalize_product_receipt(receipt):
     receipt_items = ProductReceiptItem.objects.filter(product_receipt_id=receipt)
 
     for item in receipt_items:
-        product_utils.modify_product_quantity(item.product_id, item.quantity)
+        product_utils.recover_stock_to_free(item.product_id, item.quantity)

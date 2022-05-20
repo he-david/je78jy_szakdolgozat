@@ -5,6 +5,7 @@ from .models import SalesOrder
 class SalesOrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SalesOrderForm, self).__init__(*args, **kwargs)
+        
         self.fields['status'].widget.attrs['disabled'] = True
         self.fields['payment_type'].widget.attrs['disabled'] = True
         self.fields['document_number'].widget.attrs['readonly'] = True

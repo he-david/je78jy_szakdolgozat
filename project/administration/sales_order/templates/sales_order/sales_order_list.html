@@ -1,47 +1,61 @@
 {% extends 'administration/base.html' %}
 
+{% block head_title %}Vevői megrendelések{% endblock head_title %}
+
 {% block content %}
 
-<div class="container py-5">
+<div class="container my-5">
     <div class="text-white text-center">
         <h1>Vevői megrendelések</h1>
     </div>
     <table class="table table-dark table-hover mt-5">
         <thead>
             <tr>
-                <th scope="col">Bizonylatszám</th>
-                <th scope="col">Rendelés napja</th>
-                <th scope="col">Nettó ár</th>
-                <th scope="col">Bruttó ár</th>
-                <th scope="col">Vevő</th>
-                <th scope="col">Fizetési mód</th>
-                <th scope="col">Szállítási mód</th>
-                <th scope="col">Státusz</th>
+                {% if last_order_type and last_order_type == 'desc' %}
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=document_number_key">Bizonylatszám</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=order_date">Rendelés napja</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=net_price">Nettó össszeg</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=gross_price">Bruttó össszeg</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=original_customer_name">Vevő</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=payment_type">Fizetési mód</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=delivery_mode">Szállítási mód</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=status">Státusz</a></th>
+                {% else %}
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-document_number_key">Bizonylatszám</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-order_date">Rendelés napja</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-net_price">Nettó össszeg</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-gross_price">Bruttó össszeg</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-original_customer_name">Vevő</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-payment_type">Fizetési mód</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-delivery_mode">Szállítási mód</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-status">Státusz</a></th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
-            {% for order in orders %}
-            <tr>
-                {% if order.document_number %}
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.document_number }}</a></td>
-                {% else %}
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">#{{ order.id }}</a></td>
-                {% endif %}
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.order_date|date:"Y. m. d." }}</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_net_price }} Ft</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_gross_price }} Ft</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.original_customer_name }}</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_payment_type_display }}</a></td>
-                <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_delivery_mode_display }}</a></td>
-                {% if order.deleted %}
-                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-danger text-decoration-none">{{ order.get_status_display }}</a></td>
-                {% else %}
-                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_status_display }}</a></td>
-                {% endif %}
-            </tr>
+            {% for order in page_obj %}
+                <tr>
+                    {% if order.document_number %}
+                        <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.document_number }}</a></td>
+                    {% else %}
+                        <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">#{{ order.id }}</a></td>
+                    {% endif %}
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.order_date|date:"Y. m. d." }}</a></td>
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_net_price }} Ft</a></td>
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_gross_price }} Ft</a></td>
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.original_customer_name }}</a></td>
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_payment_type_display }}</a></td>
+                    <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_delivery_mode_display }}</a></td>
+                    {% if order.deleted %}
+                        <td><a href="{{ order.get_absolute_url }}" class="d-block text-danger text-decoration-none">{{ order.get_status_display }}</a></td>
+                    {% else %}
+                        <td><a href="{{ order.get_absolute_url }}" class="d-block text-white text-decoration-none">{{ order.get_status_display }}</a></td>
+                    {% endif %}
+                </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% include 'administration/paginate.html' %}
 </div>
 
 {% endblock content %}

@@ -7,19 +7,37 @@ import math
 from webshop.product.models import PackageType, Product
 from administration.admin_core.mixins import UserAccessMixin
 from .forms import ProductForm, ProductCreateForm, PackageForm
+from administration.admin_core import utils as admin_utils
 
 # Product
 
 class ProductListView(UserAccessMixin, generic.ListView):
-    permission_required = 'product.view_product'
+    permission_required = ('product.view_product', 'product.view_category', 'product.view_packagetype')
     template_name = 'admin_product/product_list.html'
-    context_object_name = 'products'
+    paginate_by = 25
+    ORDER_LIST = [
+        'name', '-name',
+        'producer', '-producer'
+        'net_price', '-net_price',
+        'vat', '-vat',
+        'free_stock', '-free_stock',
+        'reserved_stock', '-reserved_stock',
+    ]
 
     def get_queryset(self):
-        return Product.objects.all() # TODO HEDA valami alapján jó lenne rendezni.
+        order_by_attr = self.request.GET.get('order_by', 'name')
+        return Product.objects.all().order_by(admin_utils.get_order_attr(order_by_attr, 'name', self.ORDER_LIST))
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        order_attr = self.request.GET.get('order_by', 'name')
+        return admin_utils.order_by_context_fill(context, order_attr, self.ORDER_LIST)
 
 class ProductDetailView(UserAccessMixin, generic.UpdateView):
-    permission_required = 'product.change_product'
+    permission_required = (
+        'product.change_product', 'product.view_category',
+        'product.view_packagetype', 'product.view_action'
+    )
     template_name = 'admin_product/product_detail.html'
     context_object_name = 'product'
     form_class = ProductForm
@@ -32,7 +50,6 @@ class ProductDetailView(UserAccessMixin, generic.UpdateView):
     def form_valid(self, form):
         product = form.save(commit=False)
         product.net_price *= 100
-        print(form.cleaned_data)
         product.save()
         return super(ProductDetailView, self).form_valid(form)
 
@@ -40,7 +57,10 @@ class ProductDetailView(UserAccessMixin, generic.UpdateView):
         return reverse('admin_core:admin_product:product-list')
 
 class ProductCreateView(UserAccessMixin, generic.CreateView):
-    permission_required = 'product.add_product'
+    permission_required = (
+        'product.add_product', 'product.view_category',
+        'product.view_packagetype', 'product.view_action'
+    )
     template_name = 'admin_product/product_create.html'
     form_class = ProductCreateForm
 
@@ -60,6 +80,7 @@ class ProductDeleteView(UserAccessMixin, generic.DeleteView):
 
     def get_object(self):
         product = get_object_or_404(Product, id=self.kwargs['id'])
+
         # Linkről törlés elleni védelem
         if not product.has_no_open_document():
             raise Http404(f"A/az {product.name} nevű termékhez tartozik folyamatban levő bizonylat, ezért nem törölhető.")
@@ -73,10 +94,21 @@ class ProductDeleteView(UserAccessMixin, generic.DeleteView):
 class PackageListView(UserAccessMixin, generic.ListView):
     permission_required = 'product.view_packagetype'
     template_name = 'admin_product/package_list.html'
-    context_object_name = 'packages'
+    paginate_by = 25
+    ORDER_LIST = [
+        'summary_name', '-summary_name',
+        'display_name', '-display_name',
+        'quantity', '-quantity'
+    ]
 
     def get_queryset(self):
-        return PackageType.objects.all()
+        order_by_attr = self.request.GET.get('order_by', 'display_name')
+        return PackageType.objects.all().order_by(admin_utils.get_order_attr(order_by_attr, 'display_name', self.ORDER_LIST))
+            
+    def get_context_data(self, **kwargs):
+        context = super(PackageListView, self).get_context_data(**kwargs)
+        order_attr = self.request.GET.get('order_by', 'display_name')
+        return admin_utils.order_by_context_fill(context, order_attr, self.ORDER_LIST)
 
 class PackageDetailView(UserAccessMixin, generic.UpdateView):
     permission_required = 'product.change_packagetype'
@@ -109,6 +141,7 @@ class PackageDeleteView(UserAccessMixin, generic.DeleteView):
 
     def get_object(self):
         package_type = get_object_or_404(PackageType, id=self.kwargs['id'])
+        
         # Linkről törlés elleni védelem
         if not package_type.is_deletable():
             raise Http404(f"Létezik olyan termék amely rendelkezik a/az {package_type.display_name} nevű kiszereléssel, ezért nem törölhető.")

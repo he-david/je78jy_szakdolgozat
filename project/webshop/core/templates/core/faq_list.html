@@ -1,34 +1,39 @@
 {% extends 'webshop/base.html' %}
 
+{% block head_title %}GY.I.K.{% endblock head_title %}
+
 {% block content %}
 
-<section class="container py-5">
-	<div class="row text-white">
+<section class="container text-white my-5">
+	<div class="text-center">
+        <h1>Gyakori kérdések</h1>
+    </div>
+	<div class="row text-white mt-5">
 		{% if faqs %}
-		{% for faq in faqs %}
-		<div class="mb-3 d-md-flex">
-			<div class="col-md-3">
-				{% if faq.is_visible_category %}
-				<div class="mb-4 mb-md-0">
-					<span class="hd-shadow p-2 text-primary">{{ faq.topic_id }}</span>
+			{% for faq in faqs %}
+				<div class="mb-3 d-md-flex">
+					<div class="col-md-3">
+						{% if faq.is_visible_category %}
+							<div class="mb-4 mb-md-0">
+								<span class="hd-shadow p-2 hd-text-lblue">{{ faq.topic_id }}</span>
+							</div>
+						{% else %}
+							<span></span>
+						{% endif %}
+					</div>
+					<div class="col-md-9 border-bottom border-secondary" style="word-wrap: break-word;">
+						<h2>{{ faq.question }}</h2>
+						<p>{{ faq.answer }}</p>
+					</div>
 				</div>
-				{% else %}
-				<span></span>
-				{% endif %}
-			</div>
-			<div class="col-md-9 border-bottom border-secondary">
-				<h2>{{ faq.question }}</h2>
-				<p>{{ faq.answer }}</p>
-			</div>
-		</div>
-		{% endfor %}
+			{% endfor %}
 		{% else %}
-		<h3 class="text-center">Jelenleg egyetlen kérdés sem áll rendelkezésre.</h3>
-		<div class="text-center mt-2">
-			<div class="spinner-grow text-primary" role="status"></div>
-			<div class="spinner-grow text-primary" role="status"></div>
-			<div class="spinner-grow text-primary" role="status"></div>
-		</div>
+			<h3 class="text-center">Jelenleg egyetlen kérdés sem áll rendelkezésre.</h3>
+			<div class="text-center mt-2">
+				<div class="spinner-grow hd-text-lblue" role="status"></div>
+				<div class="spinner-grow hd-text-lblue" role="status"></div>
+				<div class="spinner-grow hd-text-lblue" role="status"></div>
+			</div>
 		{% endif %}
 	</div>
 </section>

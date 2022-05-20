@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-4">
     <div class="container fs-5 hd-shadow p-3">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'admin_core:home' %}">
             <img src="{% static 'images/favicons/shop_icon.svg'%}" alt="" width="40" height="40">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -88,6 +88,22 @@
                         <li>
                             <a class="dropdown-item"
                                 href="{% url 'admin_core:admin_delivery_note:delivery-note-list' %}">Szállítólevél</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown ms-lg-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="queryNavbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Lekérdezések
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="queryNavbarDropdown">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:je78jy_query:income-list' %}">Bevételek</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'admin_core:je78jy_query:stock-movement-list' %}">Készletmozgások</a>
                         </li>
                     </ul>
                 </li>

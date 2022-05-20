@@ -6,6 +6,7 @@ from .models import Contact, CustomUser, Address
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        
         self.fields['username'].label = 'Felhasználónév'
         self.fields['password1'].label = 'Jelszó'
         self.fields['password2'].label = 'Jelszó megerősítés'

@@ -1,4 +1,70 @@
 {% extends 'webshop/base.html' %}
 
+{% block head_title %}Kezdőlap{% endblock head_title %}
+
 {% block content %}
+
+<div class="container justify-content-center my-5 text-uppercase text-center">
+    <div class="text-center mb-5">
+        <h1 class="hd-title">Üdv a webáruházban!</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 py-2">
+            <a href="{% url 'webshop_product:product-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h2 class="card-text fw-bold">Kategóriák</h2>
+                    </div>
+                </div>
+            </a>>
+        </div>
+        <div class="col-lg-7 py-2">
+            <a href="{% url 'webshop_product:action-product-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h2 class="card-text fw-bold">Akciós</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-7 py-2">
+            <a href="{% url 'webshop_core:faq-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h2 class="card-text fw-bold">GY.I.K.</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-5 py-2">
+            <a href="{% url 'webshop_core:contact' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h2 class="card-text fw-bold">Kapcsolat</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="py-2">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'webshop_cart:summary'%}" class="text-decoration-none">
+                    <div class="card h-100 p-5 hd-card-text">
+                        <div class="card-body">
+                            <h2 class="card-text fw-bold">Kosár</h2>
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                <a href="{% url 'webshop_core:login' %}" class="text-decoration-none">
+                    <div class="card h-100 p-5 hd-card-text">
+                        <div class="card-body">
+                            <h2 class="card-text fw-bold">Bejelentkezés</h2>
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

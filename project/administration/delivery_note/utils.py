@@ -1,4 +1,3 @@
-from administration.invoice.models import Invoice
 from administration.sales_order import utils as sales_order_utils
 from .models import DeliveryNote, DeliveryNoteItem
 
@@ -21,10 +20,10 @@ def create_delivery_note(sales_order):
     delivery_note.conn_sales_order_id = sales_order
     delivery_note.original_customer_name = sales_order.original_customer_name
     delivery_note.customer_id = sales_order.customer_id
-    delivery_note.shipping_zip_code = sales_order.zip_code
-    delivery_note.shipping_city = sales_order.city
-    delivery_note.shipping_street_name = sales_order.street_name
-    delivery_note.shipping_house_number = sales_order.house_number
+    delivery_note.zip_code = sales_order.zip_code
+    delivery_note.city = sales_order.city
+    delivery_note.street_name = sales_order.street_name
+    delivery_note.house_number = sales_order.house_number
     delivery_note.save()
 
     sales_order_utils.set_sales_order_status(sales_order)

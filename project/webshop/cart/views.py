@@ -12,6 +12,8 @@ from .utils import get_or_set_cart
 
 import math
 
+# Cart
+
 class CartView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'cart/cart.html'    
 
@@ -32,6 +34,8 @@ class RemoveFromCartView(LoginRequiredMixin, generic.View):
         cart_item.delete()
         cart.save()
         return redirect('webshop_cart:summary')
+
+# Payment
 
 class PaymentPersonalView(LoginRequiredMixin, generic.FormView):
     template_name = 'cart/payment_personal.html'
@@ -85,9 +89,7 @@ class PaymentOrderDataView(LoginRequiredMixin, generic.FormView):
         if "back" in self.request.POST:
             return reverse('webshop_cart:payment-address')
         else:
-            # Megnézni, hogy van-e mindenből elegendő mennyiség.
             if not product_utils.get_product_with_less_stock(get_or_set_cart(self.request)):
-                # Létrehozni a megrendelést
                 sales_order_utils.create_sales_order(self.form, get_or_set_cart(self.request))
                 return reverse('webshop_cart:payment-success')
             else:

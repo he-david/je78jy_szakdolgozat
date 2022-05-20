@@ -1,12 +1,15 @@
 {% extends 'administration/base.html' %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Szállítólevél{% endblock %}
+{% block head_title %}Szállítólevél módosítás{% endblock %}
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="p-3 text-white hd-shadow">
+<div class="container my-5 text-white">
+    <div class="text-center">
+        <h2>Szállítólevél módosítás</h2>
+    </div>
+    <div class="p-3 hd-shadow">
         <form method="POST">
             {% csrf_token %}
             <div class="row">
@@ -23,10 +26,10 @@
                     {{ form.completion_date|as_crispy_field }}
                 </div>
                 <div class="col-3">
-                    {{ form.shipping_zip_code|as_crispy_field }}
-                    {{ form.shipping_city|as_crispy_field }}
-                    {{ form.shipping_street_name|as_crispy_field }}
-                    {{ form.shipping_house_number|as_crispy_field }}
+                    {{ form.zip_code|as_crispy_field }}
+                    {{ form.city|as_crispy_field }}
+                    {{ form.street_name|as_crispy_field }}
+                    {{ form.house_number|as_crispy_field }}
                 </div>
             </div>
             <div>
@@ -55,23 +58,22 @@
             </thead>
             <tbody>
                 {% for item in delivery_note.items.all %}
-                <tr>
-                    <td>{{ item.original_name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    {% if item.original_package_quantity != 1 %}
-                    <td>{{ item.original_package_display }} ({{ item.original_package_quantity }} db)</td>
-                    {% else %}
-                    <td>{{ item.original_package_display }}</td>
-                    {% endif %}
-                    <td>{{ item.original_vat }}%</td>
-                    <td>{{ item.get_original_net_price }} Ft</td>
-                    <td>{{ item.get_original_gross_price }} Ft</td>
-                </tr>
+                    <tr>
+                        <td>{{ item.original_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        {% if item.original_package_quantity != 1 %}
+                            <td>{{ item.original_package_display }} ({{ item.original_package_quantity }} db)</td>
+                        {% else %}
+                            <td>{{ item.original_package_display }}</td>
+                        {% endif %}
+                        <td>{{ item.original_vat }}%</td>
+                        <td>{{ item.get_original_net_price }} Ft</td>
+                        <td>{{ item.get_original_gross_price }} Ft</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
-
 
 {% endblock %}

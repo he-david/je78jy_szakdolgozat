@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.db.models.signals import post_save
 from django.utils.text import slugify
+from django.core.validators import MaxValueValidator
 
 import math
 from datetime import date
@@ -10,7 +11,7 @@ from administration.admin_product import utils as admin_product_utils
 
 class Action(models.Model):
     name = models.CharField(max_length=100)
-    percent = models.PositiveIntegerField()
+    percent = models.PositiveIntegerField(validators=[MaxValueValidator(100)], error_messages={'max_value': 'Az érték legyen kisebb van egyenlő, mint 100.'})
     from_date = models.DateField()
     to_date = models.DateField()
 
@@ -26,7 +27,7 @@ class PackageType(models.Model):
     quantity = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.display_name
+        return self.summary_name
 
     def get_absolute_admin_url(self):
         return reverse('admin_core:admin_product:package-detail', kwargs={'id': self.id})
@@ -42,7 +43,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
     
     def __str__(self):
-        return f"{self.id} - {self.name}"
+        return self.name
 
     def get_absolute_admin_url(self):
         return reverse('admin_core:admin_category:category-detail', kwargs={'id': self.id})
@@ -100,10 +101,12 @@ class Product(models.Model):
     def get_view_gross_price(self):
         return math.floor(self.net_price/100 * (1 - self.get_action_percent() / 100) * (1 + self.vat / 100))
     
-    def is_displayable(self):
-        return (self.free_stock > 0 and
-                self.category_id is not None)
-    
+    def get_positive_stock_movement_sum(self):
+        return admin_product_utils.get_positive_stock_movement_sum(self)
+
+    def get_negative_stock_movement_sum(self):
+        return admin_product_utils.get_negative_stock_movement_sum(self)
+
     def has_no_open_document(self):
         return admin_product_utils.has_no_open_document(self)
 

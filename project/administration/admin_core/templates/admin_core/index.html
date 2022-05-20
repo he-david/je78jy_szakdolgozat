@@ -1,9 +1,154 @@
 {% extends 'administration/base.html' %}
 
+{% block head_title %}Admin | Kezdőlap{% endblock head_title %}
+
 {% block content %}
 
-<div class="container text-center mt-5">
-    <h1 class="text-white">Üdv az admin rendszerben!</h1>
+<div class="container justify-content-center my-5 text-uppercase text-center">
+    <div class="text-center mb-5">
+        <h1 class="hd-title">Üdv az adminisztrációs rendszerben!</h1>
+    </div>
+    <div class="row">
+        <div class="py-2">
+            <div class="card h-100 p-3 hd-card-text2">
+                <div class="card-body">
+                    <h2 class="card-text fw-bold">CRM</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 py-2">
+            <a href="{% url 'admin_core:crm:admin-partner-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Partnerek</h2>
+                    </div>
+                </div>
+            </a>>
+        </div>
+        <div class="col-lg-7 py-2">
+            <a href="{% url 'admin_core:crm:message-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Üzenetek</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-7 py-2">
+            <a href="{% url 'admin_core:crm:faq-topic-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">GY.I.K. témakörök</h2>
+                    </div>
+                </div>
+            </a>>
+        </div>
+        <div class="col-lg-5 py-2">
+            <a href="{% url 'admin_core:crm:faq-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">GY.I.K.</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="py-2">
+            <div class="card h-100 p-3 hd-card-text2">
+                <div class="card-body">
+                    <h2 class="card-text fw-bold">Készletkezelés</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 py-2">
+            <a href="{% url 'admin_core:admin_category:category-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Kategóriák</h2>
+                    </div>
+                </div>
+            </a>>
+        </div>
+        <div class="col-lg-7 py-2">
+            <a href="{% url 'admin_core:admin_product:product-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Termékek</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-7 py-2">
+            <a href="{% url 'admin_core:admin_product:package-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Kiszerelések</h2>
+                    </div>
+                </div>
+            </a>>
+        </div>
+        <div class="col-lg-5 py-2">
+            <a href="{% url 'admin_core:admin_action:action-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Akciók</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="py-2">
+            <div class="card h-100 p-3 hd-card-text2">
+                <div class="card-body">
+                    <h2 class="card-text fw-bold">Szállítói folyamatok</h2>
+                </div>
+            </div>
+        </div>
+        <div class="py-2">
+            <a href="{% url 'admin_core:admin_product_receipt:product-receipt-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Bevételezés</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="py-2">
+            <div class="card h-100 p-3 hd-card-text2">
+                <div class="card-body">
+                    <h2 class="card-text fw-bold">Értékesítés</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 py-2">
+            <a href="{% url 'admin_core:admin_sales_order:sales-order-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Vevői megrendelés</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 py-2">
+            <a href="{% url 'admin_core:admin_invoice:invoice-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Számlázás</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 py-2">
+            <a href="{% url 'admin_core:admin_delivery_note:delivery-note-list' %}" class="text-decoration-none">
+                <div class="card h-100 p-5 hd-card-text">
+                    <div class="card-body">
+                        <h4 class="card-text fw-bold">Szállítólevél</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

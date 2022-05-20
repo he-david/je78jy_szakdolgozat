@@ -23,6 +23,10 @@ class AddToCartForm(forms.ModelForm):
     def clean(self):
         product = Product.objects.get(id=self.product_id)
         quantity = self.cleaned_data['quantity']
+
+        if quantity <= 0:
+            raise forms.ValidationError(f"A kiválasztott mennyiség nem lehet 1-nél kisebb.")
+
         package_type = self.cleaned_data['package_type_id']
         cart = Cart.objects.filter(customer_id=self.user).first()
         cart_items = CartItem.objects.filter(cart_id=cart, product_id=product)

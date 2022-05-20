@@ -1,18 +1,18 @@
 {% extends 'administration/base.html' %}
 
-{% block head_title %}Termék törlés{% endblock head_title %}
+{% block head_title %}{{ product.name }} törlés{% endblock head_title %}
 
 {% block content %}
 
-<div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
+<div class="container my-5 text-white p-3 hd-shadow w-50 text-center">
     <form method="POST">
         {% csrf_token %}
         <h2>Biztosan törölni szeretné a/az {{ product.name }} nevű terméket?</h2>
         {% if product.free_stock > 0 %}
-        <p>A termék szabad készlete: {{ product.free_stock }} db</p>
+            <p>A termék szabad készlete: {{ product.free_stock }} db</p>
         {% endif %}
         {% if product.reserved_stock %}
-        <p>A termék foglalt készlete: {{ product.reserved_stock }} db</p>
+            <p>A termék foglalt készlete: {{ product.reserved_stock }} db</p>
         {% endif %}
         <input type="submit" value="Igen" class="btn btn-primary">
         <a href="{% url 'admin_core:admin_product:product-list' %}" class="btn btn-primary ms-2">Nem</a>

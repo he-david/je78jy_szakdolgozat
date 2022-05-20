@@ -6,19 +6,32 @@ from administration.admin_core.mixins import UserAccessMixin
 from .models import ProductReceipt, ProductReceiptItem
 from .forms import ProductReceiptForm, ProductReceiptItemForm
 from . import utils as receipt_utils
+from administration.admin_core import utils as admin_utils
 
 # ProductReceipt
 
 class ProductReceiptListView(UserAccessMixin, generic.ListView):
-    permission_required = ('product_receipt.view_productreceipt', 'product_receipt.add_productreceipt')
+    permission_required = 'product_receipt.view_productreceipt'
     template_name = 'product_receipt/product_receipt_list.html'
-    context_object_name = 'receipts'
+    paginate_by = 25
+    ORDER_LIST = [
+        'document_number_key', '-document_number_key',
+        'sum_quantity', '-sum_quantity',
+        'finalization_date', '-finalization_date',
+        'status', '-status'
+    ]
 
     def get_queryset(self):
-        return ProductReceipt.objects.all()
+        order_by_attr = self.request.GET.get('order_by', 'document_number_key')
+        return ProductReceipt.objects.all().order_by(admin_utils.get_order_attr(order_by_attr, 'document_number_key', self.ORDER_LIST))
+    
+    def get_context_data(self, **kwargs):
+        context = super(ProductReceiptListView, self).get_context_data(**kwargs)
+        order_attr = self.request.GET.get('order_by', 'document_number_key')
+        return admin_utils.order_by_context_fill(context, order_attr, self.ORDER_LIST)
 
 class ProductReceiptDetailView(UserAccessMixin, generic.UpdateView):
-    permission_required = ('product_receipt.view_productreceiptitem', 'product_receipt.change_productreceipt')
+    permission_required = ('product_receipt.change_productreceipt', 'product_receipt.view_productreceiptitem')
     template_name = 'product_receipt/product_receipt_detail.html'
     context_object_name = 'receipt'
     form_class = ProductReceiptForm
@@ -40,10 +53,7 @@ class ProductReceiptDetailView(UserAccessMixin, generic.UpdateView):
         return reverse('admin_core:admin_product_receipt:product-receipt-list')
 
 class ProductReceiptCreateView(UserAccessMixin, generic.View):
-    permission_required = (
-        'product_receipt.add_productreceipt', 'product_receipt.change_productreceipt',
-        'product_receipt.view_productreceiptitem'
-    )
+    permission_required = 'product_receipt.add_productreceipt'
 
     def get(self, *args, **kwargs):
         receipt = receipt_utils.create_product_receipt()
@@ -56,8 +66,9 @@ class ProductReceiptDeleteView(UserAccessMixin, generic.DeleteView):
 
     def get_object(self):
         receipt = get_object_or_404(ProductReceipt, id=self.kwargs['id'])
+        
         # Linkről törlés elleni védelem
-        if not receipt.is_in_progress():
+        if not receipt.is_in_progress() and receipt.sum_quantity != 0:
             raise Http404(f"A {receipt.document_number} bizonylatszámú bevételezés már le van zárva, ezért nem törölhető.")
         return receipt
 
@@ -67,7 +78,7 @@ class ProductReceiptDeleteView(UserAccessMixin, generic.DeleteView):
 # ProductReceiptItem
 
 class ProductReceiptItemCreateView(UserAccessMixin, generic.CreateView):
-    permission_required = 'product_receipt.add_productreceiptitem'
+    permission_required = ('product_receipt.add_productreceiptitem', 'product.view_product')
     template_name = 'product_receipt/product_receipt_item_create.html'
     form_class = ProductReceiptItemForm
 

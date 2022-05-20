@@ -25,9 +25,8 @@ def set_sales_order_status(sales_order):
     sales_order.save()
 
 def create_sales_order(form, cart):
-    # Létrehozni a megrendelést és felvenni mindent
     sales_order = SalesOrder()
-    document_number_key = SalesOrder.objects.all().order_by('-document_number_key') # Ez azért jó, mert egyből van account number és nem fordulhat elő olyan, hogy létezik számla úgy, hogy még nincs account number key.
+    document_number_key = SalesOrder.objects.all().order_by('-document_number_key')
     
     if document_number_key:
         sales_order.document_number_key = document_number_key[0].document_number_key + 1
@@ -45,12 +44,12 @@ def create_sales_order(form, cart):
     sales_order.city = address.city
     sales_order.street_name = address.street_name
     sales_order.house_number = address.house_number
-    sales_order.original_customer_name = f"{cart.customer_id.first_name} {cart.customer_id.first_name}"
+    sales_order.original_customer_name = f"{cart.customer_id.last_name} {cart.customer_id.first_name}"
     sales_order.customer_id = cart.customer_id
     sales_order.save()
-    # Létrehozni a megrendelés itemeket
+
     create_sales_order_items(sales_order, cart.items.all())
-    # Törölni a kosár tartalmát és a kosár árait
+
     cart.delete()
 
 def create_sales_order_items(sales_order, cart_items):

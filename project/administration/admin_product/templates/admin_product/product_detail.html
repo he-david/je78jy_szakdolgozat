@@ -1,11 +1,14 @@
 {% extends 'administration/base.html' %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Termék{% endblock head_title %}
+{% block head_title %}{{ product.name }} módosítás{% endblock head_title %}
 
 {% block content %}
 
 <div class="container my-5 text-white">
+    <div class="text-center">
+        <h2>{{ product.name }} módosítás</h2>
+    </div>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row hd-shadow p-3">
@@ -28,7 +31,7 @@
                 {{ form.description|as_crispy_field }}
             <div class="text-center mt-3">
                 {% if product.has_no_open_document %}
-                <button type="submit" class="btn btn-primary me-2">Mentés</button>
+                    <button type="submit" class="btn btn-primary me-2">Mentés</button>
                 {% endif %}
                 <a href="{% url 'admin_core:admin_product:product-list' %}" class="btn btn-primary">Mégsem</a>
             </div>

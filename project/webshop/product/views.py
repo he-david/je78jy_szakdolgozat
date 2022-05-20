@@ -1,7 +1,6 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, reverse
 from django.views import generic
-from django.db.models import Count
 
 from webshop.cart.utils import get_or_set_cart
 from .forms import AddToCartForm
@@ -12,36 +11,48 @@ import math
 
 class ProductListView(generic.ListView):
     template_name = 'product/product_list.html'
-    context_object_name = 'products'
+    paginate_by = 18
+    ORDER_LIST = ['name', 'net_price', '-name', '-net_price']
 
     def get_queryset(self):
-        qs = Product.objects.filter()
+        order_attr = self.request.GET.get('order_by', 'name')
 
+        if order_attr and order_attr in self.ORDER_LIST:
+            qs = Product.objects.filter(free_stock__gt=0, category_id__isnull=False).order_by(order_attr)
+        else:
+            qs = Product.objects.filter(free_stock__gt=0, category_id__isnull=False)
         try:
             category_id = self.request.GET.get('category', None)
 
             if category_id != None:
                 category_id = (int)(category_id)
         except:
-            raise Http404("Invalid category")
-
+            raise Http404("Helytelen kategória.")
         if category_id:
             qs = qs.filter(category_id__in=get_all_children(category_id, True))
         return qs
 
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
-
         try:
             category_id = self.request.GET.get('category', None)
 
             if category_id != None:
                 category_id = (int)(category_id)
         except:
-            raise Http404("Invalid category")
+            raise Http404("Helytelen kategória.")
+        order_attr = self.request.GET.get('order_by', None)
 
+        if order_attr and order_attr in self.ORDER_LIST:
+            context['order_by'] = order_attr
+
+            if order_attr[0] == '-':
+                context['last_order_type'] = 'desc'
+            else:
+                context['last_order_type'] = 'asc'
         if category_id:
             context['categories'] = Category.objects.filter(parent_id=category_id).values()
+            context['curr_category'] = category_id
         else:
             context['categories'] = Category.objects.filter(parent_id=None).values()
         return context
@@ -69,7 +80,7 @@ class ProductDetailView(generic.FormView):
         context['product'] = self.get_object()
         return context
 
-    def form_valid(self, form): # TODO Lehet, vizsgálni kellene, hogy van-e elég
+    def form_valid(self, form):
         cart = get_or_set_cart(self.request)
         product = self.get_object()
 
@@ -109,7 +120,7 @@ class ActionProductListView(generic.ListView):
     context_object_name = 'products'
 
     def get_queryset(self):
-        return Product.objects.all()
+        return Product.objects.filter(free_stock__gt=0, category_id__isnull=False)
 
     def get_context_data(self, **kwargs):
         context = super(ActionProductListView, self).get_context_data(**kwargs)

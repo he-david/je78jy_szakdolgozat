@@ -1,12 +1,15 @@
 {% extends 'administration/base.html' %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Bevételezés{% endblock %}
+{% block head_title %}Bevételezés módosítás{% endblock %}
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="p-3 text-white hd-shadow">
+<div class="container my-5 text-white">
+    <div class="text-center">
+        <h2>Bevételezés módosítás</h2>
+    </div>
+    <div class="p-3 hd-shadow">
         <form method="POST">
             {% csrf_token %}
             <div class="row">
@@ -20,8 +23,8 @@
                 </div>
             </div>
             {% if receipt.is_in_progress %}
-            <button class="btn btn-primary me-2" name="final">Véglegesítés</button>
-            <button class="btn btn-primary me-2">Mentés</button>
+                <button class="btn btn-primary me-2" name="final">Véglegesítés</button>
+                <button class="btn btn-primary me-2">Mentés</button>
             {% endif %}
             <a href="{% url 'admin_core:admin_product_receipt:product-receipt-list' %}"
                 class="btn btn-primary">Vissza</a>
@@ -29,14 +32,13 @@
     </div>
     <div class="p-3 text-white hd-shadow">
         {% if receipt.is_in_progress %}
-        <a href="{% url 'admin_core:admin_product_receipt:product-receipt-item-create' receipt.id %}" class="btn btn-primary btn-sm mb-2">Új
-            tétel</a>
+            <a href="{% url 'admin_core:admin_product_receipt:product-receipt-item-create' receipt.id %}" class="btn btn-primary btn-sm mb-2">Új Tétel</a>
         {% endif %}
         <table class="table table-dark table-hover">
             <thead>
                 <tr>
                     {% if receipt.is_in_progress %}
-                    <th scope="col"></th>
+                        <th scope="col"></th>
                     {% endif %}
                     <th scope="col">Név</th>
                     <th scope="col">Mennyiség</th>
@@ -44,21 +46,21 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                <tr>
-                    {% if receipt.is_in_progress %}
-                    <td>
-                        <a href="{% url 'admin_core:admin_product_receipt:product-receipt-item-delete' item.id %}">
-                            <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                            </svg>
-                        </a>
-                    </td>
-                    {% endif %}
-                    <td>{{ item.original_name }}</td>
-                    <td>{{ item.quantity }} db</td>
-                </tr>
+                    <tr>
+                        {% if receipt.is_in_progress %}
+                            <td>
+                                <a href="{% url 'admin_core:admin_product_receipt:product-receipt-item-delete' item.id %}">
+                                    <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                    </svg>
+                                </a>
+                            </td>
+                        {% endif %}
+                        <td>{{ item.original_name }}</td>
+                        <td>{{ item.quantity }} db</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>

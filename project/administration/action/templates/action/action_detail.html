@@ -1,11 +1,14 @@
 {% extends 'administration/base.html' %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Akció{% endblock head_title %}
+{% block head_title %}{{ action.name }} módosítás{% endblock head_title %}
 
 {% block content %}
 
 <div class="container my-5 text-white">
+    <div class="text-center">
+        <h2>{{ action.name }} módosítás</h2>
+    </div>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row hd-shadow p-3">

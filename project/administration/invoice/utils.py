@@ -1,14 +1,13 @@
 from datetime import datetime
 
 from administration.sales_order import utils as sales_order_utils
-from administration.delivery_note.models import DeliveryNote
 from .models import Invoice, InvoiceItem
 from administration.admin_product import utils as product_utils
 
 
 def create_invoice(sales_order):
     invoice = Invoice()
-    account_number_key = Invoice.objects.all().order_by('-account_number_key') # Ez azért jó, mert egyből van account number és nem fordulhat elő olyan, hogy létezik számla úgy, hogy még nincs account number key.
+    account_number_key = Invoice.objects.all().order_by('-account_number_key')
     
     if account_number_key:
         invoice.account_number_key = account_number_key[0].account_number_key + 1
@@ -24,10 +23,10 @@ def create_invoice(sales_order):
     invoice.conn_sales_order_id = sales_order
     invoice.original_customer_name = sales_order.original_customer_name
     invoice.customer_id = sales_order.customer_id
-    invoice.billing_zip_code = sales_order.zip_code
-    invoice.billing_city = sales_order.city
-    invoice.billing_street_name = sales_order.street_name
-    invoice.billing_house_number = sales_order.house_number
+    invoice.zip_code = sales_order.zip_code
+    invoice.city = sales_order.city
+    invoice.street_name = sales_order.street_name
+    invoice.house_number = sales_order.house_number
     invoice.save()
 
     sales_order_utils.set_sales_order_status(sales_order)

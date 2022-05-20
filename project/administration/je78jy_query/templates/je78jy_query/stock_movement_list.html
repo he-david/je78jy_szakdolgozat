@@ -1,0 +1,74 @@
+{% extends 'administration/base.html' %}
+
+{% block head_title %}Készletmozgások{% endblock head_title %}
+
+{% block content %}
+
+<div class="container py-5 text-white">
+    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+          </svg>
+    </button>
+      
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg text-black">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Készletmozgások leírás</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black">
+                Ebben a modulban minden rendszerben szereplő termékhez megjelenítésre kerül, hogy története során milyen mennyiségben lett belőle bevételezve illetve eladva.
+                Az oldal alján megtekinthető, hogy összesen mennyi termék lett bevételezve és eladva.
+                A megjelenített tételek mennyiségeinek összege nem feltétlenül egyezik meg az oldal alján szereplő értékekkel.
+                Ennek oka, hogy az összes eladott és bevételezett termék mennyiségében szerepelhetnek olyan eladott termékek is, amelyek már törölve lettek a rendszerből.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+	<div class="text-center">
+		<h1>Készletmozgások</h1>
+	</div>
+	<table class="table table-dark table-hover mt-5">
+		<thead>
+			<tr>
+				{% if last_order_type and last_order_type == 'desc' %}
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=name">Név</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=category_id">Kategória</a></th>
+                {% else %}
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-name">Név</a></th>
+                    <th scope="col"><a class="text-white text-decoration-none" href="?order_by=-category_id">Kategória</a></th>
+                {% endif %}
+                <th scope="col">Bevételezett mennyiség</th>
+                <th scope="col">Eladott mennyiség</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in page_obj %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    {% if item.category_id %}
+                        <td>{{ item.category_id }}</td>
+                    {% else %}
+                        <td>-</td>
+                    {% endif %}
+                    <td>{{ item.get_positive_stock_movement_sum }} db</td>
+                    <td>{{ item.get_negative_stock_movement_sum }} db</td>
+                </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    {% include 'administration/paginate.html' %}
+    <hr>
+	<div class="mt-5">
+        <p class="h5">Összes bevételezett termék: {{ pos_stock }} db</p>
+        <p class="h5">Összes eladott termék: {{ neg_stock }} db</p>
+    </div> 
+</div>
+
+{% endblock content %}

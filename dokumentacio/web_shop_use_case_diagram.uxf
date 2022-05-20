@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>413</x>
-      <y>1498</y>
-      <w>84</w>
-      <h>84</h>
+      <x>980</x>
+      <y>1960</y>
+      <w>120</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Bejelentkezetlen
 Vásárló</panel_attributes>
@@ -16,10 +16,10 @@ Vásárló</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>567</x>
-      <y>1757</y>
-      <w>168</w>
-      <h>35</h>
+      <x>1200</x>
+      <y>2330</y>
+      <w>240</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kategóriák menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -28,10 +28,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>553</x>
-      <y>1701</y>
-      <w>189</w>
-      <h>35</h>
+      <x>1180</x>
+      <y>2250</y>
+      <w>270</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Akciós termékek menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -40,10 +40,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>182</x>
-      <y>1519</y>
-      <w>147</w>
-      <h>35</h>
+      <x>700</x>
+      <y>1990</y>
+      <w>210</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>GYIK menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -52,22 +52,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>567</x>
-      <y>1351</y>
-      <w>154</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kosár menüpont kiválasztása
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>168</x>
-      <y>1589</y>
-      <w>182</w>
-      <h>35</h>
+      <x>680</x>
+      <y>2090</y>
+      <w>260</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Bejelentkezés menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -76,10 +64,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>574</x>
-      <y>1645</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1210</x>
+      <y>2170</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Főkategória kiválasztása
 bg=light_gray</panel_attributes>
@@ -88,10 +76,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>574</x>
-      <y>1589</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1210</x>
+      <y>2090</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Alkategória kiválasztása
 bg=light_gray</panel_attributes>
@@ -100,22 +88,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>819</x>
-      <y>1554</y>
-      <w>140</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Termékekre szűrés
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>826</x>
-      <y>1610</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1470</x>
+      <y>2090</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Termékek rendezése
 bg=light_gray</panel_attributes>
@@ -124,197 +100,67 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>203</x>
-      <y>1463</y>
-      <w>105</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kérdésre szűrés
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>210</x>
-      <y>1645</y>
-      <w>91</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Elfelejtett jelszó
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>210</x>
-      <y>1701</y>
-      <w>91</w>
-      <h>35</h>
+      <x>740</x>
+      <y>2160</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Regisztráció
 bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>588</x>
-      <y>1295</y>
-      <w>112</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Törlés a kosárból
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>581</x>
-      <y>1239</y>
-      <w>119</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Termék módosítása
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>175</x>
-      <y>1351</y>
-      <w>154</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Rendelés véglegesítése
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>175</x>
-      <y>1295</y>
-      <w>154</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Adatok megadása
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>322</x>
-      <y>1519</y>
-      <w>126</w>
-      <h>28</h>
+      <x>900</x>
+      <y>1990</y>
+      <w>130</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>301</x>
-      <y>1470</y>
-      <w>147</w>
-      <h>77</h>
+      <x>930</x>
+      <y>2020</y>
+      <w>130</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;120.0;10.0;120.0;90.0;190.0;90.0</additional_attributes>
+    <additional_attributes>10.0;90.0;110.0;90.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>245</x>
-      <y>1491</y>
-      <w>70</w>
-      <h>42</h>
+      <x>860</x>
+      <y>2020</y>
+      <w>200</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;160.0;90.0;160.0;90.0;90.0;180.0;90.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>2100</y>
+      <w>120</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>343</x>
-      <y>1540</y>
-      <w>126</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;90.0;160.0;90.0;160.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>294</x>
-      <y>1540</y>
-      <w>175</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;170.0;140.0;170.0;140.0;90.0;230.0;90.0;230.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>294</x>
-      <y>1540</y>
-      <w>175</w>
-      <h>189</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;250.0;140.0;250.0;140.0;90.0;230.0;90.0;230.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>140</x>
-      <y>1596</y>
-      <w>84</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>100.0;90.0;10.0;90.0;10.0;10.0;40.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>140</x>
-      <y>1652</y>
-      <w>84</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>1673</y>
-      <w>70</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>100.0;80.0;10.0;80.0;10.0;10.0;40.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>210</x>
-      <y>1757</y>
-      <w>91</w>
-      <h>35</h>
+      <x>740</x>
+      <y>2240</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Bejelentkezés
 bg=light_gray</panel_attributes>
@@ -323,10 +169,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>245</x>
-      <y>1729</y>
-      <w>70</w>
-      <h>42</h>
+      <x>790</x>
+      <y>2200</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -335,10 +181,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>1708</y>
-      <w>84</w>
-      <h>77</h>
+      <x>640</x>
+      <y>2170</y>
+      <w>120</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -347,21 +193,21 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
-      <y>1540</y>
-      <w>175</w>
-      <h>245</h>
+      <x>860</x>
+      <y>2020</y>
+      <w>200</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;330.0;140.0;330.0;140.0;90.0;230.0;90.0;230.0;10.0</additional_attributes>
+    <additional_attributes>10.0;240.0;90.0;240.0;90.0;90.0;180.0;90.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>1540</y>
-      <w>140</w>
-      <h>77</h>
+      <x>1030</x>
+      <y>2020</y>
+      <w>200</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;90.0;180.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -369,10 +215,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>1540</y>
-      <w>119</w>
-      <h>189</h>
+      <x>1030</x>
+      <y>2020</y>
+      <w>170</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>150.0;250.0;100.0;250.0;100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -380,10 +226,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>1540</y>
-      <w>140</w>
-      <h>133</h>
+      <x>1030</x>
+      <y>2020</y>
+      <w>200</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>180.0;170.0;100.0;170.0;100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -391,10 +237,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>1540</y>
-      <w>133</w>
-      <h>245</h>
+      <x>1030</x>
+      <y>2020</y>
+      <w>190</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>170.0;330.0;100.0;330.0;100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -402,10 +248,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>707</x>
-      <y>1652</y>
-      <w>126</w>
-      <h>133</h>
+      <x>1400</x>
+      <y>2180</y>
+      <w>180</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -414,22 +260,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>707</x>
-      <y>1652</y>
-      <w>126</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0;90.0;90.0;50.0;90.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>637</x>
-      <y>1617</y>
-      <w>70</w>
-      <h>42</h>
+      <x>1300</x>
+      <y>2130</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -438,58 +272,33 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>707</x>
-      <y>1561</y>
-      <w>126</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;
-
-</panel_attributes>
-    <additional_attributes>160.0;10.0;90.0;10.0;90.0;60.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>707</x>
-      <y>1596</y>
-      <w>133</w>
-      <h>42</h>
+      <x>1400</x>
+      <y>2090</y>
+      <w>90</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;40.0;90.0;40.0;90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>1540</y>
-      <w>455</w>
-      <h>77</h>
+      <x>1030</x>
+      <y>2010</y>
+      <w>550</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;90.0;100.0;90.0;100.0;10.0;630.0;10.0;630.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>448</x>
-      <y>1533</y>
-      <w>455</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;10.0;100.0;100.0;100.0;100.0;20.0;410.0;20.0;410.0;170.0;630.0;170.0;630.0;160.0</additional_attributes>
+    <additional_attributes>10.0;20.0;10.0;100.0;100.0;100.0;100.0;20.0;410.0;20.0;410.0;170.0;530.0;170.0;530.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>896</x>
-      <y>1708</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1510</x>
+      <y>1950</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Ár szerint</panel_attributes>
     <additional_attributes/>
@@ -497,22 +306,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>896</x>
-      <y>1666</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Gyártó szerint
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>896</x>
-      <y>1750</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1510</x>
+      <y>2010</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Név szerint</panel_attributes>
     <additional_attributes/>
@@ -520,46 +317,22 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>1631</y>
-      <w>70</w>
-      <h>63</h>
+      <x>1460</x>
+      <y>1950</y>
+      <w>80</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>840</x>
-      <y>1673</y>
-      <w>70</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>840</x>
-      <y>1715</y>
-      <w>70</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>50.0;20.0;20.0;20.0;20.0;160.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1008</x>
-      <y>1666</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1670</x>
+      <y>1890</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Növekvő</panel_attributes>
     <additional_attributes/>
@@ -567,10 +340,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1008</x>
-      <y>1750</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1670</x>
+      <y>2010</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Csökkenő</panel_attributes>
     <additional_attributes/>
@@ -578,22 +351,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>1666</y>
-      <w>56</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>966</x>
-      <y>1694</y>
-      <w>133</w>
-      <h>42</h>
+      <x>1610</x>
+      <y>1930</y>
+      <w>190</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -602,10 +363,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>1715</y>
-      <w>133</w>
-      <h>49</h>
+      <x>1610</x>
+      <y>1960</y>
+      <w>190</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -614,10 +375,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>1750</y>
-      <w>56</w>
-      <h>28</h>
+      <x>1610</x>
+      <y>2010</y>
+      <w>80</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -626,22 +387,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>1652</y>
-      <w>224</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;160.0;240.0;160.0;240.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>966</x>
-      <y>1673</y>
-      <w>189</w>
-      <h>133</h>
+      <x>1610</x>
+      <y>1900</y>
+      <w>270</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -650,79 +399,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1008</x>
-      <y>1554</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Név szerint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>1008</x>
-      <y>1596</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Gyártó szerint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>1008</x>
-      <y>1512</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Ár szerint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>952</x>
-      <y>1519</y>
-      <w>91</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;50.0;10.0;50.0;70.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>952</x>
-      <y>1554</y>
-      <w>70</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>952</x>
-      <y>1561</y>
-      <w>91</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;50.0;70.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>574</x>
-      <y>1463</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1210</x>
+      <y>1910</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Termék kiválasztása
 bg=light_gray</panel_attributes>
@@ -731,10 +411,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>637</x>
-      <y>1491</y>
-      <w>70</w>
-      <h>112</h>
+      <x>1300</x>
+      <y>1950</y>
+      <w>100</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;
@@ -750,494 +430,21 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>1470</y>
-      <w>140</w>
-      <h>42</h>
+      <x>1030</x>
+      <y>1920</y>
+      <w>200</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;40.0;10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>819</x>
-      <y>1463</y>
-      <w>140</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Mennyiség megadása
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>574</x>
-      <y>1407</y>
-      <w>140</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kosárba helyezés
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>448</x>
-      <y>1470</y>
-      <w>448</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;100.0;10.0;100.0;60.0;620.0;60.0;620.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>707</x>
-      <y>1463</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>637</x>
-      <y>1435</y>
-      <w>70</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>448</x>
-      <y>1351</y>
-      <w>133</w>
-      <h>161</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>170.0;20.0;10.0;20.0;10.0;210.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>448</x>
-      <y>1414</y>
-      <w>140</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;120.0;10.0;90.0;100.0;90.0;100.0;10.0;180.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>1008</x>
-      <y>1421</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kiszerelés</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>1008</x>
-      <y>1463</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Mennyiség</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>952</x>
-      <y>1463</y>
-      <w>70</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>973</x>
-      <y>1421</y>
-      <w>56</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>50.0;20.0;20.0;20.0;20.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>637</x>
-      <y>1323</y>
-      <w>70</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>693</x>
-      <y>1246</y>
-      <w>217</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;220.0;10.0;220.0;170.0;40.0;170.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>532</x>
-      <y>1295</y>
-      <w>126</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;
-
-
-
-
-
-
-
-
-</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0;10.0;140.0;160.0;140.0;160.0;160.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>532</x>
-      <y>1239</y>
-      <w>63</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>70.0;20.0;10.0;20.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>553</x>
-      <y>1176</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kiszerelés</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>651</x>
-      <y>1176</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Mennyiség</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>581</x>
-      <y>1204</y>
-      <w>70</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;80.0;30.0;80.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>630</x>
-      <y>1204</y>
-      <w>70</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;80.0;30.0;10.0;30.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>749</x>
-      <y>1267</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Termék törlés
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>749</x>
-      <y>1323</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kosár törlés</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>693</x>
-      <y>1302</y>
-      <w>84</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;50.0;40.0;50.0;40.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>693</x>
-      <y>1274</y>
-      <w>84</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;40.0;10.0;40.0;50.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>511</x>
-      <y>1274</y>
-      <w>140</w>
-      <h>105</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>180.0;30.0;180.0;20.0;10.0;20.0;10.0;130.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>511</x>
-      <y>1267</y>
-      <w>140</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>180.0;10.0;180.0;20.0;10.0;20.0;10.0;140.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>1379</y>
-      <w>413</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;570.0;30.0;570.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>1323</y>
-      <w>413</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;20.0;570.0;20.0;570.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>322</x>
-      <y>1351</y>
-      <w>147</w>
-      <h>161</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;190.0;20.0;190.0;210.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>322</x>
-      <y>1302</y>
-      <w>147</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;90.0;10.0;90.0;90.0;190.0;90.0;190.0;280.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>154</x>
-      <y>1302</y>
-      <w>63</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;invokes&gt;&gt;</panel_attributes>
-    <additional_attributes>30.0;10.0;10.0;10.0;10.0;90.0;30.0;90.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>133</x>
-      <y>1197</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Település</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>133</x>
-      <y>1239</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Irányítószám</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>301</x>
-      <y>1239</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Név</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>301</x>
-      <y>1197</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>E-mail</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>133</x>
-      <y>1155</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Cím</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>1239</y>
-      <w>70</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0;10.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>1197</y>
-      <w>70</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0;10.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>203</x>
-      <y>1239</y>
-      <w>63</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;70.0;20.0;70.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>203</x>
-      <y>1197</y>
-      <w>63</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;70.0;20.0;70.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>203</x>
-      <y>1155</y>
-      <w>63</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;70.0;20.0;70.0;80.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>217</x>
-      <y>1820</y>
-      <w>70</w>
-      <h>84</h>
+      <x>750</x>
+      <y>2320</y>
+      <w>100</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Bejelentkezett
 Vásárló</panel_attributes>
@@ -1246,22 +453,22 @@ Vásárló</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>245</x>
-      <y>1785</y>
-      <w>63</w>
-      <h>49</h>
+      <x>790</x>
+      <y>2280</y>
+      <w>90</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;invokes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>322</x>
-      <y>1827</y>
-      <w>105</w>
-      <h>35</h>
+      <x>900</x>
+      <y>2330</y>
+      <w>150</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>...
 bg=yellow</panel_attributes>
@@ -1270,10 +477,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>259</x>
-      <y>1827</y>
-      <w>77</w>
-      <h>28</h>
+      <x>810</x>
+      <y>2330</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
@@ -1281,10 +488,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>343</x>
-      <y>350</y>
-      <w>70</w>
-      <h>84</h>
+      <x>880</x>
+      <y>320</y>
+      <w>100</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Bejelentkezett
 Vásárló</panel_attributes>
@@ -1293,10 +500,10 @@ Vásárló</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>490</x>
-      <y>609</y>
-      <w>168</w>
-      <h>35</h>
+      <x>1090</x>
+      <y>690</y>
+      <w>240</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kategóriák menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -1305,10 +512,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>476</x>
-      <y>553</y>
-      <w>189</w>
-      <h>35</h>
+      <x>1070</x>
+      <y>610</y>
+      <w>270</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Akciós termékek menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -1317,10 +524,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>105</x>
-      <y>371</y>
-      <w>147</w>
-      <h>35</h>
+      <x>610</x>
+      <y>350</y>
+      <w>210</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>GYIK menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -1329,10 +536,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>490</x>
-      <y>203</y>
-      <w>154</w>
-      <h>35</h>
+      <x>1090</x>
+      <y>110</y>
+      <w>220</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kosár menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -1341,10 +548,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>91</x>
-      <y>441</y>
-      <w>182</w>
-      <h>35</h>
+      <x>590</x>
+      <y>450</y>
+      <w>260</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kijelentkezés menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -1353,10 +560,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>497</x>
-      <y>497</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1100</x>
+      <y>530</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Főkategória kiválasztása
 bg=light_gray</panel_attributes>
@@ -1365,10 +572,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>497</x>
-      <y>441</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1100</x>
+      <y>450</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Alkategória kiválasztása
 bg=light_gray</panel_attributes>
@@ -1377,22 +584,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>742</x>
-      <y>406</y>
-      <w>140</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Termékekre szűrés
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>749</x>
-      <y>462</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1460</x>
+      <y>630</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Termékek rendezése
 bg=light_gray</panel_attributes>
@@ -1401,22 +596,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>126</x>
-      <y>315</y>
-      <w>105</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kérdésre szűrés
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>511</x>
-      <y>147</y>
-      <w>112</w>
-      <h>35</h>
+      <x>1120</x>
+      <y>30</y>
+      <w>160</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Törlés a kosárból
 bg=light_gray</panel_attributes>
@@ -1425,22 +608,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>476</x>
-      <y>91</y>
-      <w>189</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Termék darabszámának módosítása
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>98</x>
-      <y>203</y>
-      <w>154</w>
-      <h>35</h>
+      <x>610</x>
+      <y>110</y>
+      <w>220</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Rendelés véglegesítése
 bg=light_gray</panel_attributes>
@@ -1449,55 +620,32 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>245</x>
-      <y>371</y>
-      <w>126</w>
-      <h>28</h>
+      <x>810</x>
+      <y>350</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>322</y>
-      <w>147</w>
-      <h>77</h>
+      <x>840</x>
+      <y>380</y>
+      <w>110</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;120.0;10.0;120.0;90.0;190.0;90.0</additional_attributes>
+    <additional_attributes>10.0;90.0;90.0;90.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>343</y>
-      <w>70</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>266</x>
-      <y>392</y>
-      <w>126</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;90.0;160.0;90.0;160.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>140</w>
-      <h>77</h>
+      <x>920</x>
+      <y>380</y>
+      <w>200</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;90.0;180.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -1505,10 +653,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>119</w>
-      <h>189</h>
+      <x>920</x>
+      <y>380</y>
+      <w>170</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>150.0;250.0;100.0;250.0;100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -1516,10 +664,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>140</w>
-      <h>133</h>
+      <x>920</x>
+      <y>380</y>
+      <w>200</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>180.0;170.0;100.0;170.0;100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -1527,10 +675,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>133</w>
-      <h>245</h>
+      <x>920</x>
+      <y>380</y>
+      <w>190</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>170.0;330.0;100.0;330.0;100.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
@@ -1538,10 +686,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>504</y>
-      <w>126</w>
-      <h>133</h>
+      <x>1290</x>
+      <y>540</y>
+      <w>180</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -1550,22 +698,22 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>504</y>
-      <w>126</w>
-      <h>77</h>
+      <x>1190</x>
+      <y>310</y>
+      <w>210</w>
+      <h>340</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0;90.0;90.0;50.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;190.0;50.0;190.0;320.0;150.0;320.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>469</y>
-      <w>70</w>
-      <h>42</h>
+      <x>1190</x>
+      <y>490</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -1574,58 +722,33 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>413</y>
-      <w>126</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;
-
-</panel_attributes>
-    <additional_attributes>160.0;10.0;90.0;10.0;90.0;60.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>630</x>
-      <y>448</y>
-      <w>133</w>
-      <h>42</h>
+      <x>1290</x>
+      <y>460</y>
+      <w>260</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;40.0;90.0;40.0;90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>170.0;190.0;170.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>455</w>
-      <h>77</h>
+      <x>920</x>
+      <y>380</y>
+      <w>650</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;90.0;100.0;90.0;100.0;10.0;630.0;10.0;630.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>371</x>
-      <y>385</y>
-      <w>455</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;10.0;100.0;100.0;100.0;100.0;20.0;410.0;20.0;410.0;170.0;630.0;170.0;630.0;160.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;100.0;90.0;100.0;10.0;630.0;10.0;630.0;250.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>819</x>
-      <y>560</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1560</x>
+      <y>720</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Ár szerint</panel_attributes>
     <additional_attributes/>
@@ -1633,22 +756,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>819</x>
-      <y>518</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Gyártó szerint
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>819</x>
-      <y>602</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1560</x>
+      <y>780</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Név szerint</panel_attributes>
     <additional_attributes/>
@@ -1656,46 +767,34 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
-      <y>483</y>
-      <w>70</w>
-      <h>63</h>
+      <x>1480</x>
+      <y>660</y>
+      <w>100</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
-      <y>525</y>
-      <w>70</w>
-      <h>63</h>
+      <x>1480</x>
+      <y>720</y>
+      <w>100</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>763</x>
-      <y>567</y>
-      <w>70</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>931</x>
-      <y>518</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1720</x>
+      <y>660</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Növekvő</panel_attributes>
     <additional_attributes/>
@@ -1703,10 +802,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>931</x>
-      <y>602</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1720</x>
+      <y>780</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Csökkenő</panel_attributes>
     <additional_attributes/>
@@ -1714,22 +813,22 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>889</x>
-      <y>518</y>
-      <w>56</w>
-      <h>28</h>
+      <x>1660</x>
+      <y>670</y>
+      <w>290</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>170.0;10.0;210.0;10.0;210.0;170.0;10.0;170.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>889</x>
-      <y>546</y>
-      <w>133</w>
-      <h>42</h>
+      <x>1660</x>
+      <y>700</y>
+      <w>190</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -1738,10 +837,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>889</x>
-      <y>567</y>
-      <w>133</w>
-      <h>49</h>
+      <x>1660</x>
+      <y>730</y>
+      <w>190</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -1750,115 +849,22 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>889</x>
-      <y>602</y>
-      <w>56</w>
-      <h>28</h>
+      <x>1660</x>
+      <y>780</y>
+      <w>80</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
     <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>889</x>
-      <y>504</y>
-      <w>224</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;160.0;240.0;160.0;240.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>889</x>
-      <y>525</y>
-      <w>189</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;10.0;190.0;10.0;190.0;170.0;10.0;170.0;10.0;130.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>931</x>
-      <y>406</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Név szerint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>931</x>
-      <y>448</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Gyártó szerint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>931</x>
-      <y>364</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Ár szerint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>875</x>
-      <y>371</y>
-      <w>91</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;50.0;10.0;50.0;70.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>875</x>
-      <y>406</y>
-      <w>70</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>875</x>
-      <y>413</y>
-      <w>91</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;70.0;50.0;70.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>497</x>
-      <y>315</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1100</x>
+      <y>270</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Termék kiválasztása
 bg=light_gray</panel_attributes>
@@ -1867,10 +873,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>343</y>
-      <w>70</w>
-      <h>112</h>
+      <x>1190</x>
+      <y>310</y>
+      <w>100</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;
@@ -1886,10 +892,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>322</y>
-      <w>140</w>
-      <h>42</h>
+      <x>920</x>
+      <y>280</y>
+      <w>200</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;40.0;10.0;10.0;180.0;10.0</additional_attributes>
@@ -1897,10 +903,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>742</x>
-      <y>315</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1450</x>
+      <y>270</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Mennyiség megadása
 bg=light_gray</panel_attributes>
@@ -1909,10 +915,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>497</x>
-      <y>259</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1100</x>
+      <y>190</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kosárba helyezés
 bg=light_gray</panel_attributes>
@@ -1921,10 +927,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>322</y>
-      <w>448</w>
-      <h>56</h>
+      <x>920</x>
+      <y>280</y>
+      <w>640</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;100.0;10.0;100.0;60.0;620.0;60.0;620.0;40.0</additional_attributes>
@@ -1932,10 +938,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>315</y>
-      <w>126</w>
-      <h>28</h>
+      <x>1290</x>
+      <y>270</y>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -1944,10 +950,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>287</y>
-      <w>70</w>
-      <h>42</h>
+      <x>1190</x>
+      <y>230</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -1956,10 +962,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>203</y>
-      <w>133</w>
-      <h>161</h>
+      <x>920</x>
+      <y>110</y>
+      <w>190</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>170.0;20.0;10.0;20.0;10.0;210.0</additional_attributes>
@@ -1967,10 +973,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>266</y>
-      <w>140</w>
-      <h>98</h>
+      <x>920</x>
+      <y>200</y>
+      <w>200</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;120.0;10.0;90.0;100.0;90.0;100.0;10.0;180.0;10.0</additional_attributes>
@@ -1978,10 +984,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>931</x>
-      <y>273</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1720</x>
+      <y>210</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kiszerelés</panel_attributes>
     <additional_attributes/>
@@ -1989,10 +995,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>931</x>
-      <y>315</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1720</x>
+      <y>270</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Mennyiség</panel_attributes>
     <additional_attributes/>
@@ -2000,10 +1006,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>875</x>
-      <y>315</y>
-      <w>70</w>
-      <h>35</h>
+      <x>1640</x>
+      <y>270</y>
+      <w>100</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 
@@ -2013,10 +1019,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>273</y>
-      <w>56</w>
-      <h>70</h>
+      <x>1670</x>
+      <y>210</y>
+      <w>80</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -2025,10 +1031,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>175</y>
-      <w>70</w>
-      <h>42</h>
+      <x>1190</x>
+      <y>70</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -2037,22 +1043,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>637</x>
-      <y>98</y>
-      <w>196</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>40.0;10.0;190.0;10.0;190.0;170.0;10.0;170.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>455</x>
-      <y>147</y>
-      <w>126</w>
-      <h>126</h>
+      <x>1040</x>
+      <y>30</y>
+      <w>180</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;
@@ -2070,115 +1064,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
-      <y>91</y>
-      <w>63</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>50.0;20.0;30.0;20.0;30.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>476</x>
-      <y>28</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kiszerelés</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>574</x>
-      <y>28</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Mennyiség</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>504</x>
-      <y>56</y>
-      <w>70</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;80.0;30.0;80.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>553</x>
-      <y>56</y>
-      <w>70</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;80.0;30.0;10.0;30.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>672</x>
-      <y>119</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Termék törlés
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>672</x>
-      <y>175</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Kosár törlés</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>616</x>
-      <y>154</y>
-      <w>84</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;50.0;40.0;50.0;40.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>616</x>
-      <y>126</y>
-      <w>84</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;40.0;10.0;40.0;50.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>434</x>
-      <y>126</y>
-      <w>140</w>
-      <h>105</h>
+      <x>1010</x>
+      <y>0</y>
+      <w>200</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>180.0;30.0;180.0;20.0;10.0;20.0;10.0;130.0</additional_attributes>
@@ -2186,56 +1075,45 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>119</y>
-      <w>140</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>180.0;10.0;180.0;20.0;10.0;20.0;10.0;140.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>168</x>
-      <y>231</y>
-      <w>413</w>
-      <h>42</h>
+      <x>710</x>
+      <y>150</y>
+      <w>510</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;570.0;30.0;570.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;490.0;30.0;490.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>175</y>
-      <w>413</w>
-      <h>42</h>
+      <x>710</x>
+      <y>70</y>
+      <w>510</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;20.0;570.0;20.0;570.0;40.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;20.0;490.0;20.0;490.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>245</x>
-      <y>203</y>
-      <w>147</w>
-      <h>161</h>
+      <x>820</x>
+      <y>110</y>
+      <w>130</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;190.0;20.0;190.0;210.0</additional_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0;110.0;210.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>140</x>
-      <y>497</y>
-      <w>77</w>
-      <h>35</h>
+      <x>660</x>
+      <y>530</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Kijelentkezés
 bg=light_gray</panel_attributes>
@@ -2244,57 +1122,21 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>392</y>
-      <w>182</w>
-      <h>133</h>
+      <x>760</x>
+      <y>380</y>
+      <w>190</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;170.0;240.0;170.0;240.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>406</x>
-      <y>1239</y>
-      <w>91</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Fizetés
-bg=light_gray</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>448</x>
-      <y>1267</y>
-      <w>21</w>
-      <h>245</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>1246</y>
-      <w>196</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-
-&lt;&lt;invokes&gt;&gt;</panel_attributes>
-    <additional_attributes>230.0;10.0;200.0;10.0;200.0;50.0;10.0;50.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;170.0;170.0;170.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>133</x>
-      <y>560</y>
-      <w>84</w>
-      <h>84</h>
+      <x>650</x>
+      <y>620</y>
+      <w>120</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Bejelentkezetlen
 Vásárló</panel_attributes>
@@ -2303,10 +1145,10 @@ Vásárló</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>525</y>
-      <w>63</w>
-      <h>49</h>
+      <x>700</x>
+      <y>570</y>
+      <w>90</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;invokes&gt;&gt;</panel_attributes>
@@ -2315,10 +1157,10 @@ Vásárló</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>252</x>
-      <y>567</y>
-      <w>105</w>
-      <h>35</h>
+      <x>770</x>
+      <y>630</y>
+      <w>150</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>...
 bg=yellow</panel_attributes>
@@ -2327,21 +1169,21 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>567</y>
-      <w>77</w>
-      <h>28</h>
+      <x>730</x>
+      <y>630</y>
+      <w>60</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>168</x>
-      <y>469</y>
-      <w>70</w>
-      <h>42</h>
+      <x>700</x>
+      <y>490</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -2350,10 +1192,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>133</x>
-      <y>147</y>
-      <w>91</w>
-      <h>35</h>
+      <x>660</x>
+      <y>30</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Fizetés
 bg=light_gray</panel_attributes>
@@ -2362,10 +1204,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>77</x>
-      <y>154</y>
-      <w>70</w>
-      <h>77</h>
+      <x>580</x>
+      <y>40</y>
+      <w>100</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;invokes&gt;&gt;</panel_attributes>
@@ -2374,10 +1216,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>476</x>
-      <y>679</y>
-      <w>196</w>
-      <h>35</h>
+      <x>1070</x>
+      <y>790</y>
+      <w>280</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Felhasználói fiók menüpont kiválasztása
 bg=light_gray</panel_attributes>
@@ -2386,10 +1228,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>119</w>
-      <h>315</h>
+      <x>920</x>
+      <y>380</y>
+      <w>170</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;430.0;150.0;430.0</additional_attributes>
@@ -2397,10 +1239,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>378</x>
-      <y>735</y>
-      <w>140</w>
-      <h>35</h>
+      <x>930</x>
+      <y>870</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Adatok módosítása
 bg=light_gray</panel_attributes>
@@ -2409,10 +1251,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>623</x>
-      <y>735</y>
-      <w>140</w>
-      <h>35</h>
+      <x>1280</x>
+      <y>870</y>
+      <w>200</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Rendelés nyomon követése
 bg=light_gray</panel_attributes>
@@ -2421,10 +1263,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>84</w>
-      <h>357</h>
+      <x>920</x>
+      <y>380</y>
+      <w>120</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;430.0;100.0;430.0;100.0;490.0</additional_attributes>
@@ -2432,10 +1274,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>392</y>
-      <w>336</w>
-      <h>357</h>
+      <x>920</x>
+      <y>380</y>
+      <w>480</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;430.0;100.0;430.0;100.0;470.0;460.0;470.0;460.0;490.0</additional_attributes>
@@ -2443,10 +1285,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>707</y>
-      <w>77</w>
-      <h>56</h>
+      <x>1110</x>
+      <y>830</y>
+      <w>110</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -2455,10 +1297,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>707</y>
-      <w>77</w>
-      <h>56</h>
+      <x>1190</x>
+      <y>830</y>
+      <w>110</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;precedes&gt;&gt;</panel_attributes>
@@ -2467,10 +1309,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>252</x>
-      <y>693</y>
-      <w>77</w>
-      <h>35</h>
+      <x>750</x>
+      <y>810</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Irányítószám</panel_attributes>
     <additional_attributes/>
@@ -2478,10 +1320,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>252</x>
-      <y>735</y>
-      <w>77</w>
-      <h>35</h>
+      <x>750</x>
+      <y>870</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Település</panel_attributes>
     <additional_attributes/>
@@ -2489,10 +1331,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>252</x>
-      <y>777</y>
-      <w>77</w>
-      <h>35</h>
+      <x>750</x>
+      <y>930</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Cím</panel_attributes>
     <additional_attributes/>
@@ -2500,10 +1342,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>322</x>
-      <y>700</y>
-      <w>84</w>
-      <h>63</h>
+      <x>850</x>
+      <y>820</y>
+      <w>120</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;
@@ -2515,10 +1357,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>322</x>
-      <y>742</y>
-      <w>84</w>
-      <h>63</h>
+      <x>850</x>
+      <y>880</y>
+      <w>120</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 
@@ -2530,10 +1372,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>322</x>
-      <y>735</y>
-      <w>70</w>
-      <h>35</h>
+      <x>850</x>
+      <y>870</y>
+      <w>100</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 
@@ -2543,10 +1385,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>812</x>
-      <y>735</y>
-      <w>77</w>
-      <h>35</h>
+      <x>1330</x>
+      <y>960</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Státusz</panel_attributes>
     <additional_attributes/>
@@ -2554,14 +1396,434 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>735</y>
-      <w>70</w>
-      <h>35</h>
+      <x>1370</x>
+      <y>910</y>
+      <w>90</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1580</x>
+      <y>340</y>
+      <w>230</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Kapcsolat menüpont kiválasztása
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1090</x>
+      <y>960</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Összeg</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1210</x>
+      <y>960</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Rendelés napja</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1450</x>
+      <y>960</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Bizonylatszám</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1250</x>
+      <y>920</y>
+      <w>150</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>920</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1370</x>
+      <y>920</y>
+      <w>210</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;40.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>350</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;40.0;10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1600</x>
+      <y>410</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Elérhetőségek megtekintése
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>410</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1680</x>
+      <y>380</y>
+      <w>100</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;precedes&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1640</x>
+      <y>480</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Üzenet küldése
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>480</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1750</x>
+      <y>350</y>
+      <w>180</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;precedes&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;150.0;90.0;150.0;90.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1560</x>
+      <y>570</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Név</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1680</x>
+      <y>570</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>E-mail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1800</x>
+      <y>570</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Üzenet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1690</x>
+      <y>520</y>
+      <w>70</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>50.0;50.0;50.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1730</x>
+      <y>540</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;30.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1610</x>
+      <y>540</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>700</x>
+      <y>1910</y>
+      <w>230</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Kapcsolat menüpont kiválasztása
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>720</x>
+      <y>1830</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Elérhetőségek megtekintése
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>1870</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;precedes&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>750</x>
+      <y>1760</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Üzenet küldése
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>1770</y>
+      <w>130</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;precedes&gt;&gt;</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0;10.0;160.0;60.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>630</x>
+      <y>1680</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Név</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>750</x>
+      <y>1680</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>E-mail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>870</x>
+      <y>1680</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Üzenet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1460</x>
+      <y>2010</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>50.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>1720</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>1720</y>
+      <w>160</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;140.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>1720</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>120.0;10.0;120.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>1830</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;130.0;20.0;130.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>1760</y>
+      <w>200</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;180.0;20.0;180.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>1910</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1390</x>
+      <y>1910</y>
+      <w>90</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;precedes&gt;&gt;</panel_attributes>
+    <additional_attributes>20.0;20.0;60.0;20.0;60.0;360.0</additional_attributes>
   </element>
 </diagram>

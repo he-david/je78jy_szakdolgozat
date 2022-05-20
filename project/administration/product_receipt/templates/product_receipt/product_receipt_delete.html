@@ -4,19 +4,17 @@
 
 {% block content %}
 
-<div class="container mt-5 text-white p-3 hd-shadow w-50 text-center">
+<div class="container my-5 text-white p-3 hd-shadow w-50 text-center">
     <form method="POST">
         {% csrf_token %}
-
         {% if receipt.document_number %}
-        <h2>Biztosan törölni szeretné a {{ receipt.document_number }} bizonylatszámú bevételezést?</h2>
+            <h2>Biztosan törölni szeretné a {{ receipt.document_number }} bizonylatszámú bevételezést?</h2>
         {% else %}
-        <h2>Biztosan törölni szeretné a #{{ receipt.id }} sorszámú bevételezést?</h2>
+            <h2>Biztosan törölni szeretné a #{{ receipt.id }} sorszámú bevételezést?</h2>
         {% endif %}
         {% if receipt.sum_quantity > 0 %}
-        <p>Bevételezésre felvett tételek össz mennyisége: {{ receipt.sum_quantity }} db</p>
+            <p>Bevételezésre felvett tételek össz mennyisége: {{ receipt.sum_quantity }} db</p>
         {% endif %}
-
         <input type="submit" value="Igen" class="btn btn-primary">
         <a href="{% url 'admin_core:admin_product_receipt:product-receipt-list' %}" class="btn btn-primary ms-2">Nem</a>
     </form>

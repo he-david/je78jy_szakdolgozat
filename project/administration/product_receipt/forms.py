@@ -5,10 +5,12 @@ from .models import ProductReceipt, ProductReceiptItem
 class ProductReceiptForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProductReceiptForm, self).__init__(*args, **kwargs)
+        
         self.fields['status'].widget.attrs['disabled'] = True
         self.fields['finalization_date'].widget.attrs['readonly'] = True
         self.fields['document_number'].widget.attrs['readonly'] = True
         self.fields['sum_quantity'].widget.attrs['readonly'] = True
+        self.fields['status'].required = False
 
     class Meta:
         model = ProductReceipt

@@ -7,30 +7,31 @@
 {% block head_title %}Termék részletek{% endblock %}
 
 <div class="site-section text-white">
-    <div class="container py-5">
+    <div class="container my-5">
         <div class="row mb-5">
             <div class="col-md-6 overflow-hidden">
-                <img class="card-img-top hd-image-trans img-fluid" alt="{{ product.name }}"
+                <img class="card-img-top hd-image-trans img-fluid" alt="{{ product.name }} képe"
                                                 src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/product_placeholder.png' %}{% endif %}">
             </div>
             <div class="col-md-6 mt-2 mt-md-0">
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.details }}</p>
                 <p>{{ product.description }}</p>
+                <p class="text-white">Gyártó: <span class="text-uppercase">{{ product.producer }}</span></p>
                 <p>Készlet: {{ product.free_stock }} db</p>
                 {% if request.user.is_authenticated %}
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="col-lg-6">
-                        {{ form|crispy }}
-                    </div>
-                    <div class="d-flex justify-content-between mt-2 col-lg-6">
-                        <h5>{{ product.get_view_gross_price }} Ft</h5>
-                        <button type="submit" class="btn btn-primary buy-now">Kosárba</button>
-                    </div>
-                </form>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="col-lg-6">
+                            {{ form|crispy }}
+                        </div>
+                        <div class="d-flex justify-content-between mt-2 col-lg-6">
+                            <h5>{{ product.get_view_gross_price }} Ft / db</h5>
+                            <button type="submit" class="btn btn-primary buy-now">Kosárba</button>
+                        </div>
+                    </form>
                 {% else %}
-                <p>Termék kosárba helyezéséhez <a class="text-decoration-none" href="{% url 'webshop_core:login' %}">jelentkezzen be</a>.</p>
+                    <p>Termék kosárba helyezéséhez <a class="text-decoration-none hd-text-lblue" href="{% url 'webshop_core:login' %}">jelentkezzen be</a>.</p>
                 {% endif %}
             </div>
         </div>

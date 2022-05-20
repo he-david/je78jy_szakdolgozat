@@ -14,5 +14,6 @@ urlpatterns = [
     path('product/', include('administration.admin_product.urls', namespace='admin_product')),
     path('action/', include('administration.action.urls', namespace='admin_action')),
     path('crm/', include('administration.crm.urls', namespace='crm')),
+    path('query/', include('administration.je78jy_query.urls', namespace='je78jy_query')),
     path('permission-denied/', views.PermissionDeniedView.as_view(), name='permission-denied'),
 ]

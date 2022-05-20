@@ -5,6 +5,7 @@ from webshop.core.models import FAQ, Contact, FAQTopic
 class ContactForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
+        
         self.fields['first_name'].widget.attrs['readonly'] = True
         self.fields['last_name'].widget.attrs['readonly'] = True
         self.fields['email'].widget.attrs['readonly'] = True

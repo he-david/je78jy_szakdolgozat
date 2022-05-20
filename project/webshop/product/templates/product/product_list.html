@@ -1,67 +1,161 @@
 {% extends 'webshop/base.html' %}
 {% load static %}
 
+{% block head_title %}Termékek{% endblock head_title %}
+
 {% block content %}
 
 <section>
-    <div class="container py-5">
+    <div class="container my-5">
         <div class="row justify-content-center">
             {% if categories %}
-            <div class="col-lg-2">
-                <div class="p-4 mb-4 hd-shadow" style="min-width:150px;">
-                    <h6 class="text-uppercase text-white">Kategóriák:</h6>
-                    <ul style="margin-left: -1rem;">
-                        {% for category in categories %}
-                        <li class="mb-1">
-                            <a href="?category={{ category.id }}" class="d-flex text-decoration-none text-white">
-                                <span class="border-bottom border-secondary">{{ category.name }}</span>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                <div class="col-lg-2">
+                    <div class="p-4 mb-4 hd-shadow" style="min-width:150px;">
+                        <h6 class="text-uppercase text-white">Kategóriák:</h6>
+                        <ul style="margin-left: -1rem;">
+                            {% for category in categories %}
+                                <li class="mb-1">
+                                    <a href="?category={{ category.id }}" class="d-flex text-decoration-none text-white">
+                                        <span class="border-bottom border-secondary">{{ category.name }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
             {% endif %}
             <div class="col-lg-10">
                 <div class="row">
-                    {% if products %}
-                        {% for product in products %}
-                            {% if product.is_displayable %}
-                            <div class=" col-lg-4 col-md-6 mb-4 text-white">
+                    {% if page_obj %}
+                        <div class="mb-3 text-white">
+                            <span class="me-2">Rendezés:</span>
+                            {% if curr_category %}
+                                {% if last_order_type and last_order_type == 'desc' %}
+                                    <a class="text-white me-1" href="?category={{ curr_category }}&order_by=name">Név</a>
+                                    <a class="text-white" href="?category={{ curr_category }}&order_by=net_price">Ár</a>
+                                {% else %}
+                                    <a class="text-white me-1" href="?category={{ curr_category }}&order_by=-name">Név</a>
+                                    <a class="text-white" href="?category={{ curr_category }}&order_by=-net_price">Ár</a>
+                                {% endif %}
+                                    
+                            {% else %}
+                                {% if last_order_type and last_order_type == 'desc' %}
+                                    <a class="text-white me-1" href="?order_by=name">Név</a> 
+                                    <a class="text-white" href="?order_by=net_price">Ár</a> 
+                                {% else %}
+                                    <a class="text-white me-1" href="?order_by=-name">Név</a> 
+                                    <a class="text-white" href="?order_by=-net_price">Ár</a> 
+                                {% endif %}
+                            {% endif %}
+
+                        </div>
+                        {% for product in page_obj %}
+                            <div class=" col-xl-4 col-md-6 mb-4 text-white">
                                 <div class="card bg-dark">
                                     <div class="card-img overflow-hidden">
                                         <a href="{{ product.get_absolute_url }}">
-                                            <img class="card-img-top hd-image-trans img-fluid" alt="{{ product.name }}"
+                                            <img class="card-img-top hd-image-trans img-fluid" alt="{{ product.name }} képe"
                                                 src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/product_placeholder.png' %}{% endif %}">
                                         </a>
                                     </div>
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
-                                            <p class="small text-uppercase text-muted">{{ product.category_id }}</p>
+                                            <p class="small text-uppercase">{{ product.category_id }}</p>
                                             {% if product.get_action_percent > 0 %}
-                                            <p class="small hd-red-a400"><s>{{ product.get_admin_view_gross_price }} Ft</s></p>
+                                                <p class="small hd-red-a400"><s>{{ product.get_admin_view_gross_price }} Ft</s></p>
                                             {% endif %}
                                         </div>
 
                                         <div class="d-flex justify-content-between mb-3">
-                                            <h5 class="">{{ product.name }}</h5>
+                                            <h5 class="hd-text-lblue">{{ product.name }}</h5>
                                             <h5>{{ product.get_view_gross_price }} Ft</h5>
                                         </div>
 
                                         <div class="d-flex justify-content-between mb-2">
-                                            <p class="text-muted mb-0">Készlet: <span class="fw-bold">{{ product.free_stock }}
+                                            <p class="mb-0">Készlet: <span class="fw-bold">{{ product.free_stock }}
                                                     db</span></p>
                                             <a class="btn btn-primary" href="{{ product.get_absolute_url }}">Részletek</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% endif %}
                         {% endfor %}
-                    {% else %}
-                    <h3 class="text-center text-white">Jelenleg egyetlen termék sem áll rendelkezésre.</h3>
-                    {% endif %}
+                        <div class="pagination text-white justify-content-center mt-3">
+                            <span class="step-links">
+                                {% if page_obj.has_previous %}
+                                    {% if curr_category and order_by %}
+                                        <a class="me-2"
+                                            href="?category={{ curr_category }}&order_by={{ order_by }}&page={{ page_obj.previous_page_number }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                                class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+                                            </svg></a>
+                                    {% elif curr_category %}
+                                        <a class="me-2"
+                                            href="?category={{ curr_category }}&page={{ page_obj.previous_page_number }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                                class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+                                            </svg></a>
+                                    {% elif order_by %}
+                                        <a class="me-2"
+                                            href="?order_by={{ order_by }}&page={{ page_obj.previous_page_number }}"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                            class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+                                        </svg></a>
+                                    {% else %}
+                                        <a class="me-2"
+                                            href="?page={{ page_obj.previous_page_number }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                                class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+                                            </svg></a>
+                                    {% endif %}
+                                {% endif %}
 
+                                <span class="current">
+                                    {{ page_obj.number }} - {{ page_obj.paginator.num_pages }}
+                                </span>
+                                {% if page_obj.has_next %}
+                                    {% if curr_category and order_by %}
+                                        <a class="ms-2"
+                                            href="?category={{ curr_category }}&order_by={{ order_by }}&page={{ page_obj.next_page_number }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                                class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                                                <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
+                                            </svg></a>
+                                    {% elif curr_category %}
+                                        <a class="ms-2"
+                                        href="?category={{ curr_category }}&page={{ page_obj.next_page_number }}"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                            class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                                            <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
+                                        </svg></a>
+                                    {% elif order_by %}
+                                        <a class="ms-2"
+                                        href="?order_by={{ order_by }}&page={{ page_obj.next_page_number }}"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                            class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                                            <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
+                                        </svg></a>
+                                    {% else %}
+                                        <a class="ms-2" href="?page={{ page_obj.next_page_number }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                                class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                                                <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
+                                            </svg></a>
+                                    {% endif %}
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% else %}
+                        <h3 class="text-center text-white">Jelenleg egyetlen termék sem áll rendelkezésre.</h3>
+                    {% endif %}
                 </div>
             </div>
         </div>

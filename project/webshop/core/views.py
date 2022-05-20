@@ -78,7 +78,7 @@ class ContactView(generic.FormView):
         initial = super(ContactView, self).get_initial()
         user = self.request.user
 
-        if user:
+        if user.is_authenticated:
             initial['first_name'] = user.first_name
             initial['last_name'] = user.last_name
             initial['email'] = user.email

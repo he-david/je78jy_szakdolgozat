@@ -67,3 +67,40 @@ body {
     box-shadow: 0 4px 8px 0 #424242;
     transition: 0.3s;
 }
+
+.hd-text-lblue {
+    color: #93c5fd;
+}
+
+.hd-title {
+    font-weight: 600;
+    text-shadow: 4px 4px 0px  #696969;
+    color: #fff;
+}
+
+.hd-text-lblue:hover {
+    color: #bfdbfe;
+    transition: 0.3s;
+}
+
+.hd-bg-lblue {
+    background-color: #93c5fd;
+}
+
+.hd-card-text {
+    color: #fff;
+    background-color: #374151;
+}
+
+.hd-card-text:hover {
+    color: #93c5fd;
+}
+
+.hd-card-text2 {
+    color: #fff;
+    background-color: #4b5563;
+}
+
+.hd-card-text2:hover {
+    color: #93c5fd;
+}

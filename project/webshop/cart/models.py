@@ -17,7 +17,7 @@ class Cart(models.Model):
         return CartItem.objects.filter(cart_id=self.id).count() == 0
 
 class CartItem(models.Model):
-    quantity = models.IntegerField()
+    quantity = models.PositiveIntegerField()
     product_id = models.ForeignKey('product.Product', on_delete=models.CASCADE)
     cart_id = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
     package_type_id = models.ForeignKey('product.PackageType', on_delete=models.CASCADE)

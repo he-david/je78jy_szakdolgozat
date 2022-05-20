@@ -5,6 +5,7 @@ from .models import DeliveryNote
 class DeliveryNoteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DeliveryNoteForm, self).__init__(*args, **kwargs)
+        
         self.fields['status'].widget.attrs['disabled'] = True
         self.fields['payment_type'].widget.attrs['disabled'] = True
         self.fields['document_number'].widget.attrs['readonly'] = True
@@ -13,10 +14,10 @@ class DeliveryNoteForm(forms.ModelForm):
         self.fields['original_customer_name'].widget.attrs['readonly'] = True
         self.fields['completion_date'].widget.attrs['readonly'] = True
         self.fields['delivery_mode'].widget.attrs['disabled'] = True
-        self.fields['shipping_zip_code'].widget.attrs['readonly'] = True
-        self.fields['shipping_city'].widget.attrs['readonly'] = True
-        self.fields['shipping_street_name'].widget.attrs['readonly'] = True
-        self.fields['shipping_house_number'].widget.attrs['readonly'] = True
+        self.fields['zip_code'].widget.attrs['readonly'] = True
+        self.fields['city'].widget.attrs['readonly'] = True
+        self.fields['street_name'].widget.attrs['readonly'] = True
+        self.fields['house_number'].widget.attrs['readonly'] = True
 
         self.fields['status'].required = False
         self.fields['payment_type'].required = False
@@ -26,8 +27,8 @@ class DeliveryNoteForm(forms.ModelForm):
         model = DeliveryNote
         fields = ('status', 'payment_type', 'document_number', 'net_price',
                 'gross_price', 'original_customer_name', 'completion_date',
-                'delivery_mode', 'shipping_zip_code', 'shipping_city',
-                'shipping_street_name', 'shipping_house_number'
+                'delivery_mode', 'zip_code', 'city',
+                'street_name', 'house_number'
         )
         labels = {
             'status': 'Státusz',
@@ -38,10 +39,10 @@ class DeliveryNoteForm(forms.ModelForm):
             'original_customer_name': 'Vevő',
             'completion_date': 'Teljesítés dátuma',
             'delivery_mode': 'Szállítási mód',
-            'shipping_zip_code': 'Irányítószám',
-            'shipping_city': 'Város',
-            'shipping_street_name': 'Utca',
-            'shipping_house_number': 'Házszám',
+            'zip_code': 'Irányítószám',
+            'city': 'Város',
+            'street_name': 'Utca',
+            'house_number': 'Házszám',
         }
 
     def clean_status(self): # Így biztosan nem kaphat más értéket amikor mentésre kerül sor.
@@ -92,26 +93,26 @@ class DeliveryNoteForm(forms.ModelForm):
         else: 
             return self.fields['delivery_mode']
 
-    def clean_shipping_zip_code(self):
+    def clean_zip_code(self):
         if self.instance: 
-            return self.instance.shipping_zip_code
+            return self.instance.zip_code
         else: 
-            return self.fields['shipping_zip_code']
+            return self.fields['zip_code']
 
-    def clean_shipping_city(self):
+    def clean_city(self):
         if self.instance: 
-            return self.instance.shipping_city
+            return self.instance.city
         else: 
-            return self.fields['shipping_city']
+            return self.fields['city']
 
-    def clean_shipping_street_name(self):
+    def clean_street_name(self):
         if self.instance: 
-            return self.instance.shipping_street_name
+            return self.instance.street_name
         else: 
-            return self.fields['shipping_street_name']
+            return self.fields['street_name']
 
-    def clean_shipping_house_number(self):
+    def clean_house_number(self):
         if self.instance: 
-            return self.instance.shipping_house_number
+            return self.instance.house_number
         else: 
-            return self.fields['shipping_house_number']
+            return self.fields['house_number']

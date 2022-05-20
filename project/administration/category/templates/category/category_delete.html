@@ -1,6 +1,6 @@
 {% extends 'administration/base.html' %}
 
-{% block head_title %}Kategória törlés{% endblock head_title %}
+{% block head_title %}{{ category.name }} törlés{% endblock head_title %}
 
 {% block content %}
 
@@ -9,10 +9,10 @@
         {% csrf_token %}
         <h2>Biztosan törölni szeretné a/az {{ category.name }} nevű kategóriát?</h2>
         {% if sub_cat_count > 0 %}
-        <p>Alkategóriák száma: {{ sub_cat_count }}</p>
+            <p>Alkategóriák száma: {{ sub_cat_count }}</p>
         {% endif %}
         {% if cat_prod_count > 0 %}
-        <p>Kategóriába tartozó termékek száma: {{ cat_prod_count }}</p>
+            <p>Kategóriába tartozó termékek száma: {{ cat_prod_count }}</p>
         {% endif %}
         <input type="submit" value="Igen" class="btn btn-primary">
         <a href="{% url 'admin_core:admin_category:category-list' %}" class="btn btn-primary ms-2">Nem</a>

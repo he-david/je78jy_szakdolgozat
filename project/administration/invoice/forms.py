@@ -6,6 +6,7 @@ class InvoiceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(InvoiceForm, self).__init__(*args, **kwargs)
+        
         self.fields['status'].widget.attrs['disabled'] = True
         self.fields['payment_type'].widget.attrs['disabled'] = True
         self.fields['account_number'].widget.attrs['readonly'] = True
@@ -15,10 +16,10 @@ class InvoiceForm(forms.ModelForm):
         self.fields['creation_date'].widget.attrs['readonly'] = True
         self.fields['settlement_date'].widget.attrs['readonly'] = True
         self.fields['delivery_mode'].widget.attrs['disabled'] = True
-        self.fields['billing_zip_code'].widget.attrs['readonly'] = True
-        self.fields['billing_city'].widget.attrs['readonly'] = True
-        self.fields['billing_street_name'].widget.attrs['readonly'] = True
-        self.fields['billing_house_number'].widget.attrs['readonly'] = True
+        self.fields['zip_code'].widget.attrs['readonly'] = True
+        self.fields['city'].widget.attrs['readonly'] = True
+        self.fields['street_name'].widget.attrs['readonly'] = True
+        self.fields['house_number'].widget.attrs['readonly'] = True
 
         self.fields['status'].required = False
         self.fields['payment_type'].required = False
@@ -28,8 +29,8 @@ class InvoiceForm(forms.ModelForm):
         model = Invoice
         fields = ('status', 'payment_type', 'account_number', 'net_price',
                 'gross_price', 'original_customer_name', 'creation_date',
-                'settlement_date', 'delivery_mode', 'billing_zip_code',
-                'billing_city', 'billing_street_name', 'billing_house_number'
+                'settlement_date', 'delivery_mode', 'zip_code',
+                'city', 'street_name', 'house_number'
         )
         labels = {
             'status': 'Státusz',
@@ -41,10 +42,10 @@ class InvoiceForm(forms.ModelForm):
             'creation_date': 'Létrehozás dátuma',
             'settlement_date': 'Kiegyenlítés dátuma',
             'delivery_mode': 'Szállítási mód',
-            'billing_zip_code': 'Irányítószám',
-            'billing_city': 'Város',
-            'billing_street_name': 'Utca',
-            'billing_house_number': 'Házszám',
+            'zip_code': 'Irányítószám',
+            'city': 'Város',
+            'street_name': 'Utca',
+            'house_number': 'Házszám',
         }
     
     def clean_status(self): # Így biztosan nem kaphat más értéket amikor mentésre kerül sor.
@@ -101,26 +102,26 @@ class InvoiceForm(forms.ModelForm):
         else: 
             return self.fields['delivery_mode']
 
-    def clean_billing_zip_code(self):
+    def clean_zip_code(self):
         if self.instance: 
-            return self.instance.billing_zip_code
+            return self.instance.zip_code
         else: 
-            return self.fields['billing_zip_code']
+            return self.fields['zip_code']
 
-    def clean_billing_city(self):
+    def clean_city(self):
         if self.instance: 
-            return self.instance.billing_city
+            return self.instance.city
         else: 
-            return self.fields['billing_city']
+            return self.fields['city']
 
-    def clean_billing_street_name(self):
+    def clean_street_name(self):
         if self.instance: 
-            return self.instance.billing_street_name
+            return self.instance.street_name
         else: 
-            return self.fields['billing_street_name']
+            return self.fields['street_name']
 
-    def clean_billing_house_number(self):
+    def clean_house_number(self):
         if self.instance: 
-            return self.instance.billing_house_number
+            return self.instance.house_number
         else: 
-            return self.fields['billing_house_number']
+            return self.fields['house_number']

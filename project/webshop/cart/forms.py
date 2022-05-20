@@ -6,6 +6,7 @@ from webshop.core.models import CustomUser
 class PaymentPersonalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PaymentPersonalForm, self).__init__(*args, **kwargs)
+        
         self.fields['last_name'].required = True
         self.fields['first_name'].required = True
 
